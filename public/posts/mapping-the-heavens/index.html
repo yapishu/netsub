@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Mapping the heavens">
+<meta itemprop="description" content="A simple how-to for generating a list of planets from an arbitrary star.">
+<meta itemprop="datePublished" content="2020-10-10T10:11:40-05:00" />
+<meta itemprop="dateModified" content="2020-10-10T10:11:40-05:00" />
+<meta itemprop="wordCount" content="847">
+<meta itemprop="image" content="https://subject.network/img/ship.jpg">
+
+
+
+<meta itemprop="keywords" content="urbit,planets,nodejs,radbur-sivmus," />
+<meta property="og:title" content="Mapping the heavens" />
+<meta property="og:description" content="A simple how-to for generating a list of planets from an arbitrary star." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/mapping-the-heavens/" />
+<meta property="og:image" content="https://subject.network/img/ship.jpg" />
+<meta property="article:published_time" content="2020-10-10T10:11:40-05:00" />
+<meta property="article:modified_time" content="2020-10-10T10:11:40-05:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/ship.jpg"/>
+
+<meta name="twitter:title" content="Mapping the heavens"/>
+<meta name="twitter:description" content="A simple how-to for generating a list of planets from an arbitrary star."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Mapping the heavens</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 10, 2020</span></div>
+				<h1>Mapping the heavens</h1>
+			</header>
+			<div class="content">
+				<p><a href=""><img src="/img/ship.jpg" alt=""></a></p>
+<p>This entry will be a quickie, a simple how-to for generating a list of planets from an arbitrary star. There are two methods, both of which require you to use a bit of command line, but nothing too exotic.</p>
+<h2 id="generating-a-list-of-planets-from-a--star">Generating a list of planets from a  star<a href="#generating-a-list-of-planets-from-a--star" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="option-1-hoon-one-liner">Option 1: Hoon one-liner<a href="#option-1-hoon-one-liner" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>You can execute this right in your dojo:</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - sampel-palnet
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;`(list&nbsp;@p)`(turn&nbsp;(gulf&nbsp;0x1&nbsp;0x5)&nbsp;|=(p=@&nbsp;(cat&nbsp;3&nbsp;~matwet&nbsp;p)))</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Replace <code>~matwet</code> with the star of your choice. You can also change the <code>0x5</code> to a different number to generate a longer list than 5 &ndash; e.g, <code>0x10</code> would give you a list of 10. Note that this generates a list &lsquo;from zero&rsquo; &ndash; it will always generate the same list, given the same input.</p>
+<h3 id="option-2-venetia">Option 2: Venetia<a href="#option-2-venetia" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>There is also a fabulous little <a href="https://github.com/tylershuster/venetia">Node package by tylershuster</a> (<code>~radbur-sivmus</code>) for generating a list of all planets issuable by a star and save it to a file. It&rsquo;s very easy to use:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;install&nbsp;npm</li>
+        
+        
+        <li>$>&nbsp;git&nbsp;clone&nbsp;https://github.com/tylershuster/venetia</li>
+        
+        
+        <li>$>&nbsp;cd&nbsp;venetia</li>
+        
+        
+        <li>$>&nbsp;npm&nbsp;install</li>
+        
+        
+        <li>$>&nbsp;node&nbsp;index.js</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>You&rsquo;ll be prompted to choose one of three options &ndash; all planets, all planets with english-ish words, and planets with <em>only</em> english-ish words. It will take a few minutes to churn through all of them!</p>
+<p><a href=""><img src="/img/venetia.png" alt=""></a></p>
+<p>Once completed, you&rsquo;ll find a text file inside the same folder named <code>planets.txt</code>.</p>
+<p><strong>Update</strong>: You can now use Venetia as a <a href="https://venetia.herokuapp.com/">webapp</a> without installing Node, and find homophones for English words.</p>
+<p><strong>Update 2</strong>: <code>~hadnex_samzod</code> adds the following:</p>
+<blockquote>
+<p>Python script to print all english (american) words using the linux installed dictionary in /usr/share/dict/american:</p>
+</blockquote>
+<pre><code>import subprocess
+
+# Change me
+the_dict = &quot;/usr/share/dict/american&quot;
+command = [&quot;egrep&quot;, &quot;-w&quot;, &quot;^\w{6}$&quot;, the_dict]
+
+prefix = [ 'bac', 'bal', 'ban', 'bar', 'bat', 'bic', 'bid', 'bil', 'bin', 'bis', 
+'bit', 'bol', 'bon', 'bor', 'bos', 'bot', 'dab', 'dac', 'dal', 'dan', 'dap', 
+'dar', 'das', 'dat', 'dav', 'dib', 'dif', 'dig', 'dil', 'din', 'dir', 'dis', 
+'div', 'doc', 'dol', 'don', 'dop', 'dor', 'dos', 'dot', 'dov', 'doz', 'fab', 
+'fad', 'fal', 'fam', 'fan', 'fas', 'fid', 'fig', 'fil', 'fin', 'fip', 'fir', 
+'fit', 'fod', 'fog', 'fol', 'fon', 'fop', 'for', 'fos', 'fot', 'hab', 'hac', 
+'had', 'hal', 'han', 'hap', 'har', 'has', 'hat', 'hav', 'hid', 'hil', 'hin', 
+'hob', 'hoc', 'hod', 'hol', 'hop', 'hos', 'lab', 'lac', 'lad', 'lag', 'lan', 
+'lap', 'lar', 'las', 'lat', 'lav', 'lib', 'lid', 'lig', 'lin', 'lis', 'lit', 
+'liv', 'loc', 'lod', 'lom', 'lon', 'lop', 'lor', 'los', 'mac', 'mag', 'mal', 
+'map', 'mar', 'mas', 'mat', 'mic', 'mid', 'mig', 'mil', 'min', 'mip', 'mir', 
+'mis', 'mit', 'moc', 'mod', 'mog', 'mol', 'mon', 'mop', 'mor', 'mos', 'mot', 
+'nac', 'nal', 'nam', 'nap', 'nar', 'nat', 'nav', 'nib', 'nid', 'nil', 'nim', 
+'nis', 'noc', 'nod', 'nol', 'nom', 'nop', 'nor', 'nos', 'nov', 'pac', 'pad', 
+'pag', 'pal', 'pan', 'par', 'pas', 'pat', 'pic', 'pid', 'pil', 'pin', 'pit', 
+'poc', 'pod', 'pol', 'pon', 'pos', 'rab', 'rac', 'rad', 'rag', 'ral', 'ram', 
+'ran', 'rap', 'rav', 'rib', 'ric', 'rid', 'rig', 'ril', 'rin', 'rip', 'ris', 
+'rit', 'riv', 'roc', 'rol', 'ron', 'rop', 'ros', 'rov', 'sab', 'sal', 'sam', 
+'san', 'sap', 'sar', 'sat', 'sav', 'sib', 'sic', 'sid', 'sig', 'sil', 'sim', 
+'sip', 'sit', 'siv', 'soc', 'sog', 'sol', 'som', 'son', 'sop', 'sor', 'sov', 
+'tab', 'tac', 'tad', 'tag', 'tal', 'tam', 'tan', 'tap', 'tar', 'tas', 'tic', 
+'tid', 'til', 'tim', 'tin', 'tip', 'tir', 'tob', 'toc', 'tod', 'tog', 'tol', 
+'tom', 'ton', 'top', 'tor', 'wac', 'wal', 'wan', 'wat', 'wic', 'wid', 'win', 
+'wis', 'wit', 'wol', 'wor' ]
+
+suffix = [ 'bec', 'bel', 'ben', 'bep', 'ber', 'bes', 'bet', 'bex', 'bud', 'bur', 
+'bus', 'byl', 'byn', 'byr', 'byt', 'deb', 'dec', 'def', 'deg', 'del', 'dem', 
+'den', 'dep', 'der', 'des', 'det', 'dev', 'dex', 'duc', 'dul', 'dun', 'dur', 
+'dus', 'dut', 'dux', 'dyl', 'dyn', 'dyr', 'dys', 'dyt', 'feb', 'fed', 'fel', 
+'fen', 'fep', 'fer', 'fes', 'fet', 'fex', 'ful', 'fun', 'fur', 'fus', 'fyl', 
+'fyn', 'fyr', 'heb', 'hec', 'hep', 'hes', 'het', 'hex', 'hul', 'hus', 'hut', 
+'leb', 'lec', 'led', 'leg', 'len', 'lep', 'ler', 'let', 'lev', 'lex', 'luc', 
+'lud', 'lug', 'lun', 'lup', 'lur', 'lus', 'lut', 'lux', 'lyd', 'lyn', 'lyr', 
+'lys', 'lyt', 'lyx', 'meb', 'mec', 'med', 'meg', 'mel', 'mep', 'mer', 'mes', 
+'met', 'mev', 'mex', 'mud', 'mug', 'mul', 'mun', 'mur', 'mus', 'mut', 'myl', 
+'myn', 'myr', 'neb', 'nec', 'ned', 'nel', 'nem', 'nep', 'ner', 'nes', 'net', 
+'nev', 'nex', 'nub', 'nul', 'num', 'nup', 'nus', 'nut', 'nux', 'nyd', 'nyl', 
+'nym', 'nyr', 'nys', 'nyt', 'nyx', 'pec', 'ped', 'peg', 'pel', 'pem', 'pen', 
+'per', 'pes', 'pet', 'pex', 'pub', 'pun', 'pur', 'put', 'pyl', 'pyx', 'reb', 
+'rec', 'red', 'ref', 'reg', 'rel', 'rem', 'ren', 'rep', 'res', 'ret', 'rev', 
+'rex', 'ruc', 'rud', 'rul', 'rum', 'run', 'rup', 'rus', 'rut', 'rux', 'ryc', 
+'ryd', 'ryg', 'ryl', 'rym', 'ryn', 'ryp', 'rys', 'ryt', 'ryx', 'seb', 'sec', 
+'sed', 'sef', 'seg', 'sel', 'sem', 'sen', 'sep', 'ser', 'set', 'sev', 'sub', 
+'sud', 'sug', 'sul', 'sum', 'sun', 'sup', 'sur', 'sut', 'syd', 'syl', 'sym', 
+'syn', 'syp', 'syr', 'syt', 'syx', 'teb', 'tec', 'ted', 'teg', 'tel', 'tem', 
+'ten', 'tep', 'ter', 'tes', 'tev', 'tex', 'tuc', 'tud', 'tug', 'tul', 'tun', 
+'tus', 'tux', 'tyc', 'tyd', 'tyl', 'tyn', 'typ', 'tyr', 'tyv', 'web', 'wed', 
+'weg', 'wel', 'wen', 'wep', 'wer', 'wes', 'wet', 'wex', 'wyc', 'wyd', 'wyl', 
+'wyn', 'wyt', 'wyx', 'zod', ]
+
+# Load 6 letter dictionary words into list
+process = subprocess.Popen(command, stdout=subprocess.PIPE)
+stdout_data, stderr_data = process.communicate()
+
+# Convert to set for fast lookup
+words = set(stdout_data.decode('utf8').splitlines())
+
+for i in prefix:
+	for j in suffix:
+		urbit_word = i+j
+		if urbit_word in words:
+			print(urbit_word)
+</code></pre><hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/planets">planets</a></span><span class="tag"><a href="https://subject.network/tags/nodejs">nodejs</a></span><span class="tag"><a href="https://subject.network/tags/radbur-sivmus">radbur-sivmus</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-10-10 10:11 -0500</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/duiker-serval/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>%duiker &amp; %serval: bittorrent on Urbit</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/configuring-s3-urbit/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Configuring S3 storage for your urbit</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

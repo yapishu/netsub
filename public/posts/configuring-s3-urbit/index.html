@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Configuring S3 storage for your urbit">
+<meta itemprop="description" content="This document will guide you through using S3 with your ship.">
+<meta itemprop="datePublished" content="2020-10-03T13:39:06-05:00" />
+<meta itemprop="dateModified" content="2020-10-03T13:39:06-05:00" />
+<meta itemprop="wordCount" content="859">
+<meta itemprop="image" content="https://subject.network/img/urbit-do-spaces.png">
+
+
+
+<meta itemprop="keywords" content="urbit,s3,digitalocean," />
+<meta property="og:title" content="Configuring S3 storage for your urbit" />
+<meta property="og:description" content="This document will guide you through using S3 with your ship." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/configuring-s3-urbit/" />
+<meta property="og:image" content="https://subject.network/img/urbit-do-spaces.png" />
+<meta property="article:published_time" content="2020-10-03T13:39:06-05:00" />
+<meta property="article:modified_time" content="2020-10-03T13:39:06-05:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/urbit-do-spaces.png"/>
+
+<meta name="twitter:title" content="Configuring S3 storage for your urbit"/>
+<meta name="twitter:description" content="This document will guide you through using S3 with your ship."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Configuring S3 storage for your urbit</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Oct 3, 2020</span></div>
+				<h1>Configuring S3 storage for your urbit</h1>
+			</header>
+			<div class="content">
+				<p><a href=""><img src="/img/urbit-do-spaces.png" alt=""></a></p>
+<p>Continuing our convention of instructions for running your ship on <a href="https://m.do.co/c/4da920651e1a">DigitalOcean</a> (referral), this document will guide you through using DO&rsquo;s S3-equivalent service with your ship.</p>
+<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>First a brief explainer &ndash; S3 (Simple Storage Service) is a system for storing and retreiving objects in the cloud. The &lsquo;official&rsquo; S3 is run by Amazon, but other providers run compatible services &ndash; DO&rsquo;s is called <a href="https://www.digitalocean.com/products/spaces/">Spaces</a>, and it is built to be interchangeable with AWS S3&rsquo;s API. You don&rsquo;t need to be running your ship on DO to use Spaces with it. The provider you use <em>does</em> have support Signature Version 2 (DO does &ndash; do a quick check if you&rsquo;re using another provider).</p>
+<p>What does Urbit use S3 for? It&rsquo;s an easy and reliable way to store files and media for retrieval within the apps in your urbit &ndash; for instance, sharing pictures in a chat. If you attach an S3 bucket to your ship, the Chat app will enable an image upload feature. If you want to program software for urbit that makes efficient use of static content, you may be able to imagine a few potential uses; think of it as a giant online hard drive.</p>
+<h2 id="creating-a-space">Creating a space<a href="#creating-a-space" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Navigate to the DO dashboard and find &lsquo;Spaces&rsquo; in the left navigation bar, then click &lsquo;Create a Space&rsquo;, and select a datacenter. The next option is to enable CDN &ndash; content delivery network, a feature that lets you spread your content across regional servers to speed up delivery. It probably is not necessary if you&rsquo;re just using this for personal file storage, so you can skip this step, but for the sake of completeness we&rsquo;ll do that too.</p>
+<p>Click &lsquo;Enable CDN&rsquo;, select your domain, and scroll to the bottom of the list of subdomains to create a new A record. Finalize it to create a LetsEncrypt certificate &ndash; you should get an email momentarily that the process has completed. Note that creating a subdomain on your own domain is obviously only possible if you already have a domain on a DO droplet, but you will be able to access your media using this new subdomain as well.</p>
+<p>An option on this page is whether you want to restrict file listing &ndash; I would recommend keeping the default restricted setting, unless you have some specific need to allow anyone to list your objects. Finally, create a subdomain for your space (this will be a subdomain on a DO domain, not your own), take note of it, and submit the form.</p>
+<p><a href=""><img src="/img/spaces-1.png" alt=""></a></p>
+<p>We need to do a little configuration now; click &lsquo;Settings&rsquo; under the page header, look for &lsquo;CORS configurations&rsquo;, and click &lsquo;add&rsquo; on the right. We want to add two rules &ndash; in the Origin box, put a <code>*</code>; then click &lsquo;Add header&rsquo;, enter another <code>*</code>. This allows other people to request objects from our bucket. Make sure <code>GET</code> and <code>PUT</code> are enabled, and save.</p>
+<p><a href=""><img src="/img/spaces-2.png" alt=""></a></p>
+<p>We have one last step before we enable this on our ship &ndash; getting our API keys. In the main navigation bar on the left, look for &lsquo;API&rsquo; towards the bottom and select it. At the bottom of the page you&rsquo;ll see &lsquo;Spaces access keys&rsquo;; select &lsquo;Generate new key&rsquo;. It will give you two lines of random text &ndash; the top one is your access key, and the bottom is your secret key. Think of them as your username and password; do not share them or post them publicly, unless you want strangers abusing your storage.</p>
+<p><a href=""><img src="/img/spaces-3.png" alt=""></a></p>
+<h2 id="ship-configuration">Ship configuration<a href="#ship-configuration" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Finally, let&rsquo;s tell our ship how to use it. Open Landscape, click your name at the top right corner, and scroll down until you see &lsquo;S3 Credentials&rsquo;:</p>
+<p><a href=""><img src="/img/s3-settings.png" alt=""></a></p>
+<p>Make sure your S3 bucket name is the same as your bucket name on DO:</p>
+<p><a href=""><img src="/img/bucket-endpoint.png" alt=""></a></p>
+<p>Hit save, go to <code>Options -&gt; Activate</code> next to the name of the bucket, and you should be good!</p>
+<p>Alternatively, you can enter your credentials in the command line. Let&rsquo;s proceed to our dojo (CLI or Landscape). Enter the following commands, replacing the variables in single quotes with your own details:</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - sampel-palnet
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;:s3-store|set-endpoint&nbsp;'ams3.digitaloceanspaces.com'</li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;:s3-store|set-access-key-id&nbsp;'ACCESSKEY'</li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;:s3-store|set-secret-access-key&nbsp;'5eCrEtK3Y/8L4H8L4H'</li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;:s3-store|set-current-bucket&nbsp;'bucketname'</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>You can print out your stored S3 credentials in dojo anytime using:</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - sampel-palnet
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;:s3-store&nbsp;+dbug</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p><a href=""><img src="/img/urbit-s3.png" alt=""></a></p>
+<p>Don&rsquo;t worry if you don&rsquo;t see any immediate notification of success; head over to landscape and open a chat. If all went well, you&rsquo;ll see a little attachment upload icon in your text entry box:</p>
+<p><a href=""><img src="/img/spaces-4.png" alt=""></a></p>
+<p>Just click this, select an item to upload; if you did it correctly, you should be able to post images to chats, meaning your urbit has a big fat disk added to it (If you see the image icon but can&rsquo;t post, double check your CORS settings).</p>
+<p>If you want to look through the stuff you&rsquo;ve uploaded through your urbit, you can go to the management page on your DO dashboard and select the space you&rsquo;re using. It will give you a directory named after your ship, and inside of that a listing of all files you&rsquo;ve uploaded, where you can manage them.</p>
+<p><a href=""><img src="/img/spaces-5.png" alt=""></a></p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/s3">s3</a></span><span class="tag"><a href="https://subject.network/tags/digitalocean">digitalocean</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-10-03 13:39 -0500</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/mapping-the-heavens/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Mapping the heavens</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/urbit-nginx-letsencrypt/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Urbit, Nginx and Letsencrypt</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

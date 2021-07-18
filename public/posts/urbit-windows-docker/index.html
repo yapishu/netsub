@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Easy Urbit on Windows with Docker Desktop">
+<meta itemprop="description" content="Introduction We&rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.">
+<meta itemprop="datePublished" content="2021-03-07T13:10:01-06:00" />
+<meta itemprop="dateModified" content="2021-03-07T13:10:01-06:00" />
+<meta itemprop="wordCount" content="903">
+<meta itemprop="image" content="https://subject.network/posts/urbit-windows-docker/cover.gif">
+
+
+
+<meta itemprop="keywords" content="urbit,windows,docker," />
+<meta property="og:title" content="Easy Urbit on Windows with Docker Desktop" />
+<meta property="og:description" content="Introduction We&rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/urbit-windows-docker/" />
+<meta property="og:image" content="https://subject.network/posts/urbit-windows-docker/cover.gif"/>
+<meta property="article:published_time" content="2021-03-07T13:10:01-06:00" />
+<meta property="article:modified_time" content="2021-03-07T13:10:01-06:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/posts/urbit-windows-docker/cover.gif"/>
+<meta name="twitter:title" content="Easy Urbit on Windows with Docker Desktop"/>
+<meta name="twitter:description" content="Introduction We&rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Easy Urbit on Windows with Docker Desktop</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Mar 7, 2021</span></div>
+				<h1>Easy Urbit on Windows with Docker Desktop</h1>
+			</header>
+			<div class="content">
+				<p><img src="/img/win-docker/docker-header.gif" alt=""></p>
+<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>We&rsquo;ve <a href="/posts/urbit-wsl2/">previously</a> covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, <code>~botter-nidnul</code> <a href="https://gist.github.com/botter-nidnul/bc55769afe006de6f93b27390e5d1267">wrote up a guide</a> to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.</p>
+<p>Docker is a bit like running a virtual machine &ndash; for our purposes, just think of it as a tiny OS inside your OS that exists to run one application (here, also an OS). These are called containers, and they have a few advantages over traditional VMs &ndash; notably, they&rsquo;re very easy to copy to and from other machines, and you can modify their configuration as much as you want without screwing up the host device. If you break something and can&rsquo;t fix it, you can just delete the container and reinstall it. It&rsquo;s pretty handy for running web services, and now you can run a ship inside of one without too much setup.</p>
+<p>Docker makes use of WSL2, and will be prompted to have it installed before you can use Docker. If you don&rsquo;t already have it, follow the <a href="/posts/urbit-wsl2/#updating">directions</a> under the subheaders <em>Updating</em>, <em>Enabling WSL</em>, and <em>Installation</em> on our previous tutorial. You will also need to run Docker as a user with administrator privileges on your device.</p>
+<h2 id="installation">Installation<a href="#installation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>In order to get Docker, you&rsquo;ll need to install the <code>winget</code> Windows tool. It requires the <a href="https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1">App Installer</a> package in the Windows Store.</p>
+<p>After that is installed, head over to Microsoft&rsquo;s <a href="https://github.com/microsoft/winget-cli/releases">Github</a> and click the download link for the file ending in <code>.appxbundle</code>. This will install <code>winget</code>.</p>
+<p>Now open up a command prompt and run the following command:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      cmd.exe: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>C:\>&nbsp;winget&nbsp;install&nbsp;docker</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p><em>[Note: you don&rsquo;t need to include the <code>C:\&gt;</code> part &ndash; we will use this to indicate a Windows command line.]</em></p>
+<p>Back at the command line, you should see this spin for a minute or two while it installs.</p>
+<p><img src="/img/win-docker/winget.png" alt=""></p>
+<p>Once it&rsquo;s completed, restart your computer. When you&rsquo;re back, open up your start menu and you should see a new entry for Docker Desktop:</p>
+<p><img src="/img/win-docker/docker-start.png" alt=""></p>
+<p>Go ahead and open it. Now, return to a command line:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      cmd.exe: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>C:\>&nbsp;docker&nbsp;volume&nbsp;create&nbsp;urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Now open up a folder, and navigate to this path by pasting the address into the bar:</p>
+<p><code>\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\urbit\_data</code></p>
+<p>Now create an empty file named with the extension <code>.comet</code> &ndash; for instance, <code>mycomet.comet</code>. This will tell Docker create a comet with the name <code>mycomet</code>.</p>
+<p>The easiest way to create a blank file is to right click an empty spot in the folder, select &lsquo;New&rsquo;, &lsquo;text file&rsquo;, and rename the file it creates to get rid of the <code>.txt</code> extension. You will need to enable visible file extensions if you haven&rsquo;t already:</p>
+<p><img src="/img/win-docker/show-ext.png" alt=""></p>
+<p>if you already have a planet and want to boot it for the first time, you can paste the keyfile from Bridge in here instead. If you want to move an existing ship, shut your ship down and copy the pier directory into this folder instead. Either way, I recommend booting a comet first, to make sure everything works right.</p>
+<p>Before we boot, let&rsquo;s forward the port it&rsquo;s going to use. This will allow your ship to have direct connections with other ships, instead of routing the connections through other nodes.</p>
+<p>The Docker image uses UDP 34343 by default &ndash; go ahead and forward that port on your router to the device running your ship (make sure it&rsquo;s UDP!). There&rsquo;s no single standard way to forward ports on different kinds of routers, but you can find generic instructions <a href="https://www.noip.com/support/knowledgebase/general-port-forwarding-guide/">here</a> if you have trouble.</p>
+<h2 id="booting-up">Booting up<a href="#booting-up" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Open another command prompt and paste the following command into it:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      cmd.exe: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>C:\>&nbsp;docker&nbsp;run&nbsp;-p&nbsp;80:80&nbsp;-p&nbsp;34343:34343/udp&nbsp;-it&nbsp;--restart&nbsp;always&nbsp;--mount&nbsp;type=volume,source=urbit,destination=/urbit&nbsp;--name&nbsp;urbit&nbsp;tloncorp/urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>You should see the urbit process start up and mine an identity, then download and compile its source code.</p>
+<p><img src="/img/win-docker/cmd-urbit.png" alt=""></p>
+<p>That&rsquo;s it! You&rsquo;ve booted you ship and are ready to explore the network.</p>
+<p>Type <code>+code</code> into the urbit command line, and copy the four word password it generates by highlighting and right clicking.</p>
+<p>Open your web browser and navigate to <code>http://localhost</code>:</p>
+<p><img src="/img/win-docker/browser.png" alt=""></p>
+<p>Log in by pasting the password.</p>
+<p>If you&rsquo;re brand new to the network, here are a couple of good groups for beginners to join:</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="web+urbitgraph://group/~bitbet-bolbel/urbit-community/">~bitbet-bolbel/urbit-community</a></td>
+<td>The biggest group on the network, filled with cool resources</td>
+</tr>
+<tr>
+<td><a href="web+urbitgraph://group/~bollug-worlus/urbit-index/">~bollug-worlus/urbit-index</a></td>
+<td>Contains a notebook called &lsquo;Directory&rsquo; with a list of public groups you can join</td>
+</tr>
+<tr>
+<td><a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a></td>
+<td>The group associated with this blog &ndash; feel free to say hi, ask questions or give feedback</td>
+</tr>
+</tbody>
+</table>
+<p>Big thanks again to <code>~botter-nidnul</code> for the <a href="https://gist.github.com/botter-nidnul/bc55769afe006de6f93b27390e5d1267">original tutorial</a> and his help and feedback with drafting this!</p>
+<h2 id="misc--troubleshooting">Misc &amp; troubleshooting<a href="#misc--troubleshooting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<ul>
+<li>
+<p>You can detach from the command line running your ship by pressing <code>ctrl-p</code>, <code>ctrl-q</code> &ndash; this lets you close the command prompt without exiting the process. You can reattach to it with <code>docker attach urbit</code>.</p>
+</li>
+<li>
+<p>You can tell Docker to automatically run on startup by going to the configuration menu:</p>
+</li>
+</ul>
+<p><img src="/img/win-docker/startup.png" alt=""></p>
+<ul>
+<li>You can install a container for Watchtower that will automatically update your containers for you with this command:</li>
+</ul>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      cmd.exe: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>C:\>&nbsp;docker&nbsp;run&nbsp;-d&nbsp;--restart&nbsp;always&nbsp;--name&nbsp;watchtower&nbsp;-v&nbsp;/var/run/docker.sock:/var/run/docker.sock&nbsp;containrrr/watchtower</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<ul>
+<li>You can turn your container on and off inside the Docker Desktop app:</li>
+</ul>
+<p><img src="/img/win-docker/container.png" alt=""></p>
+<hr>
+<ul>
+<li>If your urbit won&rsquo;t restart, check out <a href="https://gist.github.com/botter-nidnul/bc55769afe006de6f93b27390e5d1267#possible-errors">~botter&rsquo;s</a> solution for deleting the <code>.vere.lock</code> file inside your <code>\urbit\_data</code> folder.</li>
+</ul>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/windows">windows</a></span><span class="tag"><a href="https://subject.network/tags/docker">docker</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-03-07 13:10 -0600</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/state-urbit-spring-2021/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>State of Mars: Spring 2021</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/pi-fullnode-urbit/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Preparing for Urbit-BTC integration with a Pi full node</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

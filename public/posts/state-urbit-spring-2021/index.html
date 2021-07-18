@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="State of Mars: Spring 2021">
+<meta itemprop="description" content="Introduction In lieu of a tutorial or interview, I thought it would be useful to write a short summary of some of the developments surrounding Urbit in the last year. 2020-21 has been an eventful period for many reasons, but the pace of development on the Urbit project has been steady, and always in the direction of beauty and utility.
+When I polled a chat group about their favorite recent improvements and features, several people mentioned its improved reliability, especially chat.">
+<meta itemprop="datePublished" content="2021-04-09T18:31:49-05:00" />
+<meta itemprop="dateModified" content="2021-04-09T18:31:49-05:00" />
+<meta itemprop="wordCount" content="1652">
+<meta itemprop="image" content="https://subject.network/img/spring21/spring-header.gif">
+
+
+
+<meta itemprop="keywords" content="urbit,taisho,srrs,chess,webrtc,bitcoin,development,nocsyx-lassul,wicdev-wisryt,rolsut-rospub,ritpub-sipsyl,fabled-faster,timluc-miptev," />
+<meta property="og:title" content="State of Mars: Spring 2021" />
+<meta property="og:description" content="Introduction In lieu of a tutorial or interview, I thought it would be useful to write a short summary of some of the developments surrounding Urbit in the last year. 2020-21 has been an eventful period for many reasons, but the pace of development on the Urbit project has been steady, and always in the direction of beauty and utility.
+When I polled a chat group about their favorite recent improvements and features, several people mentioned its improved reliability, especially chat." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/state-urbit-spring-2021/" />
+<meta property="og:image" content="https://subject.network/img/spring21/spring-header.gif" />
+<meta property="article:published_time" content="2021-04-09T18:31:49-05:00" />
+<meta property="article:modified_time" content="2021-04-09T18:31:49-05:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/spring21/spring-header.gif"/>
+
+<meta name="twitter:title" content="State of Mars: Spring 2021"/>
+<meta name="twitter:description" content="Introduction In lieu of a tutorial or interview, I thought it would be useful to write a short summary of some of the developments surrounding Urbit in the last year. 2020-21 has been an eventful period for many reasons, but the pace of development on the Urbit project has been steady, and always in the direction of beauty and utility.
+When I polled a chat group about their favorite recent improvements and features, several people mentioned its improved reliability, especially chat."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>State of Mars: Spring 2021</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Apr 9, 2021</span></div>
+				<h1>State of Mars: Spring 2021</h1>
+			</header>
+			<div class="content">
+				<p><img src="/img/spring21/spring-header.gif" alt=""></p>
+<h2 id="introduction">Introduction<a href="#introduction" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>In lieu of a tutorial or interview, I thought it would be useful to write a short summary of some of the developments surrounding Urbit in the last year. 2020-21 has been an eventful period for many reasons, but the pace of development on the Urbit project has been steady, and always in the direction of beauty and utility.</p>
+<p>When I polled a chat group about their favorite recent improvements and features, several people mentioned its improved reliability, especially chat. Though I half-fondly recall waiting 5-10 seconds for keystrokes to register into the CLI chat client and posting multiple times on return a few years ago, it is true that the overall stability has improved markedly. I hear about breaches less frequently, and I use my ship throughout the day without experiencing serious problems or errors. The team at Tlon definitely deserves significant credit for wrangling such a novel system not just into working, but being useful.</p>
+<p>So, if you are new to Urbit, or haven&rsquo;t checked in on it in a while, here&rsquo;s a survey of how things have changed and are anticipated to change soon.</p>
+<h2 id="landscape-developments">Landscape developments<a href="#landscape-developments" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><img src="/img/spring21/landscape.jpg#floatright" alt=""></p>
+<p>Urbit has come a long way in since the release of OS1 in April of 2020. OS1 was the first release of most of the major features of Landscape, the web interface for Urbit. If you haven&rsquo;t dug in much, you could be forgiven for thinking that Landscape <em>was</em> Urbit. If you dipped your toes into Landscape or saw somebody using it a few months ago, you will immediately notice the significant UI tweaks and improvements, as well an ever-incrementing level of UI polish.</p>
+<p>One of the big changes under the hood has been the integration and extension of <code>%graph-store</code> as an underpinning for the social apps in landscape (you can read more about the design of <code>%graph-store</code> <a href="/posts/graph-store">here</a>). The suite of software running in Landscape has a common underpinning, and all of the data you generate &ndash; your posts, comments, essays, etc &ndash; are stored as interlinked nodes on a personal graph. This is beginning to bear fruit; a recent update contains native Urbit URIs, and the ability to embed graph content across apps (&quot;<a href="https://twitter.com/fIowerstructure/status/1378047187595235333">graph node transclusion</a>&quot;). You can think of this a bit like embedding a tweet in a webpage, but applied to whatever data is contained in your graph or somebody else&rsquo;s; you can even reference nodes which contain their own nested nodes.</p>
+<p><img src="/img/spring21/graph-trans.jpg" alt=""></p>
+<p>This feature is young and simple, but to me it feels like a real shift in the possibilities of threaded content &ndash; you can, today, create a notebook which contains nested nodes drawn not just from your own posts and messages, but from anybody else&rsquo;s. Recall that graph content is not bound only to chat messages, but rather that graph semantics can be applied to any data generated by your computing. Graph content is also cryptographically signed by your ship&rsquo;s keys and can include executable code; this is a truly new combination of features gesturing toward new kinds of social computing. And this feature isn&rsquo;t even the point of Urbit!</p>
+<h2 id="self-hosting-improvements">Self-hosting improvements<a href="#self-hosting-improvements" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Using Urbit has gotten significantly easier in the last few months. There are many ways to self-host, but I suspect there are two recent innovations that will prove particularly convenient for people wanting to tinker with a ship for the first time. The first is Docker Desktop <a href="/posts/urbit-windows-docker/">on Windows</a>: it is finally possible to run Urbit on Windows without having to do Linux system administration in a command line. Many people are simply allergic to controlling a computer with a CLI &ndash; it can be an overwhelming task to jump headlong into an interface you have limited or no experience with. Fortunately, the ability to manage a ship in a GUI opens the doors to many more people who might otherwise be turned away. Docker Desktop can also manage your updates for you, and sands off a few of the rough edges of the WSL experience. If you have a Windows 10 computer, you can boot a comet today in ten minutes without touching a bash shell.</p>
+<p>The second development I want to call attention to is <a href="">Taisho</a>, a minimal Electron interface for launching ships created by <code>~nocsyx-lassul</code> to fulfill a <a href="https://grants.urbit.org/proposals/740109059-cross-platform-desktop-urbit-app">grant</a>.</p>
+<p><img src="/img/spring21/taisho.jpg" alt=""></p>
+<p>Taisho allows you to download and run a GUI desktop app and boot a ship with the click of a mouse. At the moment it&rsquo;s a proof-of-concept, limited to Mac/Linux and the ability to launch comets, but it will be a fully-featured cross-platform client in the future (including for Windows), eventually intended to be the official client. If you&rsquo;ve never booted a ship before, this is definitely the slickest way to do it.</p>
+<p><strong>Update:</strong> <em>Taisho is now known as <strong>Port</strong>, and has been released as the official Urbit client. Windows support soon!</em></p>
+<h2 id="hosting">Hosting<a href="#hosting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Fully-hosted providers will probably be the way that most ordinary people pilot their ships &ndash; generally speaking, people either do not have a computer that they leave turned on 24/7, they do not use Mac or Linux, or they just don&rsquo;t want to be bothered with managing their own server. If you aren&rsquo;t really into digital sovereignty, there&rsquo;s little reason not to pay somebody do this for you.</p>
+<p>Thus far, I am aware of three full hosting providers &ndash; <a href="https://tlon.io/">Tlon</a>, <a href="https://www.geturbitid.com/">Get Urbit ID</a>, and <a href="https://www.escapepod.store/">Escape Pod Store</a>, all of which launched in the last year. Expect more to follow!</p>
+<h2 id="naive-rollups">Naive rollups<a href="#naive-rollups" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The ongoing crypto bull run has had the predictable effect of making interacting with Azimuth contracts very expensive; the cost of issuing a planet on average is about 10x what it was a year ago. Fortunately, an effort is underway to reduce these costs by orders of magnitude.</p>
+<p>The solution Tlon has begun work on is called &lsquo;naive rollups&rsquo;. In brief, the way Azimuth works involves running computations on Ethereum and having it store the results for nodes on Urbit to reference as a source of truth. Those computations cost money, so the solution is to perform the computations on Urbit, and merely store the resulting data on-chain in batches.</p>
+<p>You can see <code>~wicdev-wisryt</code> discuss the design of this system at length in a <a href="https://www.youtube.com/watch?v=CKuHXrdkIw0">developer call</a>, or read the <a href="https://groups.google.com/a/urbit.org/g/dev/c/p6rP_WsxLS0/m/hQBX0modAwAJ">original RFC</a>.</p>
+<p>The short version of this is that in a few months, the transaction fees associated with issuing a planet should be cut by at least 65x. In the longer term, a solution involving zero-knowledge rollups may be expected.</p>
+<p><strong>Update:</strong> <em>You can read a more accessible explanation of the rollup solution <a href="https://urbit.org/blog/rollups/">here</a></em>.</p>
+<h2 id="apps">Apps<a href="#apps" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The ecosystem of apps being developed for Urbit has picked up pace; you can see an index of projects on the <a href="https://github.com/urbit/awesome-urbit">awesome-urbit</a> Github collection. Here, I will feature two highlights:</p>
+<h3 id="--urbit-chess">- Urbit Chess<a href="#--urbit-chess" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="/img/spring21/chess.jpg" alt=""></p>
+<p>While this isn&rsquo;t the <a href="https://github.com/urbit/chess">first time</a> chess has been implemented on Urbit, <a href="https://sr.ht/~ray/urbit-chess/">this version</a> is significantly more sophisticated, and can be installed by remotely mounting a desk, effectively letting you install via one-liner. This version also allows you to save and export games, and <code>~rolsut-rospub</code> also has plans to implement ELO ratings.</p>
+<h3 id="--srrs">- srrs<a href="#--srrs" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><img src="/img/spring21/srrs.gif" alt=""></p>
+<ul>
+<li><em>image credit <a href="https://github.com/ryjm/srrs">srrs GH</a></em></li>
+</ul>
+<p><code>~littel-wolfur</code> has been working on <a href="https://github.com/ryjm/srrs">this app</a> for quite a while, and it shows &ndash; the level of polish on this spaced-repetition app is obvious. If you&rsquo;ve ever used Anki to learn a foreign language or subject, you know that it is a particularly effective mode of study.</p>
+<p><code>srrs</code> allows you to export decks, import existing Anki decks, and subscribe to decks on other ships. It even includes an command-line interface.</p>
+<h2 id="bitcoin">Bitcoin<a href="#bitcoin" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><img src="/img/spring21/btc.jpg" alt=""></p>
+<ul>
+<li><em>image <a href="https://twitter.com/fIowerstructure/status/1379914238811119618">credit</a> <code>~fabled-faster</code></em></li>
+</ul>
+<p>Urbit&rsquo;s Bitcoin integration is <a href="https://www.meetup.com/urbit-sf/events/276741426/">just around the corner</a>, with an official release of April 27 &ndash; a day I&rsquo;ve been excited about <a href="/posts/bitcoin-with-timluc-miptev/">for</a> a <a href="/posts/pi-fullnode-urbit/">while</a>.</p>
+<p>Much has <a href="https://urbit.org/blog/urbit-and-bitcoin/">been written</a> about the philosophical alignment of Bitcoin and Urbit &ndash; &lsquo;sound money for sound computing&rsquo; and &lsquo;civilization-complete&rsquo; spring to mind as slogans &ndash; but the day is finally upon us. A robust, distributed social platform with first-class decentralized payment support opens a world of possibility. Besides a convenient and secure social layer for simple cash transactions, there are a lot of business models built around distributing digital content for payment.</p>
+<p>Next up is <a href="https://gist.github.com/timlucmiptev/53ef1d290e55ea2fa25d9df681c32695">Lightning network integration</a>, in order to facilitate fast, small payments of the kind that would be more suited to access to things like friend-to-friend payments, content subscriptions and media. If you think you have the chops, reach out to <code>~timluc-miptev</code>.</p>
+<p><strong>Update:</strong> *Bitcoin support was officially released in May 2021. Read more about using it <a href="/posts/btc-wallet-config">here</a>.</p>
+<h2 id="webrtc">WebRTC<a href="#webrtc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p><img src="/img/spring21/webrtc.jpg#floatright" alt=""></p>
+<p>The next big feature to be expected later this year is <a href="https://grants.urbit.org/proposals/21131866-webrtc-gall-agent-and-external-app">WebRTC</a> video and audio chat. WebRTC is an existing collection of methods for peer-to-peer streaming multimedia &ndash; you may have used it before in something like Discord&rsquo;s audio channels.</p>
+<p>One of the convenient parts of WebRTC is that a lot of the hard work (e.g. interfacing with hardware) is done by the browser, in line with existing standards. This means that the work needed to implement it on Urbit is mostly a matter of writing software to coordinate peers with each other and perform NAT traversal (STUN/TURN/ICE). This plays to the strengths of Urbit&rsquo;s design as an overlay OS, and meshes nicely with the existing suite of Landscape agents.</p>
+<p>Urbit&rsquo;s WebRTC implementation is being developed by <code>~ritpub-sipsyl</code> to fulfill a grant proposal.</p>
+<p>(<em>image credit <code>~fabled-faster</code></em>)</p>
+<hr>
+<p>To end with, I wanted to link a <a href="https://groups.google.com/a/urbit.org/g/dev/c/bdlPPnaccMc/m/icOJCcIwBwAJ">recent discussion</a> on the <code>urbit-dev</code> mailing list (if you&rsquo;re interested in closely following this project, there is no better way). The OP rightly points out that there seem to be many urbits &ndash; the original project, the one that exists, and the one that will exist &ndash; and that this can get in the way of understanding what it <em>is</em>. A thoughtful and gracious conversation follows, touching on many different perspectives on the topic. Recommended for weekend reading.</p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/taisho">taisho</a></span><span class="tag"><a href="https://subject.network/tags/srrs">srrs</a></span><span class="tag"><a href="https://subject.network/tags/chess">chess</a></span><span class="tag"><a href="https://subject.network/tags/webrtc">webrtc</a></span><span class="tag"><a href="https://subject.network/tags/bitcoin">bitcoin</a></span><span class="tag"><a href="https://subject.network/tags/development">development</a></span><span class="tag"><a href="https://subject.network/tags/nocsyx-lassul">nocsyx-lassul</a></span><span class="tag"><a href="https://subject.network/tags/wicdev-wisryt">wicdev-wisryt</a></span><span class="tag"><a href="https://subject.network/tags/rolsut-rospub">rolsut-rospub</a></span><span class="tag"><a href="https://subject.network/tags/ritpub-sipsyl">ritpub-sipsyl</a></span><span class="tag"><a href="https://subject.network/tags/fabled-faster">fabled-faster</a></span><span class="tag"><a href="https://subject.network/tags/timluc-miptev">timluc-miptev</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-04-09 18:31 -0500</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/galaxy-routing-nat/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Ames indirect connection fixes</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/urbit-windows-docker/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Easy Urbit on Windows with Docker Desktop</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

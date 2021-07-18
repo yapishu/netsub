@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>locpyl-tidnyd on networked subject</title>
+    <link>https://subject.network/tags/locpyl-tidnyd/</link>
+    <description>Recent content in locpyl-tidnyd on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 23 Apr 2021 18:13:19 -0500</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/locpyl-tidnyd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Building native Windows Urbit binaries</title>
+      <link>https://subject.network/posts/urbit-windows-binaries/</link>
+      <pubDate>Fri, 23 Apr 2021 18:13:19 -0500</pubDate>
+      
+      <guid>https://subject.network/posts/urbit-windows-binaries/</guid>
+      <description>Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
+As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &amp;ndash; the source of two previous tutorials on this blog.</description>
+    </item>
+    
+  </channel>
+</rss>

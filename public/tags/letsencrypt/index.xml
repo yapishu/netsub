@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>letsencrypt on networked subject</title>
+    <link>https://subject.network/tags/letsencrypt/</link>
+    <description>Recent content in letsencrypt on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 26 Jan 2021 19:22:55 -0600</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/letsencrypt/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Easy Urbit TLS with Caddy</title>
+      <link>https://subject.network/posts/caddyserver-urbit-tls/</link>
+      <pubDate>Tue, 26 Jan 2021 19:22:55 -0600</pubDate>
+      
+      <guid>https://subject.network/posts/caddyserver-urbit-tls/</guid>
+      <description>One of the first tutorials written for this site was a rundown on setting up an https reverse proxy for your Urbit using Nginx and Letsencrypt. Nginx and LE are fantastic pieces of software, but steps involved may seem a little intimidating if you&amp;rsquo;ve never set up a web server before.
+In the last couple of weeks, a few people around the network (thanks ~silsyn-wathep!) have suggested using Caddy (alt. Caddyserver), a very lightweight and fast HTTP server suite.</description>
+    </item>
+    
+    <item>
+      <title>Urbit, Nginx and Letsencrypt</title>
+      <link>https://subject.network/posts/urbit-nginx-letsencrypt/</link>
+      <pubDate>Sat, 26 Sep 2020 12:08:26 -0500</pubDate>
+      
+      <guid>https://subject.network/posts/urbit-nginx-letsencrypt/</guid>
+      <description>As part of a project to document how I use Urbit and the things I learn along the way, I&amp;rsquo;m going to document the process of setting up this site. In its current state, it&amp;rsquo;s pretty simple &amp;ndash; a static site using a modified template (Hugo and Hermit), served from a Digital Ocean Ubuntu VPS (referral link).
+Behind the scenes, there are a couple of extra features &amp;ndash; I wanted to be able to access my planet as a subdomain over SSL (proxied from my home PC), and I wanted to run ~matwet under the hood on the same VPS, also accessible on a subdomain.</description>
+    </item>
+    
+  </channel>
+</rss>

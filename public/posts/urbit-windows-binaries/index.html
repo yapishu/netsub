@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Building native Windows Urbit binaries">
+<meta itemprop="description" content="Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
+As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &ndash; the source of two previous tutorials on this blog.">
+<meta itemprop="datePublished" content="2021-04-23T18:13:19-05:00" />
+<meta itemprop="dateModified" content="2021-04-23T18:13:19-05:00" />
+<meta itemprop="wordCount" content="602">
+<meta itemprop="image" content="https://subject.network/img/winbin/header.gif">
+
+
+
+<meta itemprop="keywords" content="urbit,windows,msys2,mingw,locpyl-tidnyd," />
+<meta property="og:title" content="Building native Windows Urbit binaries" />
+<meta property="og:description" content="Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
+As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &ndash; the source of two previous tutorials on this blog." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/urbit-windows-binaries/" />
+<meta property="og:image" content="https://subject.network/img/winbin/header.gif" />
+<meta property="article:published_time" content="2021-04-23T18:13:19-05:00" />
+<meta property="article:modified_time" content="2021-04-23T18:13:19-05:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/winbin/header.gif"/>
+
+<meta name="twitter:title" content="Building native Windows Urbit binaries"/>
+<meta name="twitter:description" content="Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
+As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &ndash; the source of two previous tutorials on this blog."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Building native Windows Urbit binaries</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Apr 23, 2021</span></div>
+				<h1>Building native Windows Urbit binaries</h1>
+			</header>
+			<div class="content">
+				<p><img src="/img/winbin/header.gif" alt=""></p>
+<p><a href="https://github.com/urbit/urbit/pull/4675">Last month,</a> a PR was published by <code>locpyl-tidnyd</code> to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.</p>
+<p>As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &ndash; the source of <a href="http://localhost:1313/posts/urbit-wsl2/">two</a> previous <a href="http://localhost:1313/posts/urbit-windows-docker/">tutorials</a> on this blog. WSL2 is a fabulous tool but still veers toward the geekier side of things, and ordinary people cannot be blamed for wanting a simpler method.</p>
+<p>This achievement is pulled off using <a href="https://www.msys2.org/">MSYS2</a>, a fork of <a href="https://www.cygwin.com/">Cygwin</a>, and <a href="https://sourceforge.net/projects/mingw/">MinGW</a>, a Windows port of <code>gcc</code>. The codebase for <code>vere</code> was also ported to <code>mingw</code> by <code>~locpyl-tidnyd</code>. This tutorial will walk you through the steps necessary to build Windows-native binaries, and execute them in an ordinary command prompt.</p>
+<p>I include a <a href="https://urbits3.ams3.digitaloceanspaces.com/sitful-hatred/urbit-1.3-win.zip">download link</a> for my compiled binaries in case you have difficulty; however, I <strong>very strongly recommend</strong> that you compile your own, rather than downloading executables from a stranger on the internet! This is a simple process and should only take about ten minutes.</p>
+<h2 id="installation">Installation<a href="#installation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Download the <a href="https://www.msys2.org/">latest installer</a> for MSYS2 from the official website, and install it with all default options. After completion, leave the &lsquo;run now&rsquo; option checked off.</p>
+<p>A <code>wintty</code> will pop up with a bash shell; let&rsquo;s update all our packages:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      MSYS2: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;pacman&nbsp;-Syu</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Once finished, the window will close. Go ahead and launch <code>MSYS2 MSYS</code> from the start menu, and run another update, then install our toolkit:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      MSYS2: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;pacman&nbsp;-Syu</li>
+        
+        
+        <li>$>&nbsp;pacman&nbsp;-S&nbsp;--needed&nbsp;base-devel&nbsp;mingw-w64-x86_64-toolchain</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Now head over to the <a href="https://github.com/urbit/urbit/pull/4675">linked PR</a> and download the <a href="https://github.com/locpyl-tidnyd/urbit/archive/refs/heads/mingw-port.zip">tarball</a> for the <code>mingw</code> urbit port. Extract the contents, then copy them into your <code>MSYS2</code> home directory:</p>
+<pre><code>C:\msys64\home\user.name\home\
+</code></pre><p><img src="/img/winbin/6.png" alt=""></p>
+<h2 id="compiling">Compiling<a href="#compiling" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Open your start menu, and pull up <code>MinGW 64-bit</code> &ndash; note that this is <em>not</em> the same as <code>MSYS2</code> despite the similar icons.</p>
+<p><img src="/img/winbin/5.png" alt=""></p>
+<p>Navigate to your newly copied directory, and run the <code>configure</code> script:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      MINGW: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;cd&nbsp;urbit-mingw-port/pkg/urbit</li>
+        
+        
+        <li>$>&nbsp;./configure</li>
+        
+        
+        <li></li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Once this has finished running, build it:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      MINGW: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;make&nbsp;build/urbit&nbsp;build/urbit-worker</li>
+        
+        
+        <li></li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Locate and copy the executables out of their directory:</p>
+<pre><code>C:\msys64\home\user.name\home\urbit-mingw-port\pkg\urbit\build
+</code></pre><h2 id="execution">Execution<a href="#execution" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Open an ordinary <code>cmd.exe</code> command prompt, or Windows Terminal if you have it installed &ndash; you do not need elevated privileges, but you may need to allow it through the Windows firewall.</p>
+<p>Navigate to the directory where you have copied your executables, and try executing <code>urbit.exe</code> to print the help menu:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      cmd.exe: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>C:\>&nbsp;cd&nbsp;c:\users\user.name\urbit</li>
+        
+        
+        <li>C:\Users\user.name\urbit>&nbsp;.\urbit.exe</li>
+        
+        
+        <li></li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>If all is successful so far, you&rsquo;re ready to boot a comet.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      cmd.exe: 
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>C:\Users\user.name\urbit>&nbsp;.\urbit.exe&nbsp;-c&nbsp;mycomet</li>
+        
+        
+        <li></li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p><img src="/img/winbin/8.png" alt=""></p>
+<p>Let your ship download its source and compile &ndash; this will probably take 15-20 minutes to complete. Once done, and you&rsquo;re in your dojo, request an OTA update, and produce your Landscape access code:</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - ~/urbit/sampel_wanzod
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>~sampel_wanzod:dojo>&nbsp;|ota&nbsp;~wanzod&nbsp;%kids</li>
+        
+        
+        <li>~sampel_wanzod:dojo>&nbsp;+code</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Navigate to <a href="http://localhost:80">http://localhost:80</a> to access your ship, and paste the password produced by <code>+code</code> to enter Landscape.</p>
+<h2 id="addendum">Addendum<a href="#addendum" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The process of downloading and compiling your ship is significantly slower than on a Linux machine in my experience, even compared to running a ship on WSL2. That said, it was still totally functional if slightly less responsive.</p>
+<p>While I have successfully tested and used this Windows build, I cannot guarantee their stability &ndash; these have not been released into production, I assume for this reason. I would not recommend booting a planet with this just yet, but this should be replaced by an official release in the near future.</p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/windows">windows</a></span><span class="tag"><a href="https://subject.network/tags/msys2">msys2</a></span><span class="tag"><a href="https://subject.network/tags/mingw">mingw</a></span><span class="tag"><a href="https://subject.network/tags/locpyl-tidnyd">locpyl-tidnyd</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-04-23 18:13 -0500</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/btc-wallet-config/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Configuring your Urbit Bitcoin wallet</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/galaxy-routing-nat/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Ames indirect connection fixes</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 24 24"
+   version="1.1"
+   class=""
+   id="svg36"
+   sodipodi:docname="sitful-hatred-trnsp.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata42">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs40" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="952"
+     inkscape:window-height="1046"
+     id="namedview38"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="39.333333"
+     inkscape:cx="13.747881"
+     inkscape:cy="11.265467"
+     inkscape:window-x="962"
+     inkscape:window-y="4"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg36" />
+  <rect
+     fill="#000000"
+     width="24px"
+     height="24px"
+     x="0"
+     y="0"
+     id="rect2"
+     style="fill:none" />
+  <g
+     transform="matrix(0.05217773,0,0,0.05217773,5.0625,5.0625)"
+     id="g8">
+    <path
+       d="M 0.0541,0 C 70.7217,0.0292317 128,57.3256 128,128 57.3177,128 0.0164917,70.7089 7.62806e-6,0.0305091 7.62851e-6,0.0203397 0,0.01017 0,0 Z"
+       id="path4"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff" />
+    <path
+       d="m 80,64 c 0,8.8366 -7.1634,16 -16,16 -8.8366,0 -16,-7.1634 -16,-16 0,-8.8366 7.1634,-16 16,-16 8.8366,0 16,7.1634 16,16 z m -16,8 c 4.4183,0 8,-3.5817 8,-8 0,-4.4183 -3.5817,-8 -8,-8 -4.4183,0 -8,3.5817 -8,8 0,4.4183 3.5817,8 8,8 z"
+       id="path6"
+       inkscape:connector-curvature="0"
+       style="clip-rule:evenodd;fill:none;fill-rule:evenodd" />
+  </g>
+  <g
+     transform="matrix(0.05217773,0,0,0.05217773,12.25875,5.0625)"
+     id="g14">
+    <circle
+       cx="64"
+       cy="64"
+       r="64"
+       id="circle10"
+       style="fill:#ffffff" />
+    <path
+       d="M 64,96 C 81.6731,96 96,81.6731 96,64 96,46.3269 81.6731,32 64,32"
+       id="path12"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:none;stroke-width:9.91802311px;stroke-linecap:square" />
+  </g>
+  <g
+     transform="matrix(0.05217773,0,0,0.05217773,5.0625,12.25875)"
+     id="g26">
+    <g
+       id="g24"
+       style="fill:none">
+      <path
+         d="M 0,0 C 0,70.6925 57.3075,128 128,128 V 0 Z"
+         id="path16"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:none" />
+      <circle
+         cx="16"
+         cy="16"
+         r="8"
+         id="circle18"
+         style="fill:#ffffff;stroke:#ffffff;stroke-width:9.91802311px;stroke-linecap:square" />
+      <line
+         x1="0.5"
+         y1="-0.5"
+         x2="181.5"
+         y2="-0.5"
+         transform="matrix(-0.707107,0.707107,0.707107,0.707107,128.71,0)"
+         id="line20"
+         style="fill:none;stroke:none;stroke-width:9.91802311px;stroke-linecap:square" />
+      <path
+         d="M 48,32 C 48,40.8366 40.8366,48 32,48 27.391443,48 23.237986,46.051597 20.318433,42.933594 17.639938,40.073035 16,36.228043 16,32 c 0,-8.8366 7.1634,-16 16,-16 8.8366,0 16,7.1634 16,16 z m -16,8 c 4.4183,0 8,-3.5817 8,-8 0,-4.4183 -3.5817,-8 -8,-8 -4.4183,0 -8,3.5817 -8,8 0,4.4183 3.5817,8 8,8 z"
+         id="path22"
+         inkscape:connector-curvature="0"
+         style="clip-rule:evenodd;fill:none;fill-rule:evenodd;stroke:none"
+         sodipodi:nodetypes="sssssssssss" />
+    </g>
+  </g>
+  <g
+     transform="matrix(0.05217773,0,0,0.05217773,12.25875,12.25875)"
+     id="g34">
+    <circle
+       cx="64"
+       cy="64"
+       r="64"
+       id="circle28"
+       style="fill:#ffffff" />
+    <circle
+       cx="64"
+       cy="96"
+       r="11.5"
+       id="circle30"
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:9.91802311px;stroke-linecap:square" />
+    <circle
+       cx="64"
+       cy="96"
+       r="9"
+       id="circle32"
+       style="fill:none;stroke:none;stroke-width:9.91802311px;stroke-linecap:square" />
+  </g>
+</svg>

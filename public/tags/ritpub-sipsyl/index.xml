@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ritpub-sipsyl on networked subject</title>
+    <link>https://subject.network/tags/ritpub-sipsyl/</link>
+    <description>Recent content in ritpub-sipsyl on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 09 Apr 2021 18:31:49 -0500</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/ritpub-sipsyl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>State of Mars: Spring 2021</title>
+      <link>https://subject.network/posts/state-urbit-spring-2021/</link>
+      <pubDate>Fri, 09 Apr 2021 18:31:49 -0500</pubDate>
+      
+      <guid>https://subject.network/posts/state-urbit-spring-2021/</guid>
+      <description>Introduction In lieu of a tutorial or interview, I thought it would be useful to write a short summary of some of the developments surrounding Urbit in the last year. 2020-21 has been an eventful period for many reasons, but the pace of development on the Urbit project has been steady, and always in the direction of beauty and utility.
+When I polled a chat group about their favorite recent improvements and features, several people mentioned its improved reliability, especially chat.</description>
+    </item>
+    
+  </channel>
+</rss>

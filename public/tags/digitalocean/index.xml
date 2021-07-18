@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>digitalocean on networked subject</title>
+    <link>https://subject.network/tags/digitalocean/</link>
+    <description>Recent content in digitalocean on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 26 Jan 2021 19:22:55 -0600</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/digitalocean/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Easy Urbit TLS with Caddy</title>
+      <link>https://subject.network/posts/caddyserver-urbit-tls/</link>
+      <pubDate>Tue, 26 Jan 2021 19:22:55 -0600</pubDate>
+      
+      <guid>https://subject.network/posts/caddyserver-urbit-tls/</guid>
+      <description>One of the first tutorials written for this site was a rundown on setting up an https reverse proxy for your Urbit using Nginx and Letsencrypt. Nginx and LE are fantastic pieces of software, but steps involved may seem a little intimidating if you&amp;rsquo;ve never set up a web server before.
+In the last couple of weeks, a few people around the network (thanks ~silsyn-wathep!) have suggested using Caddy (alt. Caddyserver), a very lightweight and fast HTTP server suite.</description>
+    </item>
+    
+    <item>
+      <title>Configuring S3 storage for your urbit</title>
+      <link>https://subject.network/posts/configuring-s3-urbit/</link>
+      <pubDate>Sat, 03 Oct 2020 13:39:06 -0500</pubDate>
+      
+      <guid>https://subject.network/posts/configuring-s3-urbit/</guid>
+      <description>Continuing our convention of instructions for running your ship on DigitalOcean (referral), this document will guide you through using DO&amp;rsquo;s S3-equivalent service with your ship.
+Introduction First a brief explainer &amp;ndash; S3 (Simple Storage Service) is a system for storing and retreiving objects in the cloud. The &amp;lsquo;official&amp;rsquo; S3 is run by Amazon, but other providers run compatible services &amp;ndash; DO&amp;rsquo;s is called Spaces, and it is built to be interchangeable with AWS S3&amp;rsquo;s API.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>little-wolfur on networked subject</title>
+    <link>https://subject.network/tags/little-wolfur/</link>
+    <description>Recent content in little-wolfur on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 28 May 2021 21:15:07 -0500</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/little-wolfur/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Configuring your Urbit Bitcoin wallet</title>
+      <link>https://subject.network/posts/btc-wallet-config/</link>
+      <pubDate>Fri, 28 May 2021 21:15:07 -0500</pubDate>
+      
+      <guid>https://subject.network/posts/btc-wallet-config/</guid>
+      <description>The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &amp;ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest. Think CashApp &amp;ndash; enter a handle, send money &amp;ndash; but you own the whole stack.</description>
+    </item>
+    
+  </channel>
+</rss>

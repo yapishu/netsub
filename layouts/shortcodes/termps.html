@@ -1,0 +1,21 @@
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      {{ .Get 0 }} - {{ .Get 1 }}
+    </div>
+    <div class="termps">
+      <ul>
+        {{ range split .Inner "\n" }}
+        {{ $line := replace . " " "&nbsp;" }}
+        <li>{{ printf "%s" $line | safeHTML }}</li>
+        {{ end }}  
+      </ul>
+    </div>
+  </div>

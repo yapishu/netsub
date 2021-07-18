@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Free Urbit hosting with Oracle Cloud">
+<meta itemprop="description" content="Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month.">
+<meta itemprop="datePublished" content="2020-12-18T17:57:59-06:00" />
+<meta itemprop="dateModified" content="2020-12-18T17:57:59-06:00" />
+<meta itemprop="wordCount" content="1928">
+<meta itemprop="image" content="https://subject.network/img/oracle-cover.png">
+
+
+
+<meta itemprop="keywords" content="urbit,oracle.cloud,free,hosted," />
+<meta property="og:title" content="Free Urbit hosting with Oracle Cloud" />
+<meta property="og:description" content="Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/free-cloud-oracle/" />
+<meta property="og:image" content="https://subject.network/img/oracle-cover.png" />
+<meta property="article:published_time" content="2020-12-18T17:57:59-06:00" />
+<meta property="article:modified_time" content="2020-12-18T17:57:59-06:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/oracle-cover.png"/>
+
+<meta name="twitter:title" content="Free Urbit hosting with Oracle Cloud"/>
+<meta name="twitter:description" content="Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Free Urbit hosting with Oracle Cloud</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Dec 18, 2020</span></div>
+				<h1>Free Urbit hosting with Oracle Cloud</h1>
+			</header>
+			<div class="content">
+				<p><img src="/img/oracle-cover.png" alt=""></p>
+<h2 id="background">Background<a href="#background" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month.</p>
+<p>This evening a comet in the <code>urbit-community</code> watercooler chat let everyone know that they had successfully used the Oracle Cloud VM free tier to host an Urbit without fees. This means we can get the advantages of a hosted ship without the costs associated with most providers. Boot a comet on here, and you&rsquo;ve got a totally free cloud-hosted introduction to Urbit! After testing it, I can say that the performance of the VM is more than enough to handle an Urbit.</p>
+<p>(Thanks, <code>~ricmed-tagmed-donlep-hodtec--dabreb-laclep-talpex-wanzod</code> for the information, and <code>~socsel-pacted</code> for the help!)</p>
+<p>I decided to go through the process of setting up a comet and document the steps for the convenience of anybody who wishes to follow suit. This process will probably take about 30 minutes from registration to having a booted ship. This process is a little more complicated than other hosts I&rsquo;ve used, like <a href="https://m.do.co/c/4da920651e1a">DigitalOcean</a> (referral link).</p>
+<p>You should know going in that upon registration, you will be required to provide a phone number and credit card for validation. That said, Oracle makes it pretty clear what is free and what is not, and you should not be able to trivially stumble into charging your card as far as I can tell. Just follow these directions closely.</p>
+<p>Please keep in mind that while this is called &lsquo;free forever&rsquo;, you are relying on the generosity and discretion of a corporation with no formal business relationship to you. That shouldn&rsquo;t stop you from giving this a spin, though.</p>
+<p>The &lsquo;always free tier&rsquo; of services includes the following:</p>
+<blockquote>
+<ul>
+<li>Two virtual machines with 1/8 OPCU and 1 GB memory each.</li>
+<li>2 databases total, each with 1 OCPU and 20 GB storage (but you&rsquo;ll need to learn to be an Oracle DBA :-)</li>
+<li>volumes with 100GB total, 10GB object, 10GB archive</li>
+<li>Load Balancer, 1 instance, 10 Mbps bandwidth.</li>
+<li>Monitoring, 500 million ingestion datapoints, 1 billion retrieval datapoints.</li>
+<li>Notifications, 1 million delivery options per month, 1,000 emails sent per month.</li>
+<li>Outbound Data Transfer, 10 TB per month.</li>
+<li>Is Oracle Cloud Free Tier available in all countries? Yes, Oracle Cloud Free Tier is currently available worldwide.</li>
+</ul>
+</blockquote>
+<p>(<a href="https://www.lowendtalk.com/discussion/160260/oracle-cloud-free-tier">h/t</a>)</p>
+<p>Since Oracle offers a free-tier S3-compatible storage API, I will update this tutorial with additional directions if it turns out to be compatible with Urbit&rsquo;s S3 integration.</p>
+<hr>
+<h2 id="creating-an-account--instance">Creating an account &amp; instance<a href="#creating-an-account--instance" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>First, navigate to <a href="https://www.oracle.com/cloud/compute/virtual-machines/">this</a> link, and click the &lsquo;Try Oracle Cloud free tier&rsquo; button at the top right to proceed through the registration.</p>
+<p>Once you have registered and validated your email, phone, and CC, you&rsquo;ll get dropped into the dashboard. Click &lsquo;Create a VM instance&rsquo;:</p>
+<p><img src="/img/oracle/tut1.png" alt=""></p>
+<p>Feel free to give it whatever name you&rsquo;d like. Click the &lsquo;Edit&rsquo; link in the &lsquo;Configure placement and hardware&rsquo; option box to change the image you&rsquo;re using to Ubuntu &ndash; the version should not make a difference, but in this tutorial I used 20.04 standard.</p>
+<p><img src="/img/oracle/tut2.png" alt=""></p>
+<p><img src="/img/oracle/tut4.png" alt=""></p>
+<p>Make sure that your &lsquo;shape&rsquo; retains the default setting (VM.Standard.E2.1.Micro)! This is the &lsquo;free&rsquo; option.</p>
+<p><img src="/img/oracle/tut3.png" alt=""></p>
+<p>You will be given the option of using your own SSH keys if you&rsquo;d like, but for the purposes of this tutorial, I will assume you do not have one or know how to create one. No problem, just keep &lsquo;Generate SSH key pair&rsquo; selected, and download your private key.</p>
+<p><img src="/img/oracle/tut6.png" alt=""></p>
+<p>You can keep default options for the rest of this page. At the very bottom, click the &lsquo;Create&rsquo; button (<strong>not</strong> the &lsquo;Create as Stack&rsquo; button).</p>
+<p><img src="/img/oracle/tut7.png" alt=""></p>
+<p>On the dashboard for your VM, take note of the public IP address. This is what we will use to connect to our server.</p>
+<p>Congrats, you&rsquo;ve spun up a Linux server! Now we&rsquo;ll walk through connecting to it and configuring it to install Urbit.</p>
+<hr>
+<h2 id="connecting">Connecting<a href="#connecting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Here we will begin a little command-fu. Don&rsquo;t worry if you&rsquo;ve never used a command line before, because you can just copy-paste each line individually.
+(<em>Note that in the following commands, you do not need to type <code>$&gt; </code> &ndash; it is only there to indicate a new command line.</em>)</p>
+<h3 id="connecting-from-a-linux-wsl-or-mac-pc">Connecting from a Linux, WSL or Mac PC<a href="#connecting-from-a-linux-wsl-or-mac-pc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>First, let&rsquo;s copy our new SSH private key to the proper directory and change its permissions, then connect with it. You will need to edit the path in the first command to point at wherever your keyfile saved. For the third command, edit it to contain the IP address you saw in your VM dashboard a moment ago.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;mkdir&nbsp;~/.ssh</li>
+        
+        
+        <li>$>&nbsp;mv&nbsp;~/Downloads/ssh-key-2020-12-19.key&nbsp;~/.ssh/oracle.key</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;chmod&nbsp;600&nbsp;~/oracle.key</li>
+        
+        
+        <li>$>&nbsp;ssh&nbsp;-i&nbsp;~/.ssh/oracle.key&nbsp;ubuntu@your.ip.address.here</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Note that the default user is <code>ubuntu</code> &ndash; if you did not select the same image at VM creation, this may be different.</p>
+<p>Once you&rsquo;ve entered the final command, you will be connected to your server and have control of a remote computer!</p>
+<h3 id="connecting-from-a-windows-pc">Connecting from a Windows PC<a href="#connecting-from-a-windows-pc" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>If you are using a Windows computer, connecting via SSH will require a little bit of extra work. If you already have <a href="/posts/urbit-wsl2/">WSL</a> installed on your PC, you can use your Linux shell to SSH with the instructions above. If you don&rsquo;t, it is probably quicker to simply connect using PuTTY.</p>
+<p>You can follow the directions <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html">here</a> to convert your <code>.pem</code> key to a format that PuTTY can use. After you&rsquo;ve imported the private key, simply connect to your VM&rsquo;s IP address using that key.</p>
+<hr>
+<h2 id="configuring-software">Configuring software<a href="#configuring-software" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Oracle Cloud Ubuntu instances are totally locked down by default. We&rsquo;ll need to allow port traffic through on port 80 for the instance, then disable the firewall rules.</p>
+<p>Go back to the instance details page for your VM and select the subnet link:</p>
+<p><img src="/img/oracle/tut11.png" alt=""></p>
+<p>Click the default security list:</p>
+<p><img src="/img/oracle/tut12.png" alt=""></p>
+<p>Add an ingress rule identical to the following one:</p>
+<p><img src="/img/oracle/tut13.png" alt=""></p>
+<p><img src="/img/oracle/tut14.png" alt=""></p>
+<p>This will allow all traffic on port 80 to reach your Urbit. Go ahead and make another one identical to the one you just created, replacing 80 with 8080, just in case your ship doesn&rsquo;t bind to 80 when you boot.</p>
+<p>One more ingress rule: we will create a stateless rule to allow traffic on the UDP port that Ames will use. Make another rule like this, where &lsquo;51234&rsquo; is any port between 50000-59999:</p>
+<p><img src="/img/oracle/tut17.png" alt=""></p>
+<p>(h/t <code>~rigred-losrev</code>)</p>
+<p>Now return to your command line to disable <code>iptables</code> firewall rules on your server:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;iptables&nbsp;-P&nbsp;INPUT&nbsp;ACCEPT</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;iptables&nbsp;-P&nbsp;OUTPUT&nbsp;ACCEPT</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;iptables&nbsp;-P&nbsp;FORWARD&nbsp;ACCEPT</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;iptables&nbsp;-F</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;iptables&nbsp;--flush</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Urbit requires 2GB of memory available to boot, and this VM only has 1GB. No worries though, we can trick Urbit with a page file! This is simply allocating disk space as overflow memory. Unless you are doing something really heavy duty, your ship will only use a fraction of this.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;fallocate&nbsp;-l&nbsp;2G&nbsp;/swapfile</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;chmod&nbsp;600&nbsp;/swapfile</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;mkswap&nbsp;/swapfile</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;swapon&nbsp;/swapfile</li>
+        
+        
+        <li>$>&nbsp;echo&nbsp;'/swapfile&nbsp;none&nbsp;swap&nbsp;sw&nbsp;0&nbsp;0'&nbsp;|&nbsp;sudo&nbsp;tee&nbsp;-a&nbsp;/etc/fstab</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Next lets install tmux and create a new session for our urbit. Tmux will allow you to create windows you can detach from inside of your terminal, so you don&rsquo;t have to kill your urbit process to do other things on the server:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;install&nbsp;tmux</li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;new&nbsp;-s&nbsp;urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>When you need to escape your urbit command line, press: <code>ctrl-b</code>, followed by <code>d</code> &ndash; the first one tells tmux to listen for a command, and the second tells it to detach.</p>
+<p>If you want to reattach to your urbit&rsquo;s command line, enter the following:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;a&nbsp;-t&nbsp;urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<hr>
+<h2 id="installing-urbit">Installing Urbit<a href="#installing-urbit" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Now for the good stuff &ndash; let&rsquo;s download and install Urbit on this server.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;cd&nbsp;&&&nbsp;mkdir&nbsp;urbit&nbsp;</li>
+        
+        
+        <li>$>&nbsp;cd&nbsp;urbit</li>
+        
+        
+        <li>$>&nbsp;wget&nbsp;--content-disposition&nbsp;https://urbit.org/install/linux64/latest</li>
+        
+        
+        <li>$>&nbsp;tar&nbsp;zxvf&nbsp;./linux64.tgz&nbsp;--strip=1</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt-get&nbsp;install&nbsp;libcap2-bin</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;setcap&nbsp;'cap_net_bind_service=+ep'&nbsp;~/urbit/urbit</li>
+        
+        
+        <li>$>&nbsp;./urbit&nbsp;-p&nbsp;51234&nbsp;-c&nbsp;mycomet</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>These commands do the following:</p>
+<ul>
+<li>Make an urbit folder in your home directory and enter it</li>
+<li>Download the latest Linux Urbit binary and extract it</li>
+<li>Give the urbit binary permission to use port 80</li>
+<li>Launch a new comet in a folder named mycomet on the port you opened up on the firewall</li>
+</ul>
+<p>If you&rsquo;ve done everything correctly, you will see your comet mine an identity and download and compile its source code. This process took about 3 minutes for me, but it may be longer &ndash; identity mining is not predictable. When you boot this comet in the future, it should only take a few seconds.</p>
+<p><img src="/img/oracle/tut10.png" alt=""></p>
+<p>What a nice feeling, after all that prep it&rsquo;s up and running! Enter <code>+code</code> in your Urbit terminal to get a login code like the one above.</p>
+<p>Now, use your web browser to navigate to the IP address of your server, which you took note of earlier. It should present you with a login screen &ndash; enter the password that <code>+code</code> generated to log in.</p>
+<p><img src="/img/oracle/tut15.png" alt=""></p>
+<hr>
+<h2 id="moving-an-existing-pier-to-the-cloud">Moving an existing pier to the cloud<a href="#moving-an-existing-pier-to-the-cloud" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>If you already have a ship hosted on your PC, it&rsquo;s very simple to transfer to another computer &ndash; you only have to copy the folder (&lsquo;pier&rsquo;) over.</p>
+<p>First, go ahead and get the binaries downloaded on your VM if you haven&rsquo;t already done so:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;cd&nbsp;&&&nbsp;mkdir&nbsp;urbit&nbsp;</li>
+        
+        
+        <li>$>&nbsp;cd&nbsp;urbit</li>
+        
+        
+        <li>$>&nbsp;wget&nbsp;--content-disposition&nbsp;https://urbit.org/install/linux64/latest</li>
+        
+        
+        <li>$>&nbsp;tar&nbsp;zxvf&nbsp;./linux64.tgz&nbsp;--strip=1</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt-get&nbsp;install&nbsp;libcap2-bin</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;setcap&nbsp;'cap_net_bind_service=+ep'&nbsp;~/urbit/urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Before copying your old pier, <strong>make sure your urbit is not running on your computer</strong>. You can exit with <code>ctrl-d</code> or <code>ctrl-z</code> in the dojo. Never try to run your urbit in two places at once, or it can de-sync from the network.</p>
+<p>Next, run this monster of a one-liner on your local computer, after editing in the path to your local pier and IP address of the server:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;rsync&nbsp;--progress&nbsp;-avz&nbsp;-e&nbsp;"ssh&nbsp;-i&nbsp;~/.ssh/oracle.key"&nbsp;/path/to/local_pier/&nbsp;ubuntu@server.ip.address.here:~/urbit/</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Now you just need to connect to your VM and run the Urbit binary, pointing at your newly copied pier:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;ssh&nbsp;-i&nbsp;~/.ssh/oracle.key&nbsp;ubuntu@your.ip.address.here</li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;new&nbsp;-s&nbsp;urbit</li>
+        
+        
+        <li>$>&nbsp;./urbit/urbit&nbsp;-p&nbsp;51234&nbsp;urbit/your_pier_here</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Where &lsquo;51234&rsquo; is whatever UDP port you created an ingress rule for earlier.</p>
+<p>(On Windows/PuTTY, just repeat the previous process to connect to your server, and enter commands 2 &amp; 3)</p>
+<p>And that&rsquo;s it!</p>
+<hr>
+<h2 id="ship-operation">Ship operation<a href="#ship-operation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Congratulations on successfully configuring a Linux server and booting an Urbit ship! You can use this comet like any other ship. Go ahead and run the following in your urbit&rsquo;s dojo to receive the latest OTA update (comets do not get them automatically):</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - sampel-palnet
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;|ota&nbsp;~wanzod&nbsp;%kids</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Give it 5 minutes or so to download and compile.</p>
+<p>From here, your journey is a self-guided one. You can join groups and explore the network. Go ahead and join <code>~bitbet-bolbel/urbit-community</code> and check out the chats and notebooks for addresses and descriptions of other groups you can join. Feel free to also join <code>~matwet/networked-subject</code> to say hi and check out the meme channel, or give feedback on this or any tutorial.</p>
+<p><img src="/img/oracle/tut16.png" alt=""></p>
+<p>Welcome to Mars.</p>
+<p><img src="/img/martian.jpg" alt=""></p>
+<hr>
+<h3 id="reference--troubleshooting">Reference &amp; Troubleshooting<a href="#reference--troubleshooting" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>If your ship does not load in your browser, double check the following: the port number your urbit is serving on (should be 80 or 8080 if nothing else is running on this VM &ndash; check the first couple of lines in your dojo output after boot); the VM ingress rules outlined above; the <code>iptables</code> configuration described previously.</p>
+<p>To end your urbit process, press <code>ctrl-d</code> at the dojo.</p>
+<p>To detach from your urbit tmux session, press <code>ctrl-b</code>, <code>d</code>.</p>
+<p>Enter <code>exit</code> at the command line to fully exit your SSH session after you&rsquo;ve detached from your tmux session.</p>
+<p>To reconnect to your urbit&rsquo;s command line, enter the following from your local command line, editing in your own IP address:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;ssh&nbsp;-i&nbsp;~/.ssh/oracle.key&nbsp;ubuntu@your.ip.address.here</li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;a&nbsp;-t&nbsp;urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>See more official instructions for using your urbit <a href="https://urbit.org/using/operations/using-your-ship/">here</a>.</p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/oracle.cloud">oracle.cloud</a></span><span class="tag"><a href="https://subject.network/tags/free">free</a></span><span class="tag"><a href="https://subject.network/tags/hosted">hosted</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-12-18 17:57 -0600</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/free-urbit-s3-minio/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Self-hosting MinIO S3 for Urbit</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/bitcoin-with-timluc-miptev/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Bitcoin on Urbit With ~timluc-miptev</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

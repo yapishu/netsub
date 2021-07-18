@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Self-hosting MinIO S3 for Urbit">
+<meta itemprop="description" content="Background This tutorial will walk you through the process of configuring MinIO on your server, which will allow you to host images and content for your ship, but without relying on or paying for a third party host.
+S3 is a service offered by Amazon&rsquo;s web service division that allows you to cheaply host data that you can programatically access with other applications. S3 is wildly popular, and as a result has an API that is widely supported by a lot of software.">
+<meta itemprop="datePublished" content="2021-01-14T17:32:26-06:00" />
+<meta itemprop="dateModified" content="2021-01-14T17:32:26-06:00" />
+<meta itemprop="wordCount" content="1039">
+<meta itemprop="image" content="https://subject.network/img/minio/minio-urbit.png">
+
+
+
+<meta itemprop="keywords" content="urbit,minio,s3,free," />
+<meta property="og:title" content="Self-hosting MinIO S3 for Urbit" />
+<meta property="og:description" content="Background This tutorial will walk you through the process of configuring MinIO on your server, which will allow you to host images and content for your ship, but without relying on or paying for a third party host.
+S3 is a service offered by Amazon&rsquo;s web service division that allows you to cheaply host data that you can programatically access with other applications. S3 is wildly popular, and as a result has an API that is widely supported by a lot of software." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/free-urbit-s3-minio/" />
+<meta property="og:image" content="https://subject.network/img/minio/minio-urbit.png" />
+<meta property="article:published_time" content="2021-01-14T17:32:26-06:00" />
+<meta property="article:modified_time" content="2021-01-14T17:32:26-06:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/minio/minio-urbit.png"/>
+
+<meta name="twitter:title" content="Self-hosting MinIO S3 for Urbit"/>
+<meta name="twitter:description" content="Background This tutorial will walk you through the process of configuring MinIO on your server, which will allow you to host images and content for your ship, but without relying on or paying for a third party host.
+S3 is a service offered by Amazon&rsquo;s web service division that allows you to cheaply host data that you can programatically access with other applications. S3 is wildly popular, and as a result has an API that is widely supported by a lot of software."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Self-hosting MinIO S3 for Urbit</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 14, 2021</span></div>
+				<h1>Self-hosting MinIO S3 for Urbit</h1>
+			</header>
+			<div class="content">
+				<p><img src="/img/minio/minio-urbit.png" alt=""></p>
+<h2 id="background">Background<a href="#background" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>This tutorial will walk you through the process of configuring MinIO on your server, which will allow you to host images and content for your ship, but without relying on or paying for a third party host.</p>
+<p>S3 is a service offered by Amazon&rsquo;s web service division that allows you to cheaply host data that you can programatically access with other applications. S3 is wildly popular, and as a result has an API that is widely supported by a lot of software. Other companies also offer services that can use the same API as Amazon&rsquo;s service.</p>
+<p>Urbit has support for S3-compatible APIs &ndash; we <a href="/posts/configuring-s3-urbit/">previously covered</a> how to use DigitalOcean&rsquo;s S3 service, Spaces. Think of this as sticking a big external hard drive onto your ship, that allows you to upload images and data from inside of Landscape, the web UI.</p>
+<p>MinIO is a highly performant, S3-compatible object storage application, with both client and server binaries. Most importantly, it&rsquo;s open source software that you can run yourself on the server hosting your ship, and you don&rsquo;t have to pay additional fees to DO or Amazon. This tutorial will assume you are using Ubuntu, but the instructions should not deviate much across OSes.</p>
+<p>An important qualification: S3 requires a subdomain that matches your bucket name, and Urbit&rsquo;s implementation requires https, so you will need to have a domain to generate certificates for &ndash; fortunately, if you&rsquo;re using a planet, you can use a free arvo.network subdomain. If you have your own domain, I believe you can substitute &lsquo;sampel-palnet&rsquo; throughout this tutorial with a subdomain of your choice, though I wasn&rsquo;t able to fully test this due to my particular setup.</p>
+<p>All credit is due <a href="/posts/free-cloud-oracle/">once again</a> to <code>~socsel-pacted</code> for the heads-up, and for figuring this out!</p>
+<p><em>Edit:</em> You can find alternate instructions by <code>~tomnyr-tirsyr</code> <a href="https://www.notion.so/MinIO-S3-Urbit-a18a584293b3459e8785339e60145b11">here</a>.</p>
+<h2 id="server-prep">Server prep<a href="#server-prep" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>As I mentioned, you&rsquo;ll need to have your planet set up with a domain for https &ndash; if you haven&rsquo;t already done so, you can register your ship&rsquo;s IP on arvo.network with the following command in dojo (replacing 1.2.3.4 with your IP &ndash; make sure you have a period in front of it):</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - sampel-palnet
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;-dns-address&nbsp;&dns-address&nbsp;[%if&nbsp;.1.2.3.4]</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>(In this and all tutorials, <code>dojo&gt;</code> indicates your urbit&rsquo;s command line, and <code>$&gt;</code> denotes your computer or server&rsquo;s).</p>
+<p>Unfortunately, it may take a few days for this to go into effect if you don&rsquo;t already have this set up &ndash; registering these subdomains is a manual process as far as I know, running the command just registers a request. You&rsquo;ll be able to tell it has worked when navigating to <code>sampel-palnet.arvo.network</code> (with your planet name) pulls up your ship.</p>
+<p>While we&rsquo;re setting up, make sure port 9000 is accessible. On your server, you can run:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;ufw&nbsp;allow&nbsp;9000/tcp</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>If you&rsquo;re using an Oracle VPS, create a TCP <a href="/posts/free-cloud-oracle/#configuring-software">ingress rule</a> that allows port 9000.</p>
+<h2 id="installation--tls">Installation &amp; TLS<a href="#installation--tls" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Once you&rsquo;ve gotten everything prepared, let&rsquo;s run certbot to generate a TLS certificate. First, shut down your urbit or any running web server to free up port 80, then install and run <code>certbot</code>:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;install&nbsp;certbot</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;certbot&nbsp;certonly&nbsp;--standalone</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Follow the instructions to generate your certificates; when prompted, enter <code>sampel-palnet.arvo.network</code>, substituting your ship&rsquo;s name. Once completed, you can find them in <code>/etc/letsencrypt/live/sampel-palnet.arvo.network</code>.</p>
+<p>Now, let&rsquo;s download and run Minio so we can manipulate its configuration:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;cd</li>
+        
+        
+        <li>$>&nbsp;wget&nbsp;https://dl.min.io/server/minio/release/linux-amd64/minio</li>
+        
+        
+        <li>$>&nbsp;chmod&nbsp;+x&nbsp;minio</li>
+        
+        
+        <li>$>&nbsp;./minio</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>This should print the help menu. Now we can copy our certificates into the appropriate folders:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;mkdir&nbsp;~/.minio&nbsp;&&&nbsp;mkdir&nbsp;~/.minio/certs</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;cp&nbsp;/etc/letsencrypt/live/sampel-palnet.arvo.network/fullchain.pem&nbsp;~/.minio/certs/public.crt</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;cp&nbsp;/etc/letsencrypt/live/sampel-palnet.arvo.network/privkey.pem&nbsp;~/.minio/certs/private.key</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;chown&nbsp;user:user&nbsp;.minio/certs/public.crt</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;chown&nbsp;user:user&nbsp;.minio/certs/private.key</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>(replace <code>user:user</code> with your username on this device &ndash; i.e. <code>jsmith:jsmith</code>).</p>
+<p>Now let&rsquo;s set environment variables for Minio&rsquo;s access and secret keys (basically username/password). First, let&rsquo;s generate a nice strong password:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;openssl&nbsp;rand&nbsp;-base64&nbsp;18</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>This will spit out a long random string. Copy it and paste it in the first following command, and set the second one to whatever you&rsquo;d like:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;export&nbsp;MINIO_SECRET_KEY=yourlongrandomstringhere</li>
+        
+        
+        <li>$>&nbsp;export&nbsp;MINIO_ACCESS_KEY=loginname</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Similarly, let&rsquo;s go ahead and set the root login the same way:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;export&nbsp;MINIO_ROOT_USER=your_root_username&nbsp;</li>
+        
+        
+        <li>$>&nbsp;export&nbsp;MINIO_ROOT_PASSWORD=anotherstrongpassword&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Think of this as writing down your credentials on a post-it note for your programs to look at. Now let&rsquo;s make a folder for our minio to put data in:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;mkdir&nbsp;minio-data/sampel-palnet</li>
+        
+        
+        <li>$>&nbsp;./minio&nbsp;server&nbsp;minio-data/sampel-palnet</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>And finally, launch minio (after spawning a tmux window to hide it in):</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;new&nbsp;-s&nbsp;minio</li>
+        
+        
+        <li>$>&nbsp;./minio&nbsp;server&nbsp;~/minio-data/sampel-palnet</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>[You may recall this trick for hiding your urbit&rsquo;s command line &ndash; you can hide this window by pressing <code>ctrl-b</code> followed by <code>d</code>; this will leave it running in the background. You can bring it back to the fore by entering: <code>$&gt; tmux a -t minio</code>]</p>
+<p>If it worked, you should see something like this:</p>
+<p><img src="/img/minio/minio2.png" alt=""></p>
+<p>Note the certificate information at the bottom; this means it is serving over https.</p>
+<h3 id="bucket-configuration">Bucket configuration<a href="#bucket-configuration" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Let&rsquo;s open up the control panel:</p>
+<p><code>https://sampel-palnet.arvo.network:9000</code></p>
+<p>Login with the access and secret keys you set previously. Once logged in, click the <code>+</code> icon at the bottom right to create a new bucket. The bucket name has to be the same as your subdomain (i.e, <code>sampel-palnet</code>):</p>
+<p><img src="/img/minio/minio3.png" alt=""></p>
+<p>Now, in the left sidebar, click the icon on the right to edit the access policy. Enter <code>*</code> in the text field and select &lsquo;read &amp; write&rsquo;.</p>
+<p><img src="/img/minio/minio4.jpg" alt=""></p>
+<p><img src="/img/minio/minio8.jpeg" alt=""></p>
+<h2 id="urbit-configuration">Urbit configuration<a href="#urbit-configuration" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Finally, lets return to our ship. Go to Landscape and click your name at the top right, then go to &lsquo;ship settings&rsquo; in the left sidebar. Scroll down to &lsquo;S3 credentials&rsquo;.</p>
+<p><img src="/img/minio/minio6.png" alt=""></p>
+<p>Enter <code>arvo.network:9000</code> as your endpoint (<em>not</em> your subdomain), and enter the credentials we set earlier. Beneath, under &lsquo;S3 buckets&rsquo;, enter <code>sampel-palnet</code> &ndash; if you are using a personal domain rather than arvo.network, note that this must match the subdomain.</p>
+<p><img src="/img/minio/minio7.jpeg" alt=""></p>
+<p>Click save, go to <code>Options -&gt; Activate</code> next to the name of the bucket, and you have completed this tutorial! Head over to a chat and look in the text field you type into &ndash; there should be a paperclip icon on the right. Click it to add attachments.</p>
+<hr>
+<p>I hope you found this useful; thanks again to <code>~socsel</code> for the assistance. If you run into any difficulties, feel free to reach out in the chat room at <code>~matwet/networked-subject</code>.</p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/minio">minio</a></span><span class="tag"><a href="https://subject.network/tags/s3">s3</a></span><span class="tag"><a href="https://subject.network/tags/free">free</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-01-14 17:32 -0600</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/tacen-mister-todteg/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>A conversation about Tacen with ~mister-todteg</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/free-cloud-oracle/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Free Urbit hosting with Oracle Cloud</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

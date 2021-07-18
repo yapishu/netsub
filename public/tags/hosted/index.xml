@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hosted on networked subject</title>
+    <link>https://subject.network/tags/hosted/</link>
+    <description>Recent content in hosted on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 18 Dec 2020 17:57:59 -0600</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/hosted/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Free Urbit hosting with Oracle Cloud</title>
+      <link>https://subject.network/posts/free-cloud-oracle/</link>
+      <pubDate>Fri, 18 Dec 2020 17:57:59 -0600</pubDate>
+      
+      <guid>https://subject.network/posts/free-cloud-oracle/</guid>
+      <description>Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&amp;rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &amp;ndash; typically on the order of 5-10USD/month.</description>
+    </item>
+    
+  </channel>
+</rss>

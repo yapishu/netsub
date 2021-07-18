@@ -1,0 +1,3 @@
+#!/bin/sh
+hugo
+rsync -avz public/ reid@subject.network:~/netsub/public

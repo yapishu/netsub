@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Urbit, Nginx and Letsencrypt">
+<meta itemprop="description" content="As part of a project to document how I use Urbit and the things I learn along the way, I&rsquo;m going to document the process of setting up this site. In its current state, it&rsquo;s pretty simple &ndash; a static site using a modified template (Hugo and Hermit), served from a Digital Ocean Ubuntu VPS (referral link).
+Behind the scenes, there are a couple of extra features &ndash; I wanted to be able to access my planet as a subdomain over SSL (proxied from my home PC), and I wanted to run ~matwet under the hood on the same VPS, also accessible on a subdomain.">
+<meta itemprop="datePublished" content="2020-09-26T12:08:26-05:00" />
+<meta itemprop="dateModified" content="2020-09-26T12:08:26-05:00" />
+<meta itemprop="wordCount" content="2454">
+<meta itemprop="image" content="https://subject.network/img/nginx-letsencrypt-urbit.png">
+
+
+
+<meta itemprop="keywords" content="urbit,ngninx,letsencrypt,vps,hosting," />
+<meta property="og:title" content="Urbit, Nginx and Letsencrypt" />
+<meta property="og:description" content="As part of a project to document how I use Urbit and the things I learn along the way, I&rsquo;m going to document the process of setting up this site. In its current state, it&rsquo;s pretty simple &ndash; a static site using a modified template (Hugo and Hermit), served from a Digital Ocean Ubuntu VPS (referral link).
+Behind the scenes, there are a couple of extra features &ndash; I wanted to be able to access my planet as a subdomain over SSL (proxied from my home PC), and I wanted to run ~matwet under the hood on the same VPS, also accessible on a subdomain." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/urbit-nginx-letsencrypt/" />
+<meta property="og:image" content="https://subject.network/img/nginx-letsencrypt-urbit.png" />
+<meta property="article:published_time" content="2020-09-26T12:08:26-05:00" />
+<meta property="article:modified_time" content="2020-09-26T12:08:26-05:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/nginx-letsencrypt-urbit.png"/>
+
+<meta name="twitter:title" content="Urbit, Nginx and Letsencrypt"/>
+<meta name="twitter:description" content="As part of a project to document how I use Urbit and the things I learn along the way, I&rsquo;m going to document the process of setting up this site. In its current state, it&rsquo;s pretty simple &ndash; a static site using a modified template (Hugo and Hermit), served from a Digital Ocean Ubuntu VPS (referral link).
+Behind the scenes, there are a couple of extra features &ndash; I wanted to be able to access my planet as a subdomain over SSL (proxied from my home PC), and I wanted to run ~matwet under the hood on the same VPS, also accessible on a subdomain."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Urbit, Nginx and Letsencrypt</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Sep 26, 2020</span></div>
+				<h1>Urbit, Nginx and Letsencrypt</h1>
+			</header>
+			<div class="content">
+				<p><a href=""><img src="/img/nginx-letsencrypt-urbit.png" alt=""></a></p>
+<p>As part of a project to document how I use Urbit and the things I learn along the way, I&rsquo;m going to document the process of setting up this site. In its current state, it&rsquo;s pretty simple &ndash; a static site using a modified template (<a href="https://gohugo.io/">Hugo</a> and <a href="https://themes.gohugo.io/hermit/">Hermit</a>), served from a <a href="https://m.do.co/c/4da920651e1a">Digital Ocean</a> Ubuntu VPS (referral link).</p>
+<p>Behind the scenes, there are a couple of extra features &ndash; I wanted to be able to access my planet as a subdomain over SSL (proxied from my home PC), and I wanted to run <code>~matwet</code> under the hood on the same VPS, also accessible on a subdomain.</p>
+<p>This is actually pretty easy to do! Nginx can be configured to proxy content from a different port through a subdomain, or even from a different server entirely.</p>
+<p>So, to recap, in this guide we will:</p>
+<ul>
+<li>
+<p>Set up a VPS and point a domain at it</p>
+</li>
+<li>
+<p>Set up our Urbit</p>
+</li>
+<li>
+<p>Install and Configure Nginx to point at both our Urbit and a blog (or whatever)</p>
+</li>
+<li>
+<p>Secure the site with Letsencrypt</p>
+</li>
+</ul>
+<p>An important caveat is that this is <strong>none of this is necessary</strong> if you just want to <a href="https://urbit.org/using/install/">run your urbit</a>. You can download it and run it on your home PC (even <a href="https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10">on Windows</a>!). It&rsquo;s not even necessary if you want to access your planet through an easy-to-remember domain; you can simply use built-in <a href="https://urbit.org/using/operations/using-your-ship/#dns-proxying">DNS proxying</a>. This intended for anyone else who just wants to do it themselves for the fun of it, or wants to keep their Urbit running 24/7 in a high reliability data center. At the end of this, you&rsquo;ll have an alien spacecraft running on a remote server, and learn three ways to configure an nginx web server.</p>
+<p>One more important note before we begin &ndash; your urbit instance (&ldquo;ship&rdquo;) is portable, meaning you can shut it down and move it to any device that can run urbit. In the course of moving an existing ship to your server, or if you ever decide to move your ship to another server or your PC, you can simply download the directory that contains your data (your &ldquo;pier&rdquo;) to the desired device. Make sure you <strong>shut down ship</strong> before you do so! Trying to run your ship twice in different places will probably de-sync it from the network and require a <a href="https://urbit.org/docs/tutorials/guide-to-breaches/">personal breach</a>. You can stop your urbit at any time from the command line by pressing <code>ctrl-d</code>, or force it to quit with <code>ctrl-z</code>.</p>
+<p><strong>Jan 2021 Edit</strong>: <em>Be sure to check out <a href="https://zalberico.com/essay/2020/06/06/urbit-on-the-cloud.html">~dovsem-bornyl</a>&rsquo;s similar guide for alternative step-by-step instructions, including VPS &amp; domain setup!</em></p>
+<p><strong>May 2021 Edit</strong>: <em>I now recommend using Caddy instead of Nginx &ndash; this tutorial is still perfectly serviceable, but configuring Caddy is much much simpler. You can see the (much shorter) tutorial <a href="/posts/caddyserver-urbit-tls">here</a>.</em></p>
+<h2 id="server-setup">Server setup<a href="#server-setup" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>You will first need to spin up a VPS. As I mentioned, I use Digital Ocean, but hosts are <a href="https://lowendbox.com/">commodity providers</a> and are generally fungible if you&rsquo;re not doing anything too fancy or critical.</p>
+<h3 id="selecting-a-plan">Selecting a plan<a href="#selecting-a-plan" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Urbit checks to make sure there is 2GB of memory available on the system when you start it up, but it rarely uses anywhere close to that limit, and you can create a <a href="https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-16-04">swap file</a> to spoof it if you have less than the requirement. That said, I would recommend a VPS with at least 2GB for a noticable improvement in performance. Ship performance does noticeably scale with resource availability, so it may be worth it to you to bump your specs to a higher tier plan &ndash; but the cheapest tier is useable, and you can always do that later.</p>
+<h3 id="domain-names">Domain names<a href="#domain-names" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Next, we&rsquo;ll assign a domain name to our server. Once you&rsquo;ve found a <a href="https://www.gandi.net/en-US">name</a> you <a href="https://www.namecheap.com/">like</a>, purchase it, and <a href="https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars">point it</a> at the appropriate nameservers, then <a href="https://www.digitalocean.com/docs/networking/dns/how-to/add-domains/">add the domain</a> to your droplet.</p>
+<p>Remember that DNS can take time to propagate &ndash; you see people say that it can take up to a day, and the longest I&rsquo;ve waited was about 8 hours, but typically it will propagate within about an hour. Go make some coffee.</p>
+<h2 id="server-configuration">Server configuration<a href="#server-configuration" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Once you&rsquo;ve created your server, you will need to log into into it with an SSH client. If you&rsquo;re using Linux or MacOS, you can just use the system terminal; if you&rsquo;re using Windows, the classic standby is <a href="https://www.putty.org/">PuTTY</a>, but the new <a href="https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701">Windows Terminal</a> is pretty <a href="https://docs.microsoft.com/en-us/windows/terminal/tutorials/ssh">slick</a>.</p>
+<p>Now, SSH in using your credentials:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;ssh&nbsp;user@your.server.ip.addr</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>You will be dropped into a terminal that will walk you through creating an account. You can find detailed instructions on setting up your server with a new user account <a href="https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04">here</a>. I would strongly recommend setting up SSH authentication as outlined near the end of those instructions.</p>
+<p>Once everything is set up, we need to get a few things installed.</p>
+<h3 id="installing-software">Installing software<a href="#installing-software" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>There&rsquo;s nothing too special here! We just want to put nginx and certbot in place.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;update</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;install&nbsp;nginx&nbsp;certbot&nbsp;python3-certbot-nginx&nbsp;tmux</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Once it&rsquo;s completed, nginx should have started running &ndash; try navigating to the IP address of your server in your web browser, it should present you with this:</p>
+<p><a href=""><img src="/img/nginx-default.png" alt=""></a></p>
+<h3 id="setting-up-a-server-block">Setting up a server block<a href="#setting-up-a-server-block" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>We need to configure nginx for our new domain and the blog it hosts. First, we&rsquo;ll make the folders that contain its data and assign the appropriate permissions (with your domain substituted, of course), then add a placeholder index.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;mkdir&nbsp;-p&nbsp;/var/www/your.domain/html</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;chown&nbsp;-R&nbsp;$USER:$USER&nbsp;/var/www/your.domain/html</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;chmod&nbsp;-R&nbsp;755&nbsp;/var/www/your.domain</li>
+        
+        
+        <li>$>&nbsp;echo&nbsp;"placeholder"&nbsp;>&nbsp;/var/www/your.domain/html/index.html</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Then we&rsquo;ll add it to nginx&rsquo;s <code>sites-available</code> by copying the default configuration, then opening it in an editor:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;cp&nbsp;/etc/nginx/sites-available/default&nbsp;/etc/nginx/sites-available/your.domain</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;nano&nbsp;/etc/nginx/sites-available/your.domain</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>You can ignore the commented-out lines for now &ndash; just go through it and replace <code>default_server</code> with your domain, edit the root path variable to point at our new directory at <code>/var/www/your.domain/html</code>, and change&hellip;</p>
+<pre><code>server_name _;
+</code></pre><p>to&hellip;</p>
+<pre><code>server_name your.domain www.your.domain;
+</code></pre><p>&hellip;then press <code>ctrl-o return</code>, <code>ctrl-x return</code> to save and exit.</p>
+<p>We also want to make sure we didn&rsquo;t make any mistakes before we set this into gear, so we&rsquo;ll run a little test:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;nginx&nbsp;-t</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>It should report no errors, but will point you at them if you have.</p>
+<p>Finally, let&rsquo;s link our new config to <code>sites-available</code> to tell nginx that it&rsquo;s ready for use!</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;ln&nbsp;-s&nbsp;/etc/nginx/sites-available/your.domain&nbsp;/etc/nginx/sites-enabled</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;service&nbsp;nginx&nbsp;restart</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>If you&rsquo;ve done everything correctly, and your DNS update has had time to propagate, you should be able to point to your domain in your browser and pull up the word &lsquo;placeholder&rsquo;.</p>
+<p>Now you can throw your locally-generated static site onto your server (the creation of which is slightly beyond the bounds of this document!). From your <strong>local computer</strong>, copy your desired content into the path for your newly configured site:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;rsync&nbsp;-avz&nbsp;/path/to/content&nbsp;user@your.domain:/var/www/your.domain/html</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Once it&rsquo;s copied, try refreshing the browser window with your domain pulled up. Viola! You have completed the most treacherous part, and you have a fancy new blog.</p>
+<h3 id="installing-urbit">Installing Urbit<a href="#installing-urbit" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Now that we have a web server up and running, let&rsquo;s put an urbit ship on the same machine. This will probably take a little bit of time if you&rsquo;ve never done so before, but should only take a couple of minutes if you&rsquo;re familiar with the process. If you&rsquo;re new to urbit, and don&rsquo;t have a planet yet, go ahead and follow the instructions for <a href="https://urbit.org/using/install/#booting-a-comet">booting a comet</a>. Comets are free and infinite, but can take a little bit of time to boot up for the first time.</p>
+<p>A useful tip before you begin is to launch urbit inside a tmux session. Tmux is a tool that allows you to create multiple terminal sessions, and &lsquo;attach&rsquo; or detach from them at will &ndash; this means your urbit can hog the entire terminal screen, and you can still switch back to a normal command line to perform operations on your server.</p>
+<p>SSH back into your server, and launch a new terminal session named &lsquo;urbit&rsquo; like this:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;new&nbsp;-s&nbsp;urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Your command line&rsquo;s history will suddenly clear from the screen, because you&rsquo;re in a new one. Now you can follow the instructions on <a href="https://urbit.org/using/install/">this</a> page. If you need to detach from your urbit session, simply press <code>ctrl-b d</code> and it will disappear. If you need to re-attach to it, simply run:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;tmux&nbsp;a&nbsp;-t&nbsp;urbit</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>And you will suddenly see your urbit shell again, chugging away.</p>
+<p>After your urbit has booted up fully (which again will probably take at least 5 minutes the first time you do it, and up to an hour if you launched a comet), look for a few lines that look like this:</p>
+<div class="window">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      urbit - sampel-palnet
+    </div>
+    <div class="termdojo">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>ames:&nbsp;on&nbsp;localhost,&nbsp;UDP&nbsp;31337.</li>
+        
+        
+        <li>http:&nbsp;web&nbsp;interface&nbsp;live&nbsp;on&nbsp;http://localhost:80</li>
+        
+        
+        <li>http:&nbsp;loopback&nbsp;live&nbsp;on&nbsp;http://localhost:12321</li>
+        
+        
+        <li>~sampel-palnet:dojo>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>The bit we&rsquo;re interested in is that second line, that tells you the web interface port. If you&rsquo;re already running something (like nginx) on port 80, or if the urbit binary doesn&rsquo;t have the appopriate permissions, it will default to port 8080, and increment up from there if it finds that port occupied.</p>
+<p>If you navigate to <code>http://your.domain:8080</code>, you should be presented with a login screen for an urbit ship! Go back to your urbit command line, type <code>+code</code> and hit return to get your password.</p>
+<p>So we&rsquo;ve set up a domain that servers a blog by default, and an urbit over port 8080. Pretty fancy! But we&rsquo;re not done here &ndash; URL aesthetics demand that you get rid of that ugly tailing port and give your ship a nice subdomain.</p>
+<h3 id="configuring-a-local-reverse-proxy-subdomain">Configuring a local reverse proxy subdomain<a href="#configuring-a-local-reverse-proxy-subdomain" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>A <a href="https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/">reverse proxy</a> is a server configuration option we will use to point a subdomain at the port our urbit is running on &ndash; so instead of <code>your.domain:8080</code>, you can go to <code>ship.your.domain</code>, and we can secure it with SSL a couple of sections down.</p>
+<p>This actually is not terribly difficult! We just need to create an A record and modify our existing <code>sites-enabled</code> to tell the server how to respond to requests for a subdomain.</p>
+<p>First, you will need to log into your DigitalOcean dashboard and navigate to your droplet. You should see a header titled &lsquo;Domains&rsquo;, and a box that contains the domain you are using. Click on your domain, and you will be presented with a page titled &lsquo;Create new record&rsquo; &ndash; &lsquo;A&rsquo; should be selected by default, and that is what we want.</p>
+<p>Simply fill out the &lsquo;hostname&rsquo; box with your desired subdomain (just the subdomain, without <code>your.domain</code>), select your domain under &lsquo;will direct to&rsquo;, and press &lsquo;create record&rsquo;. This should go into effect more or less immediately. (While you&rsquo;re here, you may want to create a <code>www.</code> subdomain if you don&rsquo;t have one).</p>
+<p>There are more verbose instructions with pictures <a href="https://www.digitalocean.com/docs/networking/dns/how-to/add-subdomain/">here</a>.</p>
+<p>Now we&rsquo;ll modify our site configuration:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;nano&nbsp;/etc/nginx/sites-available/your.domain</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Scroll down to the very bottom of the file and insert the following, after replacing <code>sub.your.domain</code> with your desired subdomain:</p>
+<pre><code>server {
+	server_name sub.your.domain;
+	location / {
+		proxy_set_header Host $host;
+		proxy_set_header Connection '';
+		proxy_http_version 1.1;
+		proxy_pass http://127.0.0.1:8080;
+		chunked_transfer_encoding off;
+		proxy_buffering off;
+		proxy_cache off;
+		proxy_redirect default;
+		proxy_set_header Forwarded for=$remote_addr;
+	}
+}
+</code></pre><p>This is a proxy setup optimized for <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventSource">EventSource</a>; there is one important thing to note in it &ndash; <code>proxy_buffering off;</code>. This is something you will specifically need to set for Landscape to work at all; otherwise, the interface does not load properly, and you will be met with a blank screen after logging in. Be sure to enable this option on any nginx configuration that is set up to proxy for urbit.</p>
+<p>Now verify the syntax of your edits:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;nginx&nbsp;-t</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Once you save this file and exit, reload nginx and test your new subdomain in a web browser:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;service&nbsp;nginx&nbsp;restart</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<h3 id="proxying-from-a-remote-server">Proxying from a remote server<a href="#proxying-from-a-remote-server" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>I mentioned before that I also wanted to proxy a ship from a remote server &ndash; in this case, my home PC. So, when I navigate to <code>sitful-hatred.subject.network</code>, it simply proxies the traffic from my home computer. This is much easier than remembering my home IP address &ndash; though I will have to update my configuration the next time my IP changes. If you run a VPS and want to proxy a ship running at home or anywhere else through it, you can easily do the same.</p>
+<p>Follow the instructions in the previous section to create a new A record for your subdomain, and open your <code>sites-available</code> file in a text editor once more.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;nano&nbsp;/etc/nginx/sites-available/your.domain</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Scroll down once more to the very bottom and add the following, substituting your IP address and the port number your urbit is serving from:</p>
+<pre><code>server {
+	server_name your-planet.your.domain;
+	location / {
+			proxy_set_header Host $host;
+			proxy_set_header Connection '';
+			proxy_http_version 1.1;
+			proxy_pass http://your.remote.ip.addr:80;
+			chunked_transfer_encoding off;
+			proxy_buffering off;
+			proxy_cache off;
+			proxy_redirect default;
+			proxy_set_header Forwarded for=$remote_addr;
+	}
+}
+</code></pre><p>Hit save and exit (<code>ctrl-o ctrl-x</code>), and verify the syntax like this:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;nginx&nbsp;-t</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>If you&rsquo;re good to go, then reload nginx.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;service&nbsp;nginx&nbsp;restart</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Pretty easy! Between these two ways of proxying your urbit, I&rsquo;m sure you can think of an interesting configuration for yourself. But we&rsquo;re not done here yet; we need to add a little lock icon to our URL bar.</p>
+<h3 id="certbot">Certbot<a href="#certbot" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>This is probably the easiest part of this tutorial, to the credit of the LetsEncrypt devs. You already installed the necessary software at the beginning of this tutorial, so now simply run:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;certbot</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>and proceed through, selecting the default optinons. Once it&rsquo;s completed, you should be presented with a success message, and should also be able to pull up your site and all its subdomains with <code>https://</code>!</p>
+<p>One last thing to do is automate certificate renewal so you don&rsquo;t have to log into your VPS every three months to manually do it.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;systemctl&nbsp;enable&nbsp;certbot.timer</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;systemctl&nbsp;start&nbsp;certbot.timer</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>And we&rsquo;re finished! A handy little server that conveniently demonstrates different ways to proxy our urbit ship. This probably was a little less specific than it could have been in places, but if you have any questions, feel free to reach out to me on the network at <code>~sitful-hatred</code>.</p>
+<p>An addendum here; you may have noticed that the connection between my browser and VPS is encrypted, but that the connection between my home PC urbit and VPS is not. I noticed this too, and I don&rsquo;t intend to keep it that way forever. Setting up a self-signed encrypted connection between my home PC and my VPS is on the list of weekend projects, and whenever I get it figured out I will update this post!</p>
+<p><em>Edit: The way i eventually addressed this was by running <a href="/posts/caddyserver-urbit-tls/">Caddy</a> on my home PC directly, and pointing the subdomain at my home IP. Caddy makes TLS and reverse proxies significantly simpler than these instructions, check it out!</em></p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/ngninx">ngninx</a></span><span class="tag"><a href="https://subject.network/tags/letsencrypt">letsencrypt</a></span><span class="tag"><a href="https://subject.network/tags/vps">vps</a></span><span class="tag"><a href="https://subject.network/tags/hosting">hosting</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-09-26 12:08 -0500</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/configuring-s3-urbit/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Configuring S3 storage for your urbit</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/planetary-drive/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Planetary drive</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

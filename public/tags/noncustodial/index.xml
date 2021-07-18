@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>noncustodial on networked subject</title>
+    <link>https://subject.network/tags/noncustodial/</link>
+    <description>Recent content in noncustodial on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 24 Jan 2021 11:35:41 -0600</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/noncustodial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A conversation about Tacen with ~mister-todteg</title>
+      <link>https://subject.network/posts/tacen-mister-todteg/</link>
+      <pubDate>Sun, 24 Jan 2021 11:35:41 -0600</pubDate>
+      
+      <guid>https://subject.network/posts/tacen-mister-todteg/</guid>
+      <description>A sentiment you&amp;rsquo;ll frequently come across is that the community on Urbit is very high-quality, and it&amp;rsquo;s a great place to meet friendly and interesting people. ~mister-todteg is an example of both &amp;ndash; his company Tacen is developing a semi-decentralized noncustodial crypto exchange platform, and he was kind enough to spend a couple of days telling me about it over chat. In this interview we chat about him, the details of his company, his personal history with Urbit, and his vision for the possibility of future integration between the two.</description>
+    </item>
+    
+  </channel>
+</rss>

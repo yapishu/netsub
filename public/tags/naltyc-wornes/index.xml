@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>naltyc-wornes on networked subject</title>
+    <link>https://subject.network/tags/naltyc-wornes/</link>
+    <description>Recent content in naltyc-wornes on networked subject</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 27 Feb 2021 17:55:01 -0600</lastBuildDate>
+    
+	<atom:link href="https://subject.network/tags/naltyc-wornes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Preparing for Urbit-BTC integration with a Pi full node</title>
+      <link>https://subject.network/posts/pi-fullnode-urbit/</link>
+      <pubDate>Sat, 27 Feb 2021 17:55:01 -0600</pubDate>
+      
+      <guid>https://subject.network/posts/pi-fullnode-urbit/</guid>
+      <description>Note: Urbit&amp;rsquo;s Bitcoin wallet was launched in May 2021. You can learn how to use it here
+Introduction As you may have heard, Urbit is due to receive support for Bitcoin in th near future. Thanks to the efforts of ~timluc-miptev in fulfilling a bounty for an Urbit-native bitcoin wallet and RPC support &amp;ndash; a suite called btc-agents &amp;ndash; you will be able to send and receive bitcoin with other pilots on the network, by connecting your ship to a provider, which itself is connected to a bitcoin full node running the Electrs rustlang Electrum Server implementation.</description>
+    </item>
+    
+  </channel>
+</rss>

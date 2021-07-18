@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#333">
+	<meta name="msapplication-TileColor" content="#333">
+<meta itemprop="name" content="Easy Urbit TLS with Caddy">
+<meta itemprop="description" content="One of the first tutorials written for this site was a rundown on setting up an https reverse proxy for your Urbit using Nginx and Letsencrypt. Nginx and LE are fantastic pieces of software, but steps involved may seem a little intimidating if you&rsquo;ve never set up a web server before.
+In the last couple of weeks, a few people around the network (thanks ~silsyn-wathep!) have suggested using Caddy (alt. Caddyserver), a very lightweight and fast HTTP server suite.">
+<meta itemprop="datePublished" content="2021-01-26T19:22:55-06:00" />
+<meta itemprop="dateModified" content="2021-01-26T19:22:55-06:00" />
+<meta itemprop="wordCount" content="764">
+<meta itemprop="image" content="https://subject.network/img/caddyheader.gif">
+
+
+
+<meta itemprop="keywords" content="caddy,caddyserver,urbit,tls,letsencrypt,dns,digitalocean," />
+<meta property="og:title" content="Easy Urbit TLS with Caddy" />
+<meta property="og:description" content="One of the first tutorials written for this site was a rundown on setting up an https reverse proxy for your Urbit using Nginx and Letsencrypt. Nginx and LE are fantastic pieces of software, but steps involved may seem a little intimidating if you&rsquo;ve never set up a web server before.
+In the last couple of weeks, a few people around the network (thanks ~silsyn-wathep!) have suggested using Caddy (alt. Caddyserver), a very lightweight and fast HTTP server suite." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://subject.network/posts/caddyserver-urbit-tls/" />
+<meta property="og:image" content="https://subject.network/img/caddyheader.gif" />
+<meta property="article:published_time" content="2021-01-26T19:22:55-06:00" />
+<meta property="article:modified_time" content="2021-01-26T19:22:55-06:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://subject.network/img/caddyheader.gif"/>
+
+<meta name="twitter:title" content="Easy Urbit TLS with Caddy"/>
+<meta name="twitter:description" content="One of the first tutorials written for this site was a rundown on setting up an https reverse proxy for your Urbit using Nginx and Letsencrypt. Nginx and LE are fantastic pieces of software, but steps involved may seem a little intimidating if you&rsquo;ve never set up a web server before.
+In the last couple of weeks, a few people around the network (thanks ~silsyn-wathep!) have suggested using Caddy (alt. Caddyserver), a very lightweight and fast HTTP server suite."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Easy Urbit TLS with Caddy</title>
+	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/override.css">
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					⏣ <a href="https://subject.network">networked subject</a>_
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://subject.network/posts/">Posts</a>
+				<a href="https://subject.network/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons"><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://subject.network/posts/">Posts</a></li>
+			<li><a href="https://subject.network/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 26, 2021</span></div>
+				<h1>Easy Urbit TLS with Caddy</h1>
+			</header>
+			<div class="content">
+				<p><img src="/img/caddyheader.gif" alt=""></p>
+<p>One of the first tutorials written for this site was a <a href="/posts/urbit-nginx-letsencrypt/">rundown</a> on setting up an https reverse proxy for your Urbit using Nginx and Letsencrypt. Nginx and LE are fantastic pieces of software, but steps involved may seem a little intimidating if you&rsquo;ve never set up a web server before.</p>
+<p>In the last couple of weeks, a few people around the network (thanks <code>~silsyn-wathep</code>!) have suggested using <a href="https://caddyserver.com/">Caddy</a> (alt. Caddyserver), a very lightweight and fast HTTP server suite. A big bonus with Caddy is that it handles all the TLS configuration in the background &ndash; you don&rsquo;t have to set up Letsencrypt manually.</p>
+<p>I&rsquo;ve been trying it out, and I love it; it&rsquo;s a huge timesaver when I&rsquo;m throwing together a ship on a server. I would strongly recommend it, and will probably move towards using it exclusively in the future. This process should only take you about fifteen minutes total, and once you&rsquo;ve done it once, even less than that in the future.</p>
+<p>This tutorial assumes you are using Ubuntu. If you are using another distro or OS, the instructions should be the same, minus the installation of Caddy. You can consult the official installation documentation <a href="https://caddyserver.com/docs/install">here</a>.</p>
+<h2 id="preparation">Preparation<a href="#preparation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>In order to make use of TLS, you will need a domain name to point at your server. Go to your registrar or host and create an <code>A</code> record pointing at the IP address of the server or PC you want to use &ndash; for example, create an <code>A</code> record for <code>sampel-palnet.mydomain.io</code>, which directs to <code>1.2.3.4</code>. This should propagate quickly if the primary domain is not brand-new.</p>
+<p>If you are using a home PC like me, go ahead and set up <a href="https://www.noip.com/support/knowledgebase/general-port-forwarding-guide/">port forwarding</a> rules for ports 80 and 443. You will need to set your router to forward those ports to the computer hosting your ship &ndash; assign a static private IP to that computer as well if you haven&rsquo;t already.</p>
+<p>If you are using a hosted server, like <a href="/posts/urbit-nginx-letsencrypt/">DigitalOcean</a> or <a href="/posts/free-cloud-oracle/">Oracle Cloud</a>, make sure your firewall has ingress rules for ports 80 and 443.</p>
+<p>Go ahead and <a href="https://urbit.org/using/install/">launch your ship</a> if you haven&rsquo;t already. Do not use the <code>setcap</code> command that gives it low port privileges &ndash; we want it to bind to port 8080 by default. Navigate to <code>your.ip.address.here:8080</code> in your browser and make sure you can reach your ship.</p>
+<h2 id="installation">Installation<a href="#installation" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Let&rsquo;s proceed; you will need to add the Caddy repos to your computer so you can install it and update it automatically in the future. Enter the following commands &ndash; the first installs requisite software if you don&rsquo;t have it already, the second imports the key for the software repository, and the third adds the repository itself to your repo list.</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~/urbit
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;install&nbsp;-y&nbsp;debian-keyring&nbsp;debian-archive-keyring&nbsp;apt-transport-https</li>
+        
+        
+        <li>$>&nbsp;curl&nbsp;-1sLf&nbsp;'https://dl.cloudsmith.io/public/caddy/stable/cfg/gpg/gpg.155B6D79CA56EA34.key'&nbsp;|&nbsp;sudo&nbsp;apt-key&nbsp;add&nbsp;-</li>
+        
+        
+        <li>$>&nbsp;curl&nbsp;-1sLf&nbsp;'https://dl.cloudsmith.io/public/caddy/stable/cfg/setup/config.deb.txt?distro=debian&version=any-version'&nbsp;|&nbsp;sudo&nbsp;tee&nbsp;-a&nbsp;/etc/apt/sources.list.d/caddy-stable.list</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Now let&rsquo;s install Caddy and give it port 80 privileges:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~/urbit
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;apt&nbsp;update&nbsp;&&&nbsp;sudo&nbsp;apt&nbsp;install&nbsp;caddy</li>
+        
+        
+        <li>$>&nbsp;sudo&nbsp;setcap&nbsp;'cap_net_bind_service=+ep'&nbsp;/usr/bin/caddy</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<h2 id="configuration">Configuration<a href="#configuration" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Configuration is where Caddy really shines; if you&rsquo;ve seen the walls of text in the Nginx tutorial, this will be a breath of fresh air.</p>
+<p>Nagivate to your home directory and create a text file called <code>Caddyfile</code>:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~/urbit
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;cd</li>
+        
+        
+        <li>$>&nbsp;nano&nbsp;Caddyfile</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>In <code>nano</code>, enter the following two lines, adjusting for your desired domain:</p>
+<pre><code>sampel-palnet.mydomain.io
+reverse_proxy 127.0.0.1:8080
+</code></pre><p>That&rsquo;s literally all you have to do &ndash; how cool is that? Press <code>ctrl-o</code>, <code>ctrl-x</code> to save and exit.</p>
+<h2 id="execution">Execution<a href="#execution" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Now let&rsquo;s run the server and make sure it works. There are two commands that will launch Caddy &ndash; <code>caddy run</code> will launch it in the foreground. We will do this for the first go-round:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~/urbit
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;caddy&nbsp;run</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>Caddy should automatically generate TLS certificates using Letsencrypt, and once it has successfully tested the connection, it will be up and running!</p>
+<p>Press <code>ctrl-c</code> to stop the Caddy process. Let&rsquo;s run it again, this time in the background:</p>
+<div class="window" width="80%">
+    <div class="titlebar">
+      <div class="buttons">
+        <div class="bclose">
+        </div>
+        <div class="minimize">
+        </div>
+        <div class="zoom">
+        </div>
+      </div>
+      terminal: ~/urbit
+    </div>
+    <div class="termwin">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>$>&nbsp;caddy&nbsp;start&nbsp;--config&nbsp;~/Caddyfile</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li>&nbsp;</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+  </div>
+
+<p>If you restart Caddy in the future, you will need to use this command to point Caddy at the configuration file you generated. You can turn off Caddy at any time with <code>caddy stop</code>.</p>
+<p>If you&rsquo;re comfortable with it, you can also add a <code>systemd</code> service to <a href="https://github.com/caddyserver/dist/tree/master/init">automatically run Caddy</a>. Make sure the user running the service can read your <code>Caddyfile</code>!</p>
+<p>One last note &ndash; if you&rsquo;re using Cloudflare, make sure you set your TLS on Cloudflare to &ldquo;Full (strict)&rdquo;, or your site will not be connectable. This is an issue with Caddy that manifests as &ldquo;too many redirect&rdquo; errors, but it&rsquo;s a simple fix.</p>
+<hr>
+<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://subject.network/tags/caddy">caddy</a></span><span class="tag"><a href="https://subject.network/tags/caddyserver">caddyserver</a></span><span class="tag"><a href="https://subject.network/tags/urbit">urbit</a></span><span class="tag"><a href="https://subject.network/tags/tls">tls</a></span><span class="tag"><a href="https://subject.network/tags/letsencrypt">letsencrypt</a></span><span class="tag"><a href="https://subject.network/tags/dns">dns</a></span><span class="tag"><a href="https://subject.network/tags/digitalocean">digitalocean</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-01-26 19:22 -0600</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://subject.network/posts/pi-fullnode-urbit/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Preparing for Urbit-BTC integration with a Pi full node</span>
+			</a>
+			<a class="prev-post" href="https://subject.network/posts/tacen-mister-todteg/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>A conversation about Tacen with ~mister-todteg</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://subject.network/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>
