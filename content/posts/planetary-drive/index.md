@@ -126,7 +126,3 @@ $> rsync -av reid@subject.network:/~/sitful-hatred /media/Data
 {{< /terminal >}}
 
 Urbit piers are completely portable; as long as you have the static binaries on another device and it's not trying to run in two places at once, you can simply pick up your data and move it with a copy operation. This is one of the reasons I wanted to devote a disk to my ship -- I can swap it in and out of devices I may go through in the future, but maintain a physical token of my digital homestead. One day we'll all have e-ink mesh-networked urbit devices that run on solar panels and Optane drives, but for now I have my `+code` and an SSD.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

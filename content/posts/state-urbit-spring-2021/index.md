@@ -122,7 +122,3 @@ Urbit's WebRTC implementation is being developed by `~ritpub-sipsyl` to fulfill 
 ---
 
 To end with, I wanted to link a [recent discussion](https://groups.google.com/a/urbit.org/g/dev/c/bdlPPnaccMc/m/icOJCcIwBwAJ) on the `urbit-dev` mailing list (if you're interested in closely following this project, there is no better way). The OP rightly points out that there seem to be many urbits -- the original project, the one that exists, and the one that will exist -- and that this can get in the way of understanding what it *is*. A thoughtful and gracious conversation follows, touching on many different perspectives on the topic. Recommended for weekend reading. 
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

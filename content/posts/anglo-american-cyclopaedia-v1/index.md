@@ -171,7 +171,3 @@ one of a series of [galaxy girls](https://twitter.com/tocrexholpen/media) by `~t
 ![](/img/meme-palfun-foslup-2.jpg)
 
 `~palfun-foslup` `(?)`
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

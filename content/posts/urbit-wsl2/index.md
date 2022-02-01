@@ -16,6 +16,9 @@ tags:
 
 [![](/img/wsl-urbit.png)]()
 
+| **Late 2021 Note**: This guide is now largely outmoded; Urbit now has official Windows binaries, and [Port](https://github.com/urbit/port/releases) now has a native Windows installer |
+| --- |
+
 If you're curious about Urbit but don't know anything about running Linux binaries or don't have a Mac, you don't need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10. 
 
 This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don't need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands.
@@ -236,7 +239,3 @@ The best place for support off the network is the official [Discord](https://dis
 ---
 
 You can even cloud host your ship for free, with [Oracle Cloud VM](https://www.oracle.com/cloud/free/)'s free tier. If you want instructions for  setting up a server via SSH, you can do so via [this tutorial](https://subject.network/posts/free-cloud-oracle/). This is a great next step!
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

@@ -151,7 +151,3 @@ One last question and we'll call it a wrap, unless you have anything else you wa
 ---
 
 Check out the [Urbit grant bounties](https://grants.urbit.org/bounties) for more projects worthy of some attention. Big thanks again to `~timluc` for his generosity and time!
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

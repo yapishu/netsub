@@ -107,7 +107,3 @@ You will be given a file named '[ship-name]-1.key' -- you will use this to boot 
 Congrats on making it to the end! You now have an urbit and the keys to boot and manage it. You're ready.
 
 Instead of writing the installation instructions out, I advise you to proceed to the [official](https://urbit.org/using/install/#boot-your-planet) instructions provided by Tlon.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

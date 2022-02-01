@@ -127,7 +127,3 @@ $> iptables -A INPUT -p udp -m udp --dport 54321 -j ACCEPT
 {{< /terminal >}}
 
 The latter type of firewall is a little less uniform, and I can't provide a universal guide here, but you can take a look at the example of Oracle's firewall [here](https://subject.network/posts/free-cloud-oracle/#configuring-software). The main thing to keep in mind is that you want to allow UDP ingress traffic on whatever your ames port is, or the port range it uses.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

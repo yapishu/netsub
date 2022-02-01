@@ -74,7 +74,3 @@ When I describe Urbit to people, I always find myself using the metaphor of a Ka
 Proposal document -- https://docs.google.com/document/d/1-Gwfg442kV3cdfG7NnWPEf2TMa3uLUTAKkZD70ALZkE/edit
 
 Developer Call presentation -- https://www.youtube.com/watch?v=E4DFuAZQ32Y
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

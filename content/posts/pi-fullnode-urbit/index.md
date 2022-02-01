@@ -4,6 +4,7 @@ date: 2021-02-27T17:55:01-06:00
 draft: false
 toc: false
 images:
+  - /img/btc-header.jpg
 tags: 
   - urbit
   - bitcoin
@@ -309,6 +310,8 @@ Now let's download `electrs` and compile it:
 $> sudo apt install git cargo
 $> source $HOME/.cargo/env
 $> git clone https://github.com/romanz/electrs
+$> git submodule init
+$> git submodule update
 $> cd electrs
 $> sudo apt update && sudo apt install clang cmake build-essential 
 $> cargo build --locked --release
@@ -425,41 +428,13 @@ $> urbit -F zod
 
 {{< /terminal >}}
 
-Once booted, mount clay:
+Continuing: 
 
 {{< termdojo "urbit" "sampel-palnet" >}}
-~sampel-palnet:dojo> |mount %
- 
-
-{{< /termdojo >}}
-
-Open another terminal now: 
-
-{{< terminal "terminal" "~" >}}
-$> git clone https://github.com/timlucmiptev/btc-agents
-$> cd btc-agents
-$> ./install.sh /home/[yourname]/zod
- 
-
-{{< /terminal >}}
-
-Now let's let our ship know about the new files:
-
-{{< termdojo "urbit" "sampel-palnet" >}}
-~sampel-palnet:dojo> |commit %home
- 
-
-{{< /termdojo >}}
-
-You should see the dojo print all the new file names. Continuing: 
-
-{{< termdojo "urbit" "sampel-palnet" >}}
-~sampel-palnet:dojo> =provider ~zod
+~sampel-palnet:dojo> =provider ~sampel
 ~sampel-palnet:dojo> =network %main
-~sampel-palnet:dojo> |start %btc-wallet
-~sampel-palnet:dojo> |start %btc-provider
-~sampel-palnet:dojo> :btc-wallet|command [%set-provider provider]
-~sampel-palnet:dojo> :btc-provider|command [%set-credentials api-url='http://nanopi.ip.address.here:50002' network]
+~sampel-palnet:dojo> |rein %bitcoin [& %btc-provider]
+~sampel-palnet:dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://addresshere' network]
  
 
 {{< /termdojo >}}
@@ -471,7 +446,7 @@ Let's keep using the test commands from the readme:
 {{< termdojo "urbit" "sampel-palnet" >}}
 ~sampel-palnet:dojo> =fprint [%4 0xbeef.dead]
 dojo> =xpubmain 'zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs'
-dojo> :btc-wallet|command [%add-wallet xpubmain fprint ~ [~ 8] [~ 1]]
+dojo> :btc-provider +bitcoin!btc-provider/command [%add-wallet xpubmain fprint ~ [~ 8] [~ 1]]
 dojo> .^((unit @ud) %gx /=btc-wallet=/balance/[xpubmain]/noun)
  
 
@@ -484,7 +459,7 @@ This should print out the balance of the test wallet (which is 0).
 
 You've made it! In the future, you should only need to update the existing software on this pi to make it a provider for your ship.
 
-Recall that this is still pre-release software! You won't be able to control your wallets from within Landscape yet. You can modify the above commands, or check out the [source code](https://github.com/timlucmiptev/btc-agents/tree/master/sur) to get a better idea of what you can do from the dojo. 
+Recall that this is still pre-release software! You won't be able to control your wallets from within Landscape yet. You can modify the above commands, or check out the [source code](https://github.com/timlucmiptev/btc-agents/tree/master/sur) to get a better idea of what you can do from the dojo. **Update Oct 2021**: This is now production software enabled by default on all Urbit ships. 
 
 ## Conclusion
 
@@ -506,7 +481,3 @@ In all, this process took me about three weeks to complete (mostly dragged out b
 * [M4V2 documentation wiki](http://wiki.friendlyarm.com/wiki/index.php/NanoPi_M4V2)
 
 * [RPi4 full node tutorial](https://github.com/kdmukai/raspi4_bitcoin_node_tutorial)
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

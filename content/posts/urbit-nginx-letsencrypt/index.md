@@ -329,7 +329,3 @@ And we're finished! A handy little server that conveniently demonstrates differe
 An addendum here; you may have noticed that the connection between my browser and VPS is encrypted, but that the connection between my home PC urbit and VPS is not. I noticed this too, and I don't intend to keep it that way forever. Setting up a self-signed encrypted connection between my home PC and my VPS is on the list of weekend projects, and whenever I get it figured out I will update this post!
 
 *Edit: The way i eventually addressed this was by running [Caddy](/posts/caddyserver-urbit-tls/) on my home PC directly, and pointing the subdomain at my home IP. Caddy makes TLS and reverse proxies significantly simpler than these instructions, check it out!*
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

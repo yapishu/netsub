@@ -14,7 +14,7 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 # disqusShortname = "yourdiscussshortname"
 
 [author]
-  name = "~sitful-hatred"
+  name = "Networked Subject"
 
 [blackfriday]
   # hrefTargetBlank = true
@@ -79,4 +79,9 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   [[menu.main]]
     name = "About"
     url = "about/"
+    weight = 20
+
+  [[menu.main]]
+    name = "₿uy"
+    url = "buy/"
     weight = 20

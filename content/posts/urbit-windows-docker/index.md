@@ -4,6 +4,7 @@ date: 2021-03-07T13:10:01-06:00
 draft: false
 toc: false
 images:
+  - /img/win-docker/docker-header.gif
 tags: 
   - urbit
   - windows
@@ -11,6 +12,11 @@ tags:
 ---
 
 ![](/img/win-docker/docker-header.gif)
+
+
+
+| **Late 2021 Note**: This guide is now largely outmoded; Urbit now has official Windows binaries, and [Port](https://github.com/urbit/port/releases) now has a native Windows installer |
+| --- |
 
 ## Introduction
 
@@ -126,9 +132,3 @@ C:\> docker run -d --restart always --name watchtower -v /var/run/docker.sock:/v
 ---
 
 * If your urbit won't restart, check out [~botter's](https://gist.github.com/botter-nidnul/bc55769afe006de6f93b27390e5d1267#possible-errors) solution for deleting the `.vere.lock` file inside your `\urbit\_data` folder.
-
-
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

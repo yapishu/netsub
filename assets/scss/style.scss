@@ -20,7 +20,7 @@
 
 html {
   background: $light-grey;
-  line-height: 1.6;
+  line-height: 1.5;
   letter-spacing: .06em;
   scroll-behavior: smooth;
 }
@@ -924,6 +924,7 @@ img[src$='#floatsigil']
     margin: 0.2rem;
     width:16px;
     height:auto;
+    border: none;
 }
 
 img[src$='#floatright']
@@ -931,4 +932,6 @@ img[src$='#floatright']
     float:right;
     width:auto;
     height:auto;
+    border: 3px solid #727272;
+    border-radius: 3px;
 }

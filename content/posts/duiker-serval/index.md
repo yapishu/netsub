@@ -105,7 +105,3 @@ In the comments of %serval, `~palfun` outlines a few of the technical hurdles th
 For the moment, with Urbit lacking a proper package manager, so installing this on your ship is a bit more involved than using it on `~paldev` -- I haven't tried it, but I'll update this post with instructions if it's reasonably doable.
 
 What I find most appealing about this project is the prospect of a simple community torrent tracker that you can spin up to go with your group chat; it demonstrates what kind of social software becomes possible when everybody has a server, and points to a new kind of localized internet; and it showcases the power of Urbit as a fully programmable computer that can interface with the rest of the internet. I find this kind of thing very exciting. Anyway, I uploaded a folder of cool French comics by a guy named Lewis Trondheim, you should hop on and grab them.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

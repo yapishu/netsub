@@ -16,9 +16,12 @@ tags:
 
 ![](/img/btc-prov.jpg)
 
+| **Late 2021 Note**: This guide is now largely outmoded; `%btc-wallet` now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.|
+| --- |
+
 The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin -- you can tell your planet to send money to `~sampel-palnet`, and Urbit takes care of the rest. Think CashApp -- enter a handle, send money -- but you own the whole stack.
 
-Urbit's implementation derives an xPub address from your ship's master ticket. An xPub (extended public key) is like a seed to generate new addresses for every transaction -- what is called a hierarchical deterministic wallet (HD wallet). Your ship's master ticket is cryptographic proof of ownership of your address on the network, and is now the seed for all the bitcoin addresses you will generate in the course of transacting. On top of systemic elegance, this is a great boon to financial privacy -- by creating a different address every time you receive funds, it makes it much more difficult for an observer to tell how much money you have or who is sending it to you. By connecting to a node you trust or run yourself, nobody sees a connection between wallet addresses and IP addresses. Urbit takes care of all of this transparently. 
+Urbit's implementation derives an xPub address from your ship's master ticket. An xPub (extended public key) is like a seed to generate new addresses for every transaction -- what is called a hierarchical deterministic wallet (HD wallet). Your ship's master ticket is cryptographic proof of ownership of your address on the network, and is now the seed for all the bitcoin addresses you will generate in the course of transacting. On txop of systemic elegance, this is a great boon to financial privacy -- by creating a different address every time you receive funds, it makes it much more difficult for an observer to tell how much money you have or who is sending it to you. By connecting to a node you trust or run yourself, nobody sees a connection between wallet addresses and IP addresses. Urbit takes care of all of this transparently. 
 
 Urbit's bitcoin implementation is pretty straightforward to understand. A provider runs a full node with a specific stack of bitcoin software. The provider then configures `%btc-provider` on a ship to relay information to and from the full node. Normal pilots run `%btc-wallet` on their ships, and point the wallet at the provider's ship. Your ship's wallet talks to your provider, and your provider talks to the full node. 
 
@@ -30,17 +33,9 @@ This tutorial has two halves --  connecting a ship to a provider, and connecting
 
 If you just want to connect your ship to somebody's provider, the process is very simple.
 
-Start your wallet: 
-
-{{< termdojo "urbit" "~/urbit/sampel-palnet" >}}
-~sampel-palnet:dojo> |start %btc-wallet
- 
-
-{{< /termdojo >}}
-
 ![](/img/btc/icon.png)
 
-A bright orange bitcoin tile will appear in Landscape next to your clock -- click on it, and enter the `@p` of your provider.
+A bright orange bitcoin tile is available in your system menu -- click on it, and enter the `@p` of your provider.
 
 ![](/img/btc/provnode.png)
 
@@ -68,10 +63,9 @@ Before you start, make sure TCP port 50002 ingress is allowed for your node -- d
 {{< termdojo "urbit" "~/urbit/sampel-palnet" >}}
 ~sampel-palnet:dojo> =provider ~sampel
 ~sampel-palnet:dojo> =network %main
-~sampel-palnet:dojo> |start %btc-wallet
-~sampel-palnet:dojo> |start %btc-provider
-~sampel-palnet:dojo> :btc-wallet|command [%set-provider provider]
-~sampel-palnet:dojo> :btc-provider|command [%set-credentials api-url='http://full.node.address.here:50002' network]
+~sampel-palnet:dojo> |rein %bitcoin [& %btc-provider]
+~sampel-palnet:dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://addresshere' network]
+
  
 
 {{< /termdojo >}}
@@ -79,14 +73,14 @@ Before you start, make sure TCP port 50002 ingress is allowed for your node -- d
 ![](/img/btc/1.png)
 
 
-Return to `~sampel`'s Landscape and note the new bitcoin tile!
+Return to `~sampel`'s Landscape and click the Bitcoin tile to enter your new provider.
 
 Let's test it -- click the tile and enter the provider's `@p`. Follow the instructions in the previous section to get your xPub address from Bridge or another wallet. 
 
 If you want to whitelist your ship's `%kids` (ie planets your star has spawned or your moons), enter:
 
 {{< termdojo "urbit" "~/urbit/sampel-palnet" >}}
-~sampel-palnet:dojo> :btc-provider|command [%add-whitelist %kids ~]
+~sampel-palnet:dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist %kids ~]
  
 
 {{< /termdojo >}}
@@ -94,7 +88,7 @@ If you want to whitelist your ship's `%kids` (ie planets your star has spawned o
 To whitelist a specific ship, enter:
 
 {{< termdojo "urbit" "~/urbit/sampel-palnet" >}}
-~sampel-palnet:dojo> :btc-provider|command [%add-whitelist [%users users=(sy ~[~wallet-hodler])]]
+~sampel-palnet:dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist [%users users=(sy ~[~wallet-hodler])]]
  
 
 {{< /termdojo >}}
@@ -104,7 +98,7 @@ To whitelist a specific ship, enter:
 To whitelist all members of a group, enter: 
 
 {{< termdojo "urbit" "~/urbit/sampel-palnet" >}}
-~sampel-palnet:dojo> :btc-provider|command [%add-whitelist [%groups groups=(sy ~[[~sampel %group-name]])]]
+~sampel-palnet:dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist [%groups groups=(sy ~[[~sampel %group-name]])]]
  
  
 {{< /termdojo >}}
@@ -120,7 +114,3 @@ Once a whitelisted client adds you as a provider, it is printed in the dojo:
 By the way, I have to brag -- I am pretty sure I set up the first operational provider on the livenet, and facilitated its first transaction; a few weeks in February well-spent!
 
 ![](/img/btc/4.png)
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

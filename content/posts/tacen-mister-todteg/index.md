@@ -185,7 +185,3 @@ Backend is coming along nicely too
 --- 
 
 Big thanks once again to ~mister. You can read more about Tacen at the [official website](https://tacen.com/), join the [Telegram group](https://t.me/tacen_app), or the Urbit group at `~mister-todteg/tacen`.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

@@ -84,7 +84,3 @@ Just click this, select an item to upload; if you did it correctly, you should b
 If you want to look through the stuff you've uploaded through your urbit, you can go to the management page on your DO dashboard and select the space you're using. It will give you a directory named after your ship, and inside of that a listing of all files you've uploaded, where you can manage them.
 
 [![](/img/spaces-5.png)]()
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

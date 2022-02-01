@@ -163,7 +163,3 @@ Urbit is young but moving fast. There's plenty to dip your feet into if you find
 > Tlon is [incentivizing](https://grants.Urbit.org/) the community development of Urbit by granting address space in exchange for features. For instance, different components of Bitcoin support are being contributed in exchange for grants of stars. This meetup is also part of the grant program. It's worth taking a look!
 
 Feel free to message me on the network at `~sitful-hatred`. See you on Mars.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

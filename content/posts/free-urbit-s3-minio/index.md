@@ -180,7 +180,3 @@ Click save, go to `Options -> Activate` next to the name of the bucket, and you 
 
 
 I hope you found this useful; thanks again to `~socsel` for the assistance. If you run into any difficulties, feel free to reach out in the chat room at `~matwet/networked-subject`.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

@@ -14,6 +14,9 @@ tags:
 
 ![](/img/oracle-cover.png)
 
+| **Late 2021 Note**: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications |
+| --- |
+
 ## Background
 
 The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don't have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though -- typically on the order of 5-10USD/month.
@@ -300,7 +303,3 @@ $> tmux a -t urbit
 {{< /terminal >}}
 
 See more official instructions for using your urbit [here](https://urbit.org/using/operations/using-your-ship/). 
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

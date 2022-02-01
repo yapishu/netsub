@@ -128,7 +128,3 @@ for i in prefix:
 		if urbit_word in words:
 			print(urbit_word)
 ```
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

@@ -15,6 +15,9 @@ tags:
 
 ![](/img/winbin/header.gif)
 
+| **Late 2021 Note**: This guide is now largely outmoded; Urbit now has official Windows binaries, and [Port](https://github.com/urbit/port/releases) now has a native Windows installer |
+| --- |
+
 [Last month,](https://github.com/urbit/urbit/pull/4675) a PR was published by `locpyl-tidnyd` to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
 
 As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment -- the source of [two](http://localhost:1313/posts/urbit-wsl2/) previous [tutorials](http://localhost:1313/posts/urbit-windows-docker/) on this blog. WSL2 is a fabulous tool but still veers toward the geekier side of things, and ordinary people cannot be blamed for wanting a simpler method.
@@ -122,7 +125,3 @@ Navigate to [http://localhost:80](http://localhost:80) to access your ship, and 
 The process of downloading and compiling your ship is significantly slower than on a Linux machine in my experience, even compared to running a ship on WSL2. That said, it was still totally functional if slightly less responsive.
 
 While I have successfully tested and used this Windows build, I cannot guarantee their stability -- these have not been released into production, I assume for this reason. I would not recommend booting a planet with this just yet, but this should be replaced by an official release in the near future.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*

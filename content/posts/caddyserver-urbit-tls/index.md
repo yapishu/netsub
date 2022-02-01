@@ -104,7 +104,3 @@ If you restart Caddy in the future, you will need to use this command to point C
 If you're comfortable with it, you can also add a `systemd` service to [automatically run Caddy](https://github.com/caddyserver/dist/tree/master/init). Make sure the user running the service can read your `Caddyfile`!
 
 One last note -- if you're using Cloudflare, make sure you set your TLS on Cloudflare to "Full (strict)", or your site will not be connectable. This is an issue with Caddy that manifests as "too many redirect" errors, but it's a simple fix.
-
----
-
-*This post is also available on Urbit, where you can post comments. Join [~matwet/networked-subject](web+urbitgraph://group/~matwet/networked-subject/) and open the Networked Subject notebook.*
