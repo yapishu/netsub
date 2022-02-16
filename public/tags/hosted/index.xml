@@ -18,7 +18,7 @@
       <pubDate>Fri, 18 Dec 2020 17:57:59 -0600</pubDate>
       
       <guid>https://subject.network/posts/free-cloud-oracle/</guid>
-      <description>Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&amp;rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &amp;ndash; typically on the order of 5-10USD/month.</description>
+      <description>Late 2021 Note: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications    Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter.</description>
     </item>
     
   </channel>

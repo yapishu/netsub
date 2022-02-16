@@ -3,6 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://subject.network/tags/meta/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/posts/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/tags/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/tags/update/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/posts/updates-announcements/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/tags/urbit/</loc>
+    <lastmod>2021-11-04T14:00:13-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/canary/</loc>
+    <lastmod>2021-09-13T20:17:34-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/ts/</loc>
+    <lastmod>2021-08-25T18:16:54-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/privacy/</loc>
+    <lastmod>2021-08-25T18:16:50-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://subject.network/buy/</loc>
+    <lastmod>2021-08-07T21:46:09-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://subject.network/tags/essay/</loc>
     <lastmod>2021-06-19T20:58:40-05:00</lastmod>
   </url>
@@ -14,26 +69,6 @@
   
   <url>
     <loc>https://subject.network/tags/hypertext/</loc>
-    <lastmod>2021-06-19T20:58:40-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://subject.network/</loc>
-    <lastmod>2021-06-19T20:58:40-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://subject.network/posts/</loc>
-    <lastmod>2021-06-19T20:58:40-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://subject.network/tags/</loc>
-    <lastmod>2021-06-19T20:58:40-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://subject.network/tags/urbit/</loc>
     <lastmod>2021-06-19T20:58:40-05:00</lastmod>
   </url>
   

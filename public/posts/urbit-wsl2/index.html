@@ -8,19 +8,19 @@
 	<meta name="theme-color" content="#333">
 	<meta name="msapplication-TileColor" content="#333">
 <meta itemprop="name" content="Urbit on Windows with WSL2">
-<meta itemprop="description" content="If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
-This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don&rsquo;t need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands.">
+<meta itemprop="description" content="Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
+This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running.">
 <meta itemprop="datePublished" content="2020-11-25T17:18:36-06:00" />
 <meta itemprop="dateModified" content="2020-11-25T17:18:36-06:00" />
-<meta itemprop="wordCount" content="1519">
+<meta itemprop="wordCount" content="1522">
 <meta itemprop="image" content="https://subject.network/img/wsl-urbit.png">
 
 
 
 <meta itemprop="keywords" content="urbit,wsl,wsl2,windows," />
 <meta property="og:title" content="Urbit on Windows with WSL2" />
-<meta property="og:description" content="If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
-This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don&rsquo;t need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands." />
+<meta property="og:description" content="Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
+This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://subject.network/posts/urbit-wsl2/" />
 <meta property="og:image" content="https://subject.network/img/wsl-urbit.png" />
@@ -30,8 +30,8 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 <meta name="twitter:image" content="https://subject.network/img/wsl-urbit.png"/>
 
 <meta name="twitter:title" content="Urbit on Windows with WSL2"/>
-<meta name="twitter:description" content="If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
-This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don&rsquo;t need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands."/>
+<meta name="twitter:description" content="Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
+This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running."/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -41,7 +41,7 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 	<link rel="shortcut icon" href="/favicon.ico">
 
 	<title>Urbit on Windows with WSL2</title>
-	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/style.min.4c6a371b83a582a300e51c2f5bc419428ca22003c0c42360a78bf9ec64ace875.css" integrity="sha256-TGo3G4OlgqMA5RwvW8QZQoyiIAPAxCNgp4v57GSs6HU=" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://subject.network/css/override.css">
 </head>
 
@@ -57,6 +57,7 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 					
 				<a href="https://subject.network/posts/">Posts</a>
 				<a href="https://subject.network/about/">About</a>
+				<a href="https://subject.network/buy/">₿uy</a>
 
 				</nav>
 			</div>
@@ -68,6 +69,7 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 		<ul>
 			<li><a href="https://subject.network/posts/">Posts</a></li>
 			<li><a href="https://subject.network/about/">About</a></li>
+			<li><a href="https://subject.network/buy/">₿uy</a></li>
 		</ul>
 	</div>
 
@@ -80,6 +82,13 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 			</header>
 			<div class="content">
 				<p><a href=""><img src="/img/wsl-urbit.png" alt=""></a></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: This guide is now largely outmoded; Urbit now has official Windows binaries, and <a href="https://github.com/urbit/port/releases">Port</a> now has a native Windows installer</th>
+</tr>
+</thead>
+</table>
 <p>If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.</p>
 <p>This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don&rsquo;t need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands.</p>
 <p>Once you have Urbit installed for the first time, it requires very little effort to get it running. This process will take a bit of time, but once you&rsquo;re set up you can control your comet in your web browser.</p>
@@ -488,10 +497,11 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 <p>The best place for support off the network is the official <a href="https://discord.gg/n9xhMdz">Discord</a> server. Feel free to reach out to me <a href="https://twitter.com/_matwet">on Twitter</a> if you&rsquo;re having any  trouble as well &ndash; I can&rsquo;t guarantee timely support, but I am happy to help if I can.</p>
 <hr>
 <p>You can even cloud host your ship for free, with <a href="https://www.oracle.com/cloud/free/">Oracle Cloud VM</a>&rsquo;s free tier. If you want instructions for  setting up a server via SSH, you can do so via <a href="https://subject.network/posts/free-cloud-oracle/">this tutorial</a>. This is a great next step!</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 
-			</div>
+			</div><hr>
+<span class="post-footer">
+<p>This post is also available on Urbit, where you can post comments. Join <b><a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a></b> and open the Networked Subject notebook. <b><a href="https://urbit.org/getting-started"> Boot a free comet</a></b> or <a href="/buy"><a href="/buy"><b>Buy a planet with Bitcoin</a></b><img src="/img/btc-tiny.png">.</p>
+</span> 
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
@@ -512,9 +522,12 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 </div>
 	</main>
 
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
-		</p>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+	<img src="/img/by-sa.svg" height=24px width=auto></a>
+	<p><a href="/privacy">Privacy</a> | <a href="/ts">Terms</a> | <a href="/canary">♪🐦</a></p>
+	<p> 2020-2022 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;">~sitful-hatred | <a href="https://subject.network">Networked Subject</a>
+<br></p>
 	</footer>
 
 

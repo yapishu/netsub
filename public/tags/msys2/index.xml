@@ -18,8 +18,7 @@
       <pubDate>Fri, 23 Apr 2021 18:13:19 -0500</pubDate>
       
       <guid>https://subject.network/posts/urbit-windows-binaries/</guid>
-      <description>Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
-As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &amp;ndash; the source of two previous tutorials on this blog.</description>
+      <description>Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.</description>
     </item>
     
   </channel>

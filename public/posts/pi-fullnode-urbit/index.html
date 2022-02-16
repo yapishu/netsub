@@ -12,7 +12,7 @@
 Introduction As you may have heard, Urbit is due to receive support for Bitcoin in th near future. Thanks to the efforts of ~timluc-miptev in fulfilling a bounty for an Urbit-native bitcoin wallet and RPC support &ndash; a suite called btc-agents &ndash; you will be able to send and receive bitcoin with other pilots on the network, by connecting your ship to a provider, which itself is connected to a bitcoin full node running the Electrs rustlang Electrum Server implementation.">
 <meta itemprop="datePublished" content="2021-02-27T17:55:01-06:00" />
 <meta itemprop="dateModified" content="2021-02-27T17:55:01-06:00" />
-<meta itemprop="wordCount" content="2984">
+<meta itemprop="wordCount" content="2934">
 <meta itemprop="image" content="https://subject.network/img/btc-header.jpg">
 
 
@@ -41,7 +41,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 	<link rel="shortcut icon" href="/favicon.ico">
 
 	<title>Preparing for Urbit-BTC integration with a Pi full node</title>
-	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/style.min.4c6a371b83a582a300e51c2f5bc419428ca22003c0c42360a78bf9ec64ace875.css" integrity="sha256-TGo3G4OlgqMA5RwvW8QZQoyiIAPAxCNgp4v57GSs6HU=" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://subject.network/css/override.css">
 </head>
 
@@ -57,6 +57,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 					
 				<a href="https://subject.network/posts/">Posts</a>
 				<a href="https://subject.network/about/">About</a>
+				<a href="https://subject.network/buy/">₿uy</a>
 
 				</nav>
 			</div>
@@ -68,6 +69,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 		<ul>
 			<li><a href="https://subject.network/posts/">Posts</a></li>
 			<li><a href="https://subject.network/about/">About</a></li>
+			<li><a href="https://subject.network/buy/">₿uy</a></li>
 		</ul>
 	</div>
 
@@ -916,6 +918,12 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
         <li>$>&nbsp;git&nbsp;clone&nbsp;https://github.com/romanz/electrs</li>
         
         
+        <li>$>&nbsp;git&nbsp;submodule&nbsp;init</li>
+        
+        
+        <li>$>&nbsp;git&nbsp;submodule&nbsp;update</li>
+        
+        
         <li>$>&nbsp;cd&nbsp;electrs</li>
         
         
@@ -1292,7 +1300,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
     </div>
   </div>
 
-<p>Once booted, mount clay:</p>
+<p>Continuing:</p>
 <div class="window">
     <div class="titlebar">
       <div class="buttons">
@@ -1312,133 +1320,16 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|mount&nbsp;%</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
-<p>Open another terminal now:</p>
-<div class="window" width="80%">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      terminal: ~
-    </div>
-    <div class="termwin">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>$>&nbsp;git&nbsp;clone&nbsp;https://github.com/timlucmiptev/btc-agents</li>
-        
-        
-        <li>$>&nbsp;cd&nbsp;btc-agents</li>
-        
-        
-        <li>$>&nbsp;./install.sh&nbsp;/home/[yourname]/zod</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
-<p>Now let&rsquo;s let our ship know about the new files:</p>
-<div class="window">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      urbit - sampel-palnet
-    </div>
-    <div class="termdojo">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;|commit&nbsp;%home</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
-<p>You should see the dojo print all the new file names. Continuing:</p>
-<div class="window">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      urbit - sampel-palnet
-    </div>
-    <div class="termdojo">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;=provider&nbsp;~zod</li>
+        <li>~sampel-palnet:dojo>&nbsp;=provider&nbsp;~sampel</li>
         
         
         <li>~sampel-palnet:dojo>&nbsp;=network&nbsp;%main</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-wallet</li>
+        <li>~sampel-palnet:dojo>&nbsp;|rein&nbsp;%bitcoin&nbsp;[&&nbsp;%btc-provider]</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-provider</li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;:btc-wallet|command&nbsp;[%set-provider&nbsp;provider]</li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%set-credentials&nbsp;api-url='http://nanopi.ip.address.here:50002'&nbsp;network]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%set-credentials&nbsp;api-url='http://addresshere'&nbsp;network]</li>
         
         
         <li>&nbsp;</li>
@@ -1480,7 +1371,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
         <li>dojo>&nbsp;=xpubmain&nbsp;'zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs'</li>
         
         
-        <li>dojo>&nbsp;:btc-wallet|command&nbsp;[%add-wallet&nbsp;xpubmain&nbsp;fprint&nbsp;~&nbsp;[~&nbsp;8]&nbsp;[~&nbsp;1]]</li>
+        <li>dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-wallet&nbsp;xpubmain&nbsp;fprint&nbsp;~&nbsp;[~&nbsp;8]&nbsp;[~&nbsp;1]]</li>
         
         
         <li>dojo>&nbsp;.^((unit&nbsp;@ud)&nbsp;%gx&nbsp;/=btc-wallet=/balance/[xpubmain]/noun)</li>
@@ -1501,7 +1392,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 <p>This should print out the balance of the test wallet (which is 0).</p>
 <p><img src="/img/btc-complete.png" alt=""></p>
 <p>You&rsquo;ve made it! In the future, you should only need to update the existing software on this pi to make it a provider for your ship.</p>
-<p>Recall that this is still pre-release software! You won&rsquo;t be able to control your wallets from within Landscape yet. You can modify the above commands, or check out the <a href="https://github.com/timlucmiptev/btc-agents/tree/master/sur">source code</a> to get a better idea of what you can do from the dojo.</p>
+<p>Recall that this is still pre-release software! You won&rsquo;t be able to control your wallets from within Landscape yet. You can modify the above commands, or check out the <a href="https://github.com/timlucmiptev/btc-agents/tree/master/sur">source code</a> to get a better idea of what you can do from the dojo. <strong>Update Oct 2021</strong>: This is now production software enabled by default on all Urbit ships.</p>
 <h2 id="conclusion">Conclusion<a href="#conclusion" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>If you lose power or restart your pi, you can restart the full node stack by starting the <code>mainnet-start.sh</code> script. I tried putzing around with systemd modules but just ended up breaking stuff; these will probably be part of a future iteration anyway.</p>
 <p>In all, this process took me about three weeks to complete (mostly dragged out by tinkering on weekends and a couple of mishaps that required re-indexing). Knowing what I know now, it would probably take a couple of days to start over from scratch, mostly taken up by downloading and indexing 300+ GB of blockchain &ndash; if you already have a copy, this shouldn&rsquo;t take more than an afternoon. Hopefully my stumbles will help you avoid my mistakes.</p>
@@ -1526,10 +1417,11 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 <p><a href="https://github.com/kdmukai/raspi4_bitcoin_node_tutorial">RPi4 full node tutorial</a></p>
 </li>
 </ul>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 
-			</div>
+			</div><hr>
+<span class="post-footer">
+<p>This post is also available on Urbit, where you can post comments. Join <b><a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a></b> and open the Networked Subject notebook. <b><a href="https://urbit.org/getting-started"> Boot a free comet</a></b> or <a href="/buy"><a href="/buy"><b>Buy a planet with Bitcoin</a></b><img src="/img/btc-tiny.png">.</p>
+</span> 
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
@@ -1550,9 +1442,12 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 </div>
 	</main>
 
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
-		</p>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+	<img src="/img/by-sa.svg" height=24px width=auto></a>
+	<p><a href="/privacy">Privacy</a> | <a href="/ts">Terms</a> | <a href="/canary">♪🐦</a></p>
+	<p> 2020-2022 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;">~sitful-hatred | <a href="https://subject.network">Networked Subject</a>
+<br></p>
 	</footer>
 
 

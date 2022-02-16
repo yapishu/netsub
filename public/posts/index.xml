@@ -6,8 +6,51 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Sat, 19 Jun 2021 20:58:40 -0500</lastBuildDate>
+		<lastBuildDate>Thu, 04 Nov 2021 14:00:13 -0500</lastBuildDate>
 		<atom:link href="https://subject.network/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Updates &amp; announcements: Late 2021</title>
+			<link>https://subject.network/posts/updates-announcements/</link>
+			<pubDate>Thu, 04 Nov 2021 14:00:13 -0500</pubDate>
+			
+			<guid>https://subject.network/posts/updates-announcements/</guid>
+			<description>This blog has been quiet for a few months, but you shouldn&amp;rsquo;t confuse that with a lack of activity.
+I was awarded the opportunity to fulfill a grant for the Urbit Foundation, doing writing for urbit.org. You can see the first results here &amp;ndash; the Star operators&amp;rsquo; guide and Galaxy operators&amp;rsquo; guide, on the new Operators microsite. During the summer I was very graciously hosted on an episode of The Stack, a podcast about Urbit.</description>
+			<content type="html"><![CDATA[<p><img src="/posts/updates-announcements/cover.gif" alt=""></p>
+<p>This blog has been quiet for a few months, but you shouldn&rsquo;t confuse that with a lack of activity.</p>
+<p>I was awarded the opportunity to fulfill a grant for the Urbit Foundation, doing writing for urbit.org. You can see the first results here &ndash; the <a href="https://operators.urbit.org/guides/running-a-star">Star operators&rsquo; guide</a> and <a href="https://operators.urbit.org/guides/running-a-galaxy">Galaxy operators&rsquo; guide</a>, on the new <a href="https://operators.urbit.org/">Operators</a> microsite. During the summer I was very graciously hosted on an episode of <a href="https://soundcloud.com/user-628294386/networked-subject">The Stack</a>, a podcast about Urbit. I worked with <code>~master-forwex</code> on producing a Docker image and documentation for the <a href="https://hub.docker.com/r/wexpertsystems/urbit-bitcoin-node">Bitcoin full node</a> necessary for <code>%btc-provider</code> &ndash; anyone with a Linux instance and a few hundred gigs of disk space can run this with very little setup. You might have noticed a few changes to this site &ndash; specifically, <a href="https://pay.subject.network">planet sales</a> are now automated, using <a href="https://btcpayserver.org/">BTCPayServer</a> (tutorial forthcoming!). <code>~matwet</code> was migrated to layer 2 as soon as it was made available, and purchasers no longer need to pay <strong>any</strong> transaction costs. Planets on layer 2 are also able to perform all Azimuth transactions (e.g. setting networking keys) without fees by using Tlon&rsquo;s roller.</p>
+<p>Urbit&rsquo;s first convention took place in October; <a href="https://assembly.urbit.org">Assembly</a> was in downtown Austin, Texas, and by all estimations was a great success. The quality of the attending crowd was exceptional, and the event had a bubbling, excited energy. More than once, a stranger introduced himself as a fan of this blog 🙂. Plans were revealed, <a href="https://natareo.github.io/assembly-workshop-2021/">lessons</a> were learned, strategies were developed, and I went home with a nearly manic sense of optimism about what lies ahead.</p>
+<p><a href="/img/grid-1.jpg"><img src="/img/grid-2.jpg#floatright" alt=""></a></p>
+<p>A great deal has changed over the last few months on the network; specifically, the long-awaited launch of <a href="https://urbit.org/blog/rollups">layer 2</a> lays the groundwork for large-scale adoption, and 3rd party software distribution has substantially simplified app developent. After only ~a month, there is a small ecosystem of 3rd party apps for Urbit &ndash; for example:</p>
+<ul>
+<li>A <a href="web+urbitgraph://~paldev/pals">friends list</a> app</li>
+<li>WebRTC <a href="web+urbitgraph://~dister-dotnet-ritpub-sipsyl/urchatfm">video chat</a></li>
+<li>A self-hosted <a href="web+urbitgraph://~tiddys-sammut-posnev/headline">RSS reader</a></li>
+<li><a href="web+urbitgraph://~finmep-lanteb/chess">P2P chess</a></li>
+<li><a href="web+urbitgraph://~bacrys/pokur">Decentralized poker</a> (developed by <code>~matwet</code> resident <code>~hodzod-walrus</code>!)</li>
+</ul>
+<p>You can see new apps announced in <a href="web+urbitgraph://group/~middev/the-forge">The Forge</a>&rsquo;s <code>foundry</code> notebook. Beyond apps, the last few months have featured many other developments:</p>
+<ul>
+<li><a href="https://github.com/urbit/port/">Port</a>, the official GUI client, now has <strong>native Windows support</strong> (no more WSL!)</li>
+<li>Work has begun in earnest on <a href="https://github.com/mopfel-winrux/NockPU">Nock hardware</a> designs</li>
+<li>The <a href="https://groups.google.com/a/urbit.org/g/dev/c/EQVU2-GKo04">Stardust</a> project has culminated in <a href="https://star.market/">star.market</a>, which allows for the conversion of Urbit stars into fungible, fractionalizable ERC20 tokens</li>
+<li>DC Spark&rsquo;s <a href="https://github.com/dcSpark/urbit-visor">Urbit Visor</a> browser extension exposes Urbit&rsquo;s APIs to Chrome browsers and extensions, opening up the possibility of Urbit as a personal backend for off-network web services</li>
+<li>Also by DC Spark: <a href="https://medium.com/dcspark/authenticate-website-users-using-urbit-id-e6dc8c4cb4fa">Authenticate with Urbit</a> for the traditional web</li>
+<li>Native <a href="https://urbit.org/grants/volt-lightning-on-urbit">Lightning network</a> P2P payment support draws near</li>
+<li><code>Mars::Base::10</code>, a TUI <a href="https://github.com/Zaxonomy/mars-base-10">Landscape alternative</a></li>
+<li><a href="https://github.com/hosted-fornet/ursr">Speech recognition</a> for Urbit</li>
+<li>The number of <a href="/planet-sales">providers</a> continues to grow</li>
+<li>A project to build collective ownership tools for <a href="web+urbitgraph://group/~winlud-dirnet/point-dao">galaxy DAOs</a> has been undertaken</li>
+<li>Tlon launched a beautiful <a href="https://network.urbit.org/">network explorer</a></li>
+<li>A <a href="https://www.the-combine.org/">funding ecosystem</a> has begun to take form</li>
+<li><a href="https://tirrel.io">Tirrel</a> is rolling out payment rails frameworks for Urbit apps and planet sales with <a href="web+urbitgraph://~tirrel/studio">Studio</a></li>
+<li>A new Urbit news site, <a href="https://orbisledger.news/">The Orbis Ledger</a>, was launched by the hosts of <a href="https://soundcloud.com/user-628294386">The Stack</a> podcast</li>
+<li>Several other not-yet-public major projects will be announced soon</li>
+</ul>
+<p>Things are now happening so quickly that I&rsquo;ve had to update this draft repeatedly before publishing. This is only beginning; Urbit is approaching escape velocity. See you on Mars.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>Essay: A Topiary</title>
@@ -20,8 +63,6 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
 			<content type="html"><![CDATA[<p><img src="/img/topiary.gif" alt=""></p>
 <p>This isn&rsquo;t a proper post, but rather a small announcement. I recently wrote <a href="https://urbit.org/blog/a-topiary/">an essay</a> that was published on the urbit.org blog, which I will link here rather than repost. It is a modest attempt at contextualizing Urbit within the history of hypertext and hypermedia, and in particular their relation to <a href="/posts/graph-store/">%graph-store</a>.</p>
 <p>A big thank you to all those who provided feedback and edited it &ndash; particularly Matt, L, James and Hadden.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -31,52 +72,24 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
 			<pubDate>Fri, 28 May 2021 21:15:07 -0500</pubDate>
 			
 			<guid>https://subject.network/posts/btc-wallet-config/</guid>
-			<description>The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &amp;ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest. Think CashApp &amp;ndash; enter a handle, send money &amp;ndash; but you own the whole stack.</description>
+			<description>Late 2021 Note: This guide is now largely outmoded; %btc-wallet now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.    The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &amp;ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest.</description>
 			<content type="html"><![CDATA[<p><img src="/img/btc-prov.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: This guide is now largely outmoded; <code>%btc-wallet</code> now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.</th>
+</tr>
+</thead>
+</table>
 <p>The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to <code>~sampel-palnet</code>, and Urbit takes care of the rest. Think CashApp &ndash; enter a handle, send money &ndash; but you own the whole stack.</p>
-<p>Urbit&rsquo;s implementation derives an xPub address from your ship&rsquo;s master ticket. An xPub (extended public key) is like a seed to generate new addresses for every transaction &ndash; what is called a hierarchical deterministic wallet (HD wallet). Your ship&rsquo;s master ticket is cryptographic proof of ownership of your address on the network, and is now the seed for all the bitcoin addresses you will generate in the course of transacting. On top of systemic elegance, this is a great boon to financial privacy &ndash; by creating a different address every time you receive funds, it makes it much more difficult for an observer to tell how much money you have or who is sending it to you. By connecting to a node you trust or run yourself, nobody sees a connection between wallet addresses and IP addresses. Urbit takes care of all of this transparently.</p>
+<p>Urbit&rsquo;s implementation derives an xPub address from your ship&rsquo;s master ticket. An xPub (extended public key) is like a seed to generate new addresses for every transaction &ndash; what is called a hierarchical deterministic wallet (HD wallet). Your ship&rsquo;s master ticket is cryptographic proof of ownership of your address on the network, and is now the seed for all the bitcoin addresses you will generate in the course of transacting. On txop of systemic elegance, this is a great boon to financial privacy &ndash; by creating a different address every time you receive funds, it makes it much more difficult for an observer to tell how much money you have or who is sending it to you. By connecting to a node you trust or run yourself, nobody sees a connection between wallet addresses and IP addresses. Urbit takes care of all of this transparently.</p>
 <p>Urbit&rsquo;s bitcoin implementation is pretty straightforward to understand. A provider runs a full node with a specific stack of bitcoin software. The provider then configures <code>%btc-provider</code> on a ship to relay information to and from the full node. Normal pilots run <code>%btc-wallet</code> on their ships, and point the wallet at the provider&rsquo;s ship. Your ship&rsquo;s wallet talks to your provider, and your provider talks to the full node.</p>
 <p><img src="/img/btc/prov.jpg" alt=""></p>
 <p>This tutorial has two halves &ndash;  connecting a ship to a provider, and connecting your provider to an operational full node. If you do not already have an Electrs full node stack set up, see the <a href="/posts/pi-fullnode-urbit/#bitcoind">previous bitcoin tutorial</a> for instructions. If you are just trying to connect your wallet to an existing provider, you can skip the second section.</p>
 <h2 id="connecting-a-ship-to-a-provider">Connecting a ship to a provider</h2>
 <p>If you just want to connect your ship to somebody&rsquo;s provider, the process is very simple.</p>
-<p>Start your wallet:</p>
-<div class="window">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      urbit - ~/urbit/sampel-palnet
-    </div>
-    <div class="termdojo">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-wallet</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
 <p><img src="/img/btc/icon.png" alt=""></p>
-<p>A bright orange bitcoin tile will appear in Landscape next to your clock &ndash; click on it, and enter the <code>@p</code> of your provider.</p>
+<p>A bright orange bitcoin tile is available in your system menu &ndash; click on it, and enter the <code>@p</code> of your provider.</p>
 <p><img src="/img/btc/provnode.png" alt=""></p>
 <p>This means it&rsquo;s working 🙂</p>
 <p>You will be prompted for your master ticket (you only have to set this up one time). Your master ticket will allow you to derive your xPub key.</p>
@@ -144,16 +157,13 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
         <li>~sampel-palnet:dojo>&nbsp;=network&nbsp;%main</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-wallet</li>
+        <li>~sampel-palnet:dojo>&nbsp;|rein&nbsp;%bitcoin&nbsp;[&&nbsp;%btc-provider]</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-provider</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%set-credentials&nbsp;api-url='http://addresshere'&nbsp;network]</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-wallet|command&nbsp;[%set-provider&nbsp;provider]</li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%set-credentials&nbsp;api-url='http://full.node.address.here:50002'&nbsp;network]</li>
+        <li></li>
         
         
         <li>&nbsp;</li>
@@ -169,7 +179,7 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
   </div>
 
 <p><img src="/img/btc/1.png" alt=""></p>
-<p>Return to <code>~sampel</code>'s Landscape and note the new bitcoin tile!</p>
+<p>Return to <code>~sampel</code>'s Landscape and click the Bitcoin tile to enter your new provider.</p>
 <p>Let&rsquo;s test it &ndash; click the tile and enter the provider&rsquo;s <code>@p</code>. Follow the instructions in the previous section to get your xPub address from Bridge or another wallet.</p>
 <p>If you want to whitelist your ship&rsquo;s <code>%kids</code> (ie planets your star has spawned or your moons), enter:</p>
 <div class="window">
@@ -191,7 +201,7 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%add-whitelist&nbsp;%kids&nbsp;~]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-whitelist&nbsp;%kids&nbsp;~]</li>
         
         
         <li>&nbsp;</li>
@@ -226,7 +236,7 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%add-whitelist&nbsp;[%users&nbsp;users=(sy&nbsp;~[~wallet-hodler])]]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-whitelist&nbsp;[%users&nbsp;users=(sy&nbsp;~[~wallet-hodler])]]</li>
         
         
         <li>&nbsp;</li>
@@ -262,7 +272,7 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%add-whitelist&nbsp;[%groups&nbsp;groups=(sy&nbsp;~[[~sampel&nbsp;%group-name]])]]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-whitelist&nbsp;[%groups&nbsp;groups=(sy&nbsp;~[[~sampel&nbsp;%group-name]])]]</li>
         
         
         <li>&nbsp;</li>
@@ -283,8 +293,6 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
 <hr>
 <p>By the way, I have to brag &ndash; I am pretty sure I set up the first operational provider on the livenet, and facilitated its first transaction; a few weeks in February well-spent!</p>
 <p><img src="/img/btc/4.png" alt=""></p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -294,9 +302,15 @@ A big thank you to all those who provided feedback and edited it &amp;ndash; par
 			<pubDate>Fri, 23 Apr 2021 18:13:19 -0500</pubDate>
 			
 			<guid>https://subject.network/posts/urbit-windows-binaries/</guid>
-			<description>Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.
-As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &amp;ndash; the source of two previous tutorials on this blog.</description>
+			<description>Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    Last month, a PR was published by locpyl-tidnyd to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.</description>
 			<content type="html"><![CDATA[<p><img src="/img/winbin/header.gif" alt=""></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: This guide is now largely outmoded; Urbit now has official Windows binaries, and <a href="https://github.com/urbit/port/releases">Port</a> now has a native Windows installer</th>
+</tr>
+</thead>
+</table>
 <p><a href="https://github.com/urbit/urbit/pull/4675">Last month,</a> a PR was published by <code>locpyl-tidnyd</code> to the Urbit Github, containing instructions and a build environment for the compilation of static, Windows-native Urbit executables(!), for the eventual purpose of an official Windows binary distribution. I am frankly amazed that this is even possible.</p>
 <p>As somebody who has encouraged many friends to try out a comet, the biggest hurdle has been convincing them to set up a Linux environment &ndash; the source of <a href="http://localhost:1313/posts/urbit-wsl2/">two</a> previous <a href="http://localhost:1313/posts/urbit-windows-docker/">tutorials</a> on this blog. WSL2 is a fabulous tool but still veers toward the geekier side of things, and ordinary people cannot be blamed for wanting a simpler method.</p>
 <p>This achievement is pulled off using <a href="https://www.msys2.org/">MSYS2</a>, a fork of <a href="https://www.cygwin.com/">Cygwin</a>, and <a href="https://sourceforge.net/projects/mingw/">MinGW</a>, a Windows port of <code>gcc</code>. The codebase for <code>vere</code> was also ported to <code>mingw</code> by <code>~locpyl-tidnyd</code>. This tutorial will walk you through the steps necessary to build Windows-native binaries, and execute them in an ordinary command prompt.</p>
@@ -575,8 +589,6 @@ As somebody who has encouraged many friends to try out a comet, the biggest hurd
 <h2 id="addendum">Addendum</h2>
 <p>The process of downloading and compiling your ship is significantly slower than on a Linux machine in my experience, even compared to running a ship on WSL2. That said, it was still totally functional if slightly less responsive.</p>
 <p>While I have successfully tested and used this Windows build, I cannot guarantee their stability &ndash; these have not been released into production, I assume for this reason. I would not recommend booting a planet with this just yet, but this should be replaced by an official release in the near future.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -870,8 +882,6 @@ As somebody who has encouraged many friends to try out a comet, the biggest hurd
   </div>
 
 <p>The latter type of firewall is a little less uniform, and I can&rsquo;t provide a universal guide here, but you can take a look at the example of Oracle&rsquo;s firewall <a href="https://subject.network/posts/free-cloud-oracle/#configuring-software">here</a>. The main thing to keep in mind is that you want to allow UDP ingress traffic on whatever your ames port is, or the port range it uses.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -938,8 +948,6 @@ When I polled a chat group about their favorite recent improvements and features
 <p>(<em>image credit <code>~fabled-faster</code></em>)</p>
 <hr>
 <p>To end with, I wanted to link a <a href="https://groups.google.com/a/urbit.org/g/dev/c/bdlPPnaccMc/m/icOJCcIwBwAJ">recent discussion</a> on the <code>urbit-dev</code> mailing list (if you&rsquo;re interested in closely following this project, there is no better way). The OP rightly points out that there seem to be many urbits &ndash; the original project, the one that exists, and the one that will exist &ndash; and that this can get in the way of understanding what it <em>is</em>. A thoughtful and gracious conversation follows, touching on many different perspectives on the topic. Recommended for weekend reading.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -949,8 +957,15 @@ When I polled a chat group about their favorite recent improvements and features
 			<pubDate>Sun, 07 Mar 2021 13:10:01 -0600</pubDate>
 			
 			<guid>https://subject.network/posts/urbit-windows-docker/</guid>
-			<description>Introduction We&amp;rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.</description>
+			<description>Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    Introduction We&amp;rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.</description>
 			<content type="html"><![CDATA[<p><img src="/img/win-docker/docker-header.gif" alt=""></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: This guide is now largely outmoded; Urbit now has official Windows binaries, and <a href="https://github.com/urbit/port/releases">Port</a> now has a native Windows installer</th>
+</tr>
+</thead>
+</table>
 <h2 id="introduction">Introduction</h2>
 <p>We&rsquo;ve <a href="/posts/urbit-wsl2/">previously</a> covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, <code>~botter-nidnul</code> <a href="https://gist.github.com/botter-nidnul/bc55769afe006de6f93b27390e5d1267">wrote up a guide</a> to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.</p>
 <p>Docker is a bit like running a virtual machine &ndash; for our purposes, just think of it as a tiny OS inside your OS that exists to run one application (here, also an OS). These are called containers, and they have a few advantages over traditional VMs &ndash; notably, they&rsquo;re very easy to copy to and from other machines, and you can modify their configuration as much as you want without screwing up the host device. If you break something and can&rsquo;t fix it, you can just delete the container and reinstall it. It&rsquo;s pretty handy for running web services, and now you can run a ship inside of one without too much setup.</p>
@@ -1163,8 +1178,6 @@ When I polled a chat group about their favorite recent improvements and features
 <ul>
 <li>If your urbit won&rsquo;t restart, check out <a href="https://gist.github.com/botter-nidnul/bc55769afe006de6f93b27390e5d1267#possible-errors">~botter&rsquo;s</a> solution for deleting the <code>.vere.lock</code> file inside your <code>\urbit\_data</code> folder.</li>
 </ul>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -2013,6 +2026,12 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
         <li>$>&nbsp;git&nbsp;clone&nbsp;https://github.com/romanz/electrs</li>
         
         
+        <li>$>&nbsp;git&nbsp;submodule&nbsp;init</li>
+        
+        
+        <li>$>&nbsp;git&nbsp;submodule&nbsp;update</li>
+        
+        
         <li>$>&nbsp;cd&nbsp;electrs</li>
         
         
@@ -2389,7 +2408,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
     </div>
   </div>
 
-<p>Once booted, mount clay:</p>
+<p>Continuing:</p>
 <div class="window">
     <div class="titlebar">
       <div class="buttons">
@@ -2409,133 +2428,16 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|mount&nbsp;%</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
-<p>Open another terminal now:</p>
-<div class="window" width="80%">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      terminal: ~
-    </div>
-    <div class="termwin">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>$>&nbsp;git&nbsp;clone&nbsp;https://github.com/timlucmiptev/btc-agents</li>
-        
-        
-        <li>$>&nbsp;cd&nbsp;btc-agents</li>
-        
-        
-        <li>$>&nbsp;./install.sh&nbsp;/home/[yourname]/zod</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
-<p>Now let&rsquo;s let our ship know about the new files:</p>
-<div class="window">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      urbit - sampel-palnet
-    </div>
-    <div class="termdojo">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;|commit&nbsp;%home</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
-<p>You should see the dojo print all the new file names. Continuing:</p>
-<div class="window">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      urbit - sampel-palnet
-    </div>
-    <div class="termdojo">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;=provider&nbsp;~zod</li>
+        <li>~sampel-palnet:dojo>&nbsp;=provider&nbsp;~sampel</li>
         
         
         <li>~sampel-palnet:dojo>&nbsp;=network&nbsp;%main</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-wallet</li>
+        <li>~sampel-palnet:dojo>&nbsp;|rein&nbsp;%bitcoin&nbsp;[&&nbsp;%btc-provider]</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-provider</li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;:btc-wallet|command&nbsp;[%set-provider&nbsp;provider]</li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%set-credentials&nbsp;api-url='http://nanopi.ip.address.here:50002'&nbsp;network]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%set-credentials&nbsp;api-url='http://addresshere'&nbsp;network]</li>
         
         
         <li>&nbsp;</li>
@@ -2577,7 +2479,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
         <li>dojo>&nbsp;=xpubmain&nbsp;'zpub6rFR7y4Q2AijBEqTUquhVz398htDFrtymD9xYYfG1m4wAcvPhXNfE3EfH1r1ADqtfSdVCToUG868RvUUkgDKf31mGDtKsAYz2oz2AGutZYs'</li>
         
         
-        <li>dojo>&nbsp;:btc-wallet|command&nbsp;[%add-wallet&nbsp;xpubmain&nbsp;fprint&nbsp;~&nbsp;[~&nbsp;8]&nbsp;[~&nbsp;1]]</li>
+        <li>dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-wallet&nbsp;xpubmain&nbsp;fprint&nbsp;~&nbsp;[~&nbsp;8]&nbsp;[~&nbsp;1]]</li>
         
         
         <li>dojo>&nbsp;.^((unit&nbsp;@ud)&nbsp;%gx&nbsp;/=btc-wallet=/balance/[xpubmain]/noun)</li>
@@ -2598,7 +2500,7 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 <p>This should print out the balance of the test wallet (which is 0).</p>
 <p><img src="/img/btc-complete.png" alt=""></p>
 <p>You&rsquo;ve made it! In the future, you should only need to update the existing software on this pi to make it a provider for your ship.</p>
-<p>Recall that this is still pre-release software! You won&rsquo;t be able to control your wallets from within Landscape yet. You can modify the above commands, or check out the <a href="https://github.com/timlucmiptev/btc-agents/tree/master/sur">source code</a> to get a better idea of what you can do from the dojo.</p>
+<p>Recall that this is still pre-release software! You won&rsquo;t be able to control your wallets from within Landscape yet. You can modify the above commands, or check out the <a href="https://github.com/timlucmiptev/btc-agents/tree/master/sur">source code</a> to get a better idea of what you can do from the dojo. <strong>Update Oct 2021</strong>: This is now production software enabled by default on all Urbit ships.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>If you lose power or restart your pi, you can restart the full node stack by starting the <code>mainnet-start.sh</code> script. I tried putzing around with systemd modules but just ended up breaking stuff; these will probably be part of a future iteration anyway.</p>
 <p>In all, this process took me about three weeks to complete (mostly dragged out by tinkering on weekends and a couple of mishaps that required re-indexing). Knowing what I know now, it would probably take a couple of days to start over from scratch, mostly taken up by downloading and indexing 300+ GB of blockchain &ndash; if you already have a copy, this shouldn&rsquo;t take more than an afternoon. Hopefully my stumbles will help you avoid my mistakes.</p>
@@ -2623,8 +2525,6 @@ Introduction As you may have heard, Urbit is due to receive support for Bitcoin 
 <p><a href="https://github.com/kdmukai/raspi4_bitcoin_node_tutorial">RPi4 full node tutorial</a></p>
 </li>
 </ul>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -2845,8 +2745,6 @@ reverse_proxy 127.0.0.1:8080
 <p>If you restart Caddy in the future, you will need to use this command to point Caddy at the configuration file you generated. You can turn off Caddy at any time with <code>caddy stop</code>.</p>
 <p>If you&rsquo;re comfortable with it, you can also add a <code>systemd</code> service to <a href="https://github.com/caddyserver/dist/tree/master/init">automatically run Caddy</a>. Make sure the user running the service can read your <code>Caddyfile</code>!</p>
 <p>One last note &ndash; if you&rsquo;re using Cloudflare, make sure you set your TLS on Cloudflare to &ldquo;Full (strict)&rdquo;, or your site will not be connectable. This is an issue with Caddy that manifests as &ldquo;too many redirect&rdquo; errors, but it&rsquo;s a simple fix.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -3078,8 +2976,6 @@ Backend is coming along nicely too</p>
 </blockquote>
 <hr>
 <p>Big thanks once again to ~mister. You can read more about Tacen at the <a href="https://tacen.com/">official website</a>, join the <a href="https://t.me/tacen_app">Telegram group</a>, or the Urbit group at <code>~mister-todteg/tacen</code>.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -3513,8 +3409,6 @@ S3 is a service offered by Amazon&amp;rsquo;s web service division that allows y
 <p>Click save, go to <code>Options -&gt; Activate</code> next to the name of the bucket, and you have completed this tutorial! Head over to a chat and look in the text field you type into &ndash; there should be a paperclip icon on the right. Click it to add attachments.</p>
 <hr>
 <p>I hope you found this useful; thanks again to <code>~socsel</code> for the assistance. If you run into any difficulties, feel free to reach out in the chat room at <code>~matwet/networked-subject</code>.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -3524,8 +3418,15 @@ S3 is a service offered by Amazon&amp;rsquo;s web service division that allows y
 			<pubDate>Fri, 18 Dec 2020 17:57:59 -0600</pubDate>
 			
 			<guid>https://subject.network/posts/free-cloud-oracle/</guid>
-			<description>Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&amp;rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &amp;ndash; typically on the order of 5-10USD/month.</description>
+			<description>Late 2021 Note: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications    Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter.</description>
 			<content type="html"><![CDATA[<p><img src="/img/oracle-cover.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications</th>
+</tr>
+</thead>
+</table>
 <h2 id="background">Background</h2>
 <p>The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month.</p>
 <p>This evening a comet in the <code>urbit-community</code> watercooler chat let everyone know that they had successfully used the Oracle Cloud VM free tier to host an Urbit without fees. This means we can get the advantages of a hosted ship without the costs associated with most providers. Boot a comet on here, and you&rsquo;ve got a totally free cloud-hosted introduction to Urbit! After testing it, I can say that the performance of the VM is more than enough to handle an Urbit.</p>
@@ -4087,8 +3988,6 @@ S3 is a service offered by Amazon&amp;rsquo;s web service division that allows y
   </div>
 
 <p>See more official instructions for using your urbit <a href="https://urbit.org/using/operations/using-your-ship/">here</a>.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -4274,8 +4173,6 @@ sent 0.001 BTC on X date, and another app on <code>~sitful</code>'s ship could q
 </blockquote>
 <hr>
 <p>Check out the <a href="https://grants.urbit.org/bounties">Urbit grant bounties</a> for more projects worthy of some attention. Big thanks again to <code>~timluc</code> for his generosity and time!</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -4285,9 +4182,16 @@ sent 0.001 BTC on X date, and another app on <code>~sitful</code>'s ship could q
 			<pubDate>Wed, 25 Nov 2020 17:18:36 -0600</pubDate>
 			
 			<guid>https://subject.network/posts/urbit-wsl2/</guid>
-			<description>If you&amp;rsquo;re curious about Urbit but don&amp;rsquo;t know anything about running Linux binaries or don&amp;rsquo;t have a Mac, you don&amp;rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
-This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don&amp;rsquo;t need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands.</description>
+			<description>Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    If you&amp;rsquo;re curious about Urbit but don&amp;rsquo;t know anything about running Linux binaries or don&amp;rsquo;t have a Mac, you don&amp;rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.
+This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running.</description>
 			<content type="html"><![CDATA[<p><a href=""><img src="/img/wsl-urbit.png" alt=""></a></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: This guide is now largely outmoded; Urbit now has official Windows binaries, and <a href="https://github.com/urbit/port/releases">Port</a> now has a native Windows installer</th>
+</tr>
+</thead>
+</table>
 <p>If you&rsquo;re curious about Urbit but don&rsquo;t know anything about running Linux binaries or don&rsquo;t have a Mac, you don&rsquo;t need to feel left out in the cold; Urbit runs just fine in WSL2 on Windows 10.</p>
 <p>This tutorial will guide you through each step necessary to set up WSL and get an Urbit comet up and running. You don&rsquo;t need to buy an address or learn any bash, you can just follow these directions and copy-paste the terminal commands.</p>
 <p>Once you have Urbit installed for the first time, it requires very little effort to get it running. This process will take a bit of time, but once you&rsquo;re set up you can control your comet in your web browser.</p>
@@ -4696,8 +4600,6 @@ This tutorial will guide you through each step necessary to set up WSL and get a
 <p>The best place for support off the network is the official <a href="https://discord.gg/n9xhMdz">Discord</a> server. Feel free to reach out to me <a href="https://twitter.com/_matwet">on Twitter</a> if you&rsquo;re having any  trouble as well &ndash; I can&rsquo;t guarantee timely support, but I am happy to help if I can.</p>
 <hr>
 <p>You can even cloud host your ship for free, with <a href="https://www.oracle.com/cloud/free/">Oracle Cloud VM</a>&rsquo;s free tier. If you want instructions for  setting up a server via SSH, you can do so via <a href="https://subject.network/posts/free-cloud-oracle/">this tutorial</a>. This is a great next step!</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -4747,8 +4649,6 @@ In brief, %graph-store is a flexible, interoperable database format purpose-buil
 <h3 id="external-links">External links</h3>
 <p>Proposal document &ndash; <a href="https://docs.google.com/document/d/1-Gwfg442kV3cdfG7NnWPEf2TMa3uLUTAKkZD70ALZkE/edit">https://docs.google.com/document/d/1-Gwfg442kV3cdfG7NnWPEf2TMa3uLUTAKkZD70ALZkE/edit</a></p>
 <p>Developer Call presentation &ndash; <a href="https://www.youtube.com/watch?v=E4DFuAZQ32Y">https://www.youtube.com/watch?v=E4DFuAZQ32Y</a></p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -4830,8 +4730,6 @@ You can join ~matwet/networked-subject, the public group associated with this bl
 <hr>
 <p><img src="/img/meme-palfun-foslup-2.jpg" alt=""></p>
 <p><code>~palfun-foslup</code> <code>(?)</code></p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -4896,8 +4794,6 @@ Note that this process is not necessary should you opt for hosted services, or s
 <p>You will be given a file named &lsquo;[ship-name]-1.key&rsquo; &ndash; you will use this to boot your ship for the first time, but <strong>only</strong> the first time.</p>
 <p>Congrats on making it to the end! You now have an urbit and the keys to boot and manage it. You&rsquo;re ready.</p>
 <p>Instead of writing the installation instructions out, I advise you to proceed to the <a href="https://urbit.org/using/install/#boot-your-planet">official</a> instructions provided by Tlon.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -5093,8 +4989,6 @@ Note that this is not a client for downloading torrents; think of it like a torr
 <p>In the comments of %serval, <code>~palfun</code> outlines a few of the technical hurdles that exist before an urbit torrent <em>client</em> is feasible (e.g &gt;2GB loom, a vane for raw TCP). This seems like it could be a possibility one day, but maybe not in the immediate future.</p>
 <p>For the moment, with Urbit lacking a proper package manager, so installing this on your ship is a bit more involved than using it on <code>~paldev</code> &ndash; I haven&rsquo;t tried it, but I&rsquo;ll update this post with instructions if it&rsquo;s reasonably doable.</p>
 <p>What I find most appealing about this project is the prospect of a simple community torrent tracker that you can spin up to go with your group chat; it demonstrates what kind of social software becomes possible when everybody has a server, and points to a new kind of localized internet; and it showcases the power of Urbit as a fully programmable computer that can interface with the rest of the internet. I find this kind of thing very exciting. Anyway, I uploaded a folder of cool French comics by a guy named Lewis Trondheim, you should hop on and grab them.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -5271,9 +5165,7 @@ for i in prefix:
 		urbit_word = i+j
 		if urbit_word in words:
 			print(urbit_word)
-</code></pre><hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
-]]></content>
+</code></pre>]]></content>
 		</item>
 		
 		<item>
@@ -5389,8 +5281,6 @@ Introduction First a brief explainer &amp;ndash; S3 (Simple Storage Service) is 
 <p>Just click this, select an item to upload; if you did it correctly, you should be able to post images to chats, meaning your urbit has a big fat disk added to it (If you see the image icon but can&rsquo;t post, double check your CORS settings).</p>
 <p>If you want to look through the stuff you&rsquo;ve uploaded through your urbit, you can go to the management page on your DO dashboard and select the space you&rsquo;re using. It will give you a directory named after your ship, and inside of that a listing of all files you&rsquo;ve uploaded, where you can manage them.</p>
 <p><a href=""><img src="/img/spaces-5.png" alt=""></a></p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -6160,8 +6050,6 @@ Behind the scenes, there are a couple of extra features &amp;ndash; I wanted to 
 <p>And we&rsquo;re finished! A handy little server that conveniently demonstrates different ways to proxy our urbit ship. This probably was a little less specific than it could have been in places, but if you have any questions, feel free to reach out to me on the network at <code>~sitful-hatred</code>.</p>
 <p>An addendum here; you may have noticed that the connection between my browser and VPS is encrypted, but that the connection between my home PC urbit and VPS is not. I noticed this too, and I don&rsquo;t intend to keep it that way forever. Setting up a self-signed encrypted connection between my home PC and my VPS is on the list of weekend projects, and whenever I get it figured out I will update this post!</p>
 <p><em>Edit: The way i eventually addressed this was by running <a href="/posts/caddyserver-urbit-tls/">Caddy</a> on my home PC directly, and pointing the subdomain at my home IP. Caddy makes TLS and reverse proxies significantly simpler than these instructions, check it out!</em></p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -6488,8 +6376,6 @@ For about the last year or so, I&amp;rsquo;ve run my urbit planet ~sitful-hatred
   </div>
 
 <p>Urbit piers are completely portable; as long as you have the static binaries on another device and it&rsquo;s not trying to run in two places at once, you can simply pick up your data and move it with a copy operation. This is one of the reasons I wanted to devote a disk to my ship &ndash; I can swap it in and out of devices I may go through in the future, but maintain a physical token of my digital homestead. One day we&rsquo;ll all have e-ink mesh-networked urbit devices that run on solar panels and Optane drives, but for now I have my <code>+code</code> and an SSD.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -6592,8 +6478,6 @@ introduction Urbit is a personal server. that is to say, it&amp;rsquo;s a comput
 <p>Tlon is <a href="https://grants.Urbit.org/">incentivizing</a> the community development of Urbit by granting address space in exchange for features. For instance, different components of Bitcoin support are being contributed in exchange for grants of stars. This meetup is also part of the grant program. It&rsquo;s worth taking a look!</p>
 </blockquote>
 <p>Feel free to message me on the network at <code>~sitful-hatred</code>. See you on Mars.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		
@@ -6618,8 +6502,6 @@ Work stops at sunset. Darkness falls over the building site. The sky is filled w
 <p>Cities and the Sky 3</p>
 <p><em>Invisible Cities</em></p>
 <p>Italo Calvino</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 ]]></content>
 		</item>
 		

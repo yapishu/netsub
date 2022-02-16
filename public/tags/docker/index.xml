@@ -18,7 +18,7 @@
       <pubDate>Sun, 07 Mar 2021 13:10:01 -0600</pubDate>
       
       <guid>https://subject.network/posts/urbit-windows-docker/</guid>
-      <description>Introduction We&amp;rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.</description>
+      <description>Late 2021 Note: This guide is now largely outmoded; Urbit now has official Windows binaries, and Port now has a native Windows installer    Introduction We&amp;rsquo;ve previously covered a method for running Urbit on a Windows PC, but it could be a little onerous for a novice. Specifically, it still involved a decent amount of command line Linux administration. Fortunately, it turns out there is an easier way to do things; recently, ~botter-nidnul wrote up a guide to running Urbit inside a container with Docker Desktop, and with his blessing I am going to elaborate on it with step-by-step instructions.</description>
     </item>
     
   </channel>

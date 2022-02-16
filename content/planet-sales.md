@@ -21,7 +21,7 @@ Be sure to check whether your sponsor is online before purchase, or you will hav
 | [Nodestead](https://www.nodestead.dev/) | Unknown | Unknown | Unknown | Full hosting provider & planet sales |
 | [OpenSea](https://opensea.io/collection/urbit-id) | Var. | NA | No | Make sure the sponsor is online! ETH only |
 | [Planet.market](https://planet.market/) | ~20USD | NA | No | ETH only |
-| [ThirdEarth](https://third.earth/) | Unkown | Unknown | Unknown | Full hosting provider |
+| [ThirdEarth](https://third.earth/) | Incl. w/ subscription | 12/8USD | NA | Full hosting provider, CC |
 | [Tlon](https://tlon.io/) | Forthcoming | Forthcoming | Forthcoming | Full hosting provider ([Waitlist referral](https://link.tlon.io/w/e6b72706))|
 | [urbitex](https://urbitex.io/) | Var. | N/A | N/A | Planet and star sale market |
 | [UrbitHost](https://urbithost.com/landing) | Incl. w/ subscription | 15/6USD (Planets/comets) | NA | Full hosting provider + BYOP, CC payment |

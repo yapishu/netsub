@@ -44,7 +44,7 @@ Networked Subject is one of many independent providers that offer planets and se
 
 A planet is an address on the Urbit network meant for an individual instance of Urbit OS, which is cryptographically owned by a person, like Bitcoin. A planet acts as a personal server with an encrypted, P2P stack underpinning all software running on it. A planet has a unique name like `~fanner-ronwyx`; it's like a combination of an email and IP address, and a computer that belongs solely to you forever.
 
-You don't need a planet to try Urbit -- you can launch a free identity called a [comet](https://urbit.org/using/install/#booting-a-comet), that can do *almost* everything a planet can. Download Port, the official and user-friendly client [here](https://urbit.org/getting-started/) for MacOS and Linux. Additional instructions for manual piloting are available for [macOS, Linux](https://urbit.org/using/install/#macos-and-linux), [Windows](/posts/urbit-windows-binaries/), and running a ship on a [remote server](/posts/free-cloud-oracle/) for free.
+You don't need a planet to try Urbit -- you can launch a free identity called a [comet](https://urbit.org/using/install/#booting-a-comet), that can do *almost* everything a planet can. Download Port, the official and user-friendly client [here](https://urbit.org/getting-started/) for MacOS and Linux. Additional instructions for manual piloting are available for [macOS, Windows & Linux](https://urbit.org/using/install/#macos-and-linux), and running a ship on a [remote server](/posts/free-cloud-oracle/) for free.
 
 ### Contact
 

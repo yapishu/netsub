@@ -7,10 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 19 Jun 2021 20:58:40 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 04 Nov 2021 14:00:13 -0500</lastBuildDate>
     
 	<atom:link href="https://subject.network/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>meta</title>
+      <link>https://subject.network/tags/meta/</link>
+      <pubDate>Thu, 04 Nov 2021 14:00:13 -0500</pubDate>
+      
+      <guid>https://subject.network/tags/meta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>update</title>
+      <link>https://subject.network/tags/update/</link>
+      <pubDate>Thu, 04 Nov 2021 14:00:13 -0500</pubDate>
+      
+      <guid>https://subject.network/tags/update/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>urbit</title>
+      <link>https://subject.network/tags/urbit/</link>
+      <pubDate>Thu, 04 Nov 2021 14:00:13 -0500</pubDate>
+      
+      <guid>https://subject.network/tags/urbit/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>essay</title>
@@ -27,15 +54,6 @@
       <pubDate>Sat, 19 Jun 2021 20:58:40 -0500</pubDate>
       
       <guid>https://subject.network/tags/hypertext/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>urbit</title>
-      <link>https://subject.network/tags/urbit/</link>
-      <pubDate>Sat, 19 Jun 2021 20:58:40 -0500</pubDate>
-      
-      <guid>https://subject.network/tags/urbit/</guid>
       <description></description>
     </item>
     
@@ -81,24 +99,6 @@
       <pubDate>Fri, 28 May 2021 21:15:07 -0500</pubDate>
       
       <guid>https://subject.network/tags/little-wolfur/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>silnem</title>
-      <link>https://subject.network/tags/silnem/</link>
-      <pubDate>Fri, 28 May 2021 21:15:07 -0500</pubDate>
-      
-      <guid>https://subject.network/tags/silnem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>locpyl-tidnyd</title>
-      <link>https://subject.network/tags/locpyl-tidnyd/</link>
-      <pubDate>Fri, 23 Apr 2021 18:13:19 -0500</pubDate>
-      
-      <guid>https://subject.network/tags/locpyl-tidnyd/</guid>
       <description></description>
     </item>
     

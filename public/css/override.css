@@ -252,3 +252,10 @@ border-style: none;
     list-style: none;
   }
   /* termps END */
+
+@font-face {
+  font-family: JetBrainsMono;
+  font-weight: 400;
+  font-style: normal;
+  src: url(../font/JetBrainsMonoReg.woff2) format('woff2');
+} 

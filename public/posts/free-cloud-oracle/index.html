@@ -8,17 +8,17 @@
 	<meta name="theme-color" content="#333">
 	<meta name="msapplication-TileColor" content="#333">
 <meta itemprop="name" content="Free Urbit hosting with Oracle Cloud">
-<meta itemprop="description" content="Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month.">
+<meta itemprop="description" content="Late 2021 Note: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications    Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter.">
 <meta itemprop="datePublished" content="2020-12-18T17:57:59-06:00" />
 <meta itemprop="dateModified" content="2020-12-18T17:57:59-06:00" />
-<meta itemprop="wordCount" content="1928">
+<meta itemprop="wordCount" content="1963">
 <meta itemprop="image" content="https://subject.network/img/oracle-cover.png">
 
 
 
 <meta itemprop="keywords" content="urbit,oracle.cloud,free,hosted," />
 <meta property="og:title" content="Free Urbit hosting with Oracle Cloud" />
-<meta property="og:description" content="Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month." />
+<meta property="og:description" content="Late 2021 Note: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications    Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://subject.network/posts/free-cloud-oracle/" />
 <meta property="og:image" content="https://subject.network/img/oracle-cover.png" />
@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://subject.network/img/oracle-cover.png"/>
 
 <meta name="twitter:title" content="Free Urbit hosting with Oracle Cloud"/>
-<meta name="twitter:description" content="Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month."/>
+<meta name="twitter:description" content="Late 2021 Note: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications    Background The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter."/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -38,7 +38,7 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 
 	<title>Free Urbit hosting with Oracle Cloud</title>
-	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/style.min.4c6a371b83a582a300e51c2f5bc419428ca22003c0c42360a78bf9ec64ace875.css" integrity="sha256-TGo3G4OlgqMA5RwvW8QZQoyiIAPAxCNgp4v57GSs6HU=" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://subject.network/css/override.css">
 </head>
 
@@ -54,6 +54,7 @@
 					
 				<a href="https://subject.network/posts/">Posts</a>
 				<a href="https://subject.network/about/">About</a>
+				<a href="https://subject.network/buy/">₿uy</a>
 
 				</nav>
 			</div>
@@ -65,6 +66,7 @@
 		<ul>
 			<li><a href="https://subject.network/posts/">Posts</a></li>
 			<li><a href="https://subject.network/about/">About</a></li>
+			<li><a href="https://subject.network/buy/">₿uy</a></li>
 		</ul>
 	</div>
 
@@ -77,6 +79,13 @@
 			</header>
 			<div class="content">
 				<p><img src="/img/oracle-cover.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: Oracle now offers a significantly more powerful free-tier package, with up to 4 ARM CPU cores 24GB memory, but availability is limited and difficult to get. The instructions remain largely the same, except that you need to choose Ampere instances, use an Ubuntu default image, and install ARM binaries for the applications</th>
+</tr>
+</thead>
+</table>
 <h2 id="background">Background<a href="#background" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>The two main options for running your Urbit are either to host it on a PC you have at home, or to host it in the cloud in a datacenter. The latter option is appealing thanks to high availability and good connection speed, along with the fact that most people don&rsquo;t have a Linux or Mac computer at home that is always on. A server usually costs a little bit of money, though &ndash; typically on the order of 5-10USD/month.</p>
 <p>This evening a comet in the <code>urbit-community</code> watercooler chat let everyone know that they had successfully used the Oracle Cloud VM free tier to host an Urbit without fees. This means we can get the advantages of a hosted ship without the costs associated with most providers. Boot a comet on here, and you&rsquo;ve got a totally free cloud-hosted introduction to Urbit! After testing it, I can say that the performance of the VM is more than enough to handle an Urbit.</p>
@@ -638,10 +647,11 @@
   </div>
 
 <p>See more official instructions for using your urbit <a href="https://urbit.org/using/operations/using-your-ship/">here</a>.</p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 
-			</div>
+			</div><hr>
+<span class="post-footer">
+<p>This post is also available on Urbit, where you can post comments. Join <b><a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a></b> and open the Networked Subject notebook. <b><a href="https://urbit.org/getting-started"> Boot a free comet</a></b> or <a href="/buy"><a href="/buy"><b>Buy a planet with Bitcoin</a></b><img src="/img/btc-tiny.png">.</p>
+</span> 
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
@@ -662,9 +672,12 @@
 </div>
 	</main>
 
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
-		</p>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+	<img src="/img/by-sa.svg" height=24px width=auto></a>
+	<p><a href="/privacy">Privacy</a> | <a href="/ts">Terms</a> | <a href="/canary">♪🐦</a></p>
+	<p> 2020-2022 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;">~sitful-hatred | <a href="https://subject.network">Networked Subject</a>
+<br></p>
 	</footer>
 
 

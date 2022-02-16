@@ -8,17 +8,17 @@
 	<meta name="theme-color" content="#333">
 	<meta name="msapplication-TileColor" content="#333">
 <meta itemprop="name" content="Configuring your Urbit Bitcoin wallet">
-<meta itemprop="description" content="The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest. Think CashApp &ndash; enter a handle, send money &ndash; but you own the whole stack.">
+<meta itemprop="description" content="Late 2021 Note: This guide is now largely outmoded; %btc-wallet now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.    The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest.">
 <meta itemprop="datePublished" content="2021-05-28T21:15:07-05:00" />
 <meta itemprop="dateModified" content="2021-05-28T21:15:07-05:00" />
-<meta itemprop="wordCount" content="810">
+<meta itemprop="wordCount" content="813">
 <meta itemprop="image" content="https://subject.network/img/btc-prov.jpg">
 
 
 
 <meta itemprop="keywords" content="urbit,bitcoin,btc-wallet,btc-provider,little-wolfur,silnem," />
 <meta property="og:title" content="Configuring your Urbit Bitcoin wallet" />
-<meta property="og:description" content="The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest. Think CashApp &ndash; enter a handle, send money &ndash; but you own the whole stack." />
+<meta property="og:description" content="Late 2021 Note: This guide is now largely outmoded; %btc-wallet now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.    The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://subject.network/posts/btc-wallet-config/" />
 <meta property="og:image" content="https://subject.network/img/btc-prov.jpg" />
@@ -28,7 +28,7 @@
 <meta name="twitter:image" content="https://subject.network/img/btc-prov.jpg"/>
 
 <meta name="twitter:title" content="Configuring your Urbit Bitcoin wallet"/>
-<meta name="twitter:description" content="The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest. Think CashApp &ndash; enter a handle, send money &ndash; but you own the whole stack."/>
+<meta name="twitter:description" content="Late 2021 Note: This guide is now largely outmoded; %btc-wallet now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.    The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to ~sampel-palnet, and Urbit takes care of the rest."/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -38,7 +38,7 @@
 	<link rel="shortcut icon" href="/favicon.ico">
 
 	<title>Configuring your Urbit Bitcoin wallet</title>
-	<link rel="stylesheet" href="https://subject.network/css/style.min.5f66d6bd6751a10ba7350142ac010f4e4c42b5a3f628c93bde75a9a19d70ad5c.css" integrity="sha256-X2bWvWdRoQunNQFCrAEPTkxCtaP2KMk73nWpoZ1wrVw=" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://subject.network/css/style.min.4c6a371b83a582a300e51c2f5bc419428ca22003c0c42360a78bf9ec64ace875.css" integrity="sha256-TGo3G4OlgqMA5RwvW8QZQoyiIAPAxCNgp4v57GSs6HU=" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://subject.network/css/override.css">
 </head>
 
@@ -54,6 +54,7 @@
 					
 				<a href="https://subject.network/posts/">Posts</a>
 				<a href="https://subject.network/about/">About</a>
+				<a href="https://subject.network/buy/">₿uy</a>
 
 				</nav>
 			</div>
@@ -65,6 +66,7 @@
 		<ul>
 			<li><a href="https://subject.network/posts/">Posts</a></li>
 			<li><a href="https://subject.network/about/">About</a></li>
+			<li><a href="https://subject.network/buy/">₿uy</a></li>
 		</ul>
 	</div>
 
@@ -77,50 +79,22 @@
 			</header>
 			<div class="content">
 				<p><img src="/img/btc-prov.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th><strong>Late 2021 Note</strong>: This guide is now largely outmoded; <code>%btc-wallet</code> now comes installed out of the box and does not need to be manually installed; the dojo commands have been updated.</th>
+</tr>
+</thead>
+</table>
 <p>The day has finally arrived: May 27 saw a major update to Urbit, and the public release of a bitcoin wallet and the ability to send and receive payments. Your ship provides an identity layer on top of bitcoin &ndash; you can tell your planet to send money to <code>~sampel-palnet</code>, and Urbit takes care of the rest. Think CashApp &ndash; enter a handle, send money &ndash; but you own the whole stack.</p>
-<p>Urbit&rsquo;s implementation derives an xPub address from your ship&rsquo;s master ticket. An xPub (extended public key) is like a seed to generate new addresses for every transaction &ndash; what is called a hierarchical deterministic wallet (HD wallet). Your ship&rsquo;s master ticket is cryptographic proof of ownership of your address on the network, and is now the seed for all the bitcoin addresses you will generate in the course of transacting. On top of systemic elegance, this is a great boon to financial privacy &ndash; by creating a different address every time you receive funds, it makes it much more difficult for an observer to tell how much money you have or who is sending it to you. By connecting to a node you trust or run yourself, nobody sees a connection between wallet addresses and IP addresses. Urbit takes care of all of this transparently.</p>
+<p>Urbit&rsquo;s implementation derives an xPub address from your ship&rsquo;s master ticket. An xPub (extended public key) is like a seed to generate new addresses for every transaction &ndash; what is called a hierarchical deterministic wallet (HD wallet). Your ship&rsquo;s master ticket is cryptographic proof of ownership of your address on the network, and is now the seed for all the bitcoin addresses you will generate in the course of transacting. On txop of systemic elegance, this is a great boon to financial privacy &ndash; by creating a different address every time you receive funds, it makes it much more difficult for an observer to tell how much money you have or who is sending it to you. By connecting to a node you trust or run yourself, nobody sees a connection between wallet addresses and IP addresses. Urbit takes care of all of this transparently.</p>
 <p>Urbit&rsquo;s bitcoin implementation is pretty straightforward to understand. A provider runs a full node with a specific stack of bitcoin software. The provider then configures <code>%btc-provider</code> on a ship to relay information to and from the full node. Normal pilots run <code>%btc-wallet</code> on their ships, and point the wallet at the provider&rsquo;s ship. Your ship&rsquo;s wallet talks to your provider, and your provider talks to the full node.</p>
 <p><img src="/img/btc/prov.jpg" alt=""></p>
 <p>This tutorial has two halves &ndash;  connecting a ship to a provider, and connecting your provider to an operational full node. If you do not already have an Electrs full node stack set up, see the <a href="/posts/pi-fullnode-urbit/#bitcoind">previous bitcoin tutorial</a> for instructions. If you are just trying to connect your wallet to an existing provider, you can skip the second section.</p>
 <h2 id="connecting-a-ship-to-a-provider">Connecting a ship to a provider<a href="#connecting-a-ship-to-a-provider" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>If you just want to connect your ship to somebody&rsquo;s provider, the process is very simple.</p>
-<p>Start your wallet:</p>
-<div class="window">
-    <div class="titlebar">
-      <div class="buttons">
-        <div class="bclose">
-        </div>
-        <div class="minimize">
-        </div>
-        <div class="zoom">
-        </div>
-      </div>
-      urbit - ~/urbit/sampel-palnet
-    </div>
-    <div class="termdojo">
-      <ul>
-        
-        
-        <li></li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-wallet</li>
-        
-        
-        <li>&nbsp;</li>
-        
-        
-        <li></li>
-        
-        
-        <li></li>
-          
-      </ul>
-    </div>
-  </div>
-
 <p><img src="/img/btc/icon.png" alt=""></p>
-<p>A bright orange bitcoin tile will appear in Landscape next to your clock &ndash; click on it, and enter the <code>@p</code> of your provider.</p>
+<p>A bright orange bitcoin tile is available in your system menu &ndash; click on it, and enter the <code>@p</code> of your provider.</p>
 <p><img src="/img/btc/provnode.png" alt=""></p>
 <p>This means it&rsquo;s working 🙂</p>
 <p>You will be prompted for your master ticket (you only have to set this up one time). Your master ticket will allow you to derive your xPub key.</p>
@@ -188,16 +162,13 @@
         <li>~sampel-palnet:dojo>&nbsp;=network&nbsp;%main</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-wallet</li>
+        <li>~sampel-palnet:dojo>&nbsp;|rein&nbsp;%bitcoin&nbsp;[&&nbsp;%btc-provider]</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;|start&nbsp;%btc-provider</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%set-credentials&nbsp;api-url='http://addresshere'&nbsp;network]</li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-wallet|command&nbsp;[%set-provider&nbsp;provider]</li>
-        
-        
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%set-credentials&nbsp;api-url='http://full.node.address.here:50002'&nbsp;network]</li>
+        <li></li>
         
         
         <li>&nbsp;</li>
@@ -213,7 +184,7 @@
   </div>
 
 <p><img src="/img/btc/1.png" alt=""></p>
-<p>Return to <code>~sampel</code>'s Landscape and note the new bitcoin tile!</p>
+<p>Return to <code>~sampel</code>'s Landscape and click the Bitcoin tile to enter your new provider.</p>
 <p>Let&rsquo;s test it &ndash; click the tile and enter the provider&rsquo;s <code>@p</code>. Follow the instructions in the previous section to get your xPub address from Bridge or another wallet.</p>
 <p>If you want to whitelist your ship&rsquo;s <code>%kids</code> (ie planets your star has spawned or your moons), enter:</p>
 <div class="window">
@@ -235,7 +206,7 @@
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%add-whitelist&nbsp;%kids&nbsp;~]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-whitelist&nbsp;%kids&nbsp;~]</li>
         
         
         <li>&nbsp;</li>
@@ -270,7 +241,7 @@
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%add-whitelist&nbsp;[%users&nbsp;users=(sy&nbsp;~[~wallet-hodler])]]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-whitelist&nbsp;[%users&nbsp;users=(sy&nbsp;~[~wallet-hodler])]]</li>
         
         
         <li>&nbsp;</li>
@@ -306,7 +277,7 @@
         <li></li>
         
         
-        <li>~sampel-palnet:dojo>&nbsp;:btc-provider|command&nbsp;[%add-whitelist&nbsp;[%groups&nbsp;groups=(sy&nbsp;~[[~sampel&nbsp;%group-name]])]]</li>
+        <li>~sampel-palnet:dojo>&nbsp;:btc-provider&nbsp;+bitcoin!btc-provider/command&nbsp;[%add-whitelist&nbsp;[%groups&nbsp;groups=(sy&nbsp;~[[~sampel&nbsp;%group-name]])]]</li>
         
         
         <li>&nbsp;</li>
@@ -327,10 +298,11 @@
 <hr>
 <p>By the way, I have to brag &ndash; I am pretty sure I set up the first operational provider on the livenet, and facilitated its first transaction; a few weeks in February well-spent!</p>
 <p><img src="/img/btc/4.png" alt=""></p>
-<hr>
-<p><em>This post is also available on Urbit, where you can post comments. Join <a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a> and open the Networked Subject notebook.</em></p>
 
-			</div>
+			</div><hr>
+<span class="post-footer">
+<p>This post is also available on Urbit, where you can post comments. Join <b><a href="web+urbitgraph://group/~matwet/networked-subject/">~matwet/networked-subject</a></b> and open the Networked Subject notebook. <b><a href="https://urbit.org/getting-started"> Boot a free comet</a></b> or <a href="/buy"><a href="/buy"><b>Buy a planet with Bitcoin</a></b><img src="/img/btc-tiny.png">.</p>
+</span> 
 			<hr class="post-end">
 			<footer class="post-info">
 				<p>
@@ -351,9 +323,12 @@
 </div>
 	</main>
 
-	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
-		<a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="/img/by-sa.svg" height=24px width=auto></a><p> 2021 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;"><a href="https://subject.network">~sitful-hatred</a>
-		</p>
+<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+	<img src="/img/by-sa.svg" height=24px width=auto></a>
+	<p><a href="/privacy">Privacy</a> | <a href="/ts">Terms</a> | <a href="/canary">♪🐦</a></p>
+	<p> 2020-2022 <img src="/sitful-hatred.svg" height=24px width=24px style="vertical-align:middle;">~sitful-hatred | <a href="https://subject.network">Networked Subject</a>
+<br></p>
 	</footer>
 
 
