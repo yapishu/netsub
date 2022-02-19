@@ -17,7 +17,7 @@ Be sure to check whether your sponsor is online before purchase, or you will hav
 | [Escape Pod Store](https://www.escapepod.store/) | Unknown | Unknown	| Unknown	|	Full hosting provider & planet sales; BTC/ETH/Ravencoin/fiat| 
 | [Get Urbit ID](https://www.geturbitid.com/) | Incl. w/ hosting | 20USD | No | Full hosting provider; CC payment |
 | [nalrys.live](https://nalrys.live/) | 0.2ETH | NA | NA | ETH only headless sales |
-| [Networked subject](https://subject.network/) | [20/40USD](https://subject.network/about/#can-i-buy-a-planet-from-you) | NA | No | ETH or BTC |
+| [Networked subject](https://subject.network/) | [15USD](https://subject.network/buy) | NA | No | BTC |
 | [Nodestead](https://www.nodestead.dev/) | Unknown | Unknown | Unknown | Full hosting provider & planet sales |
 | [OpenSea](https://opensea.io/collection/urbit-id) | Var. | NA | No | Make sure the sponsor is online! ETH only |
 | [Planet.market](https://planet.market/) | ~20USD | NA | No | ETH only |
@@ -36,3 +36,5 @@ Be sure to check whether your sponsor is online before purchase, or you will hav
 Remember that you don't need a planet to use Urbit! You can [boot a comet](https://urbit.org/using/install/#booting-a-comet) for free today, even [on Windows](https://github.com/urbit/port/releases), and even [hosted](https://subject.network/posts/free-cloud-oracle/) on a server for free.
 
 You can find directions for going from purchase to booting [here](https://subject.network/posts/accepting-point/). **Check whether you are buying a planet on Layer 1 or Layer 2** before purchase. Layer 1 planets invoke Ethereum transaction fees that typically exceed the value of a planet.
+
+873659

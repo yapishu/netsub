@@ -87,7 +87,7 @@ bzGtoCT1e/tKWQUwpCelWVuqprK9bIyC5AzQhTL0
 
 ---
 
-This website is generated with [Hugo](https://gohugo.io/) using a modified version of the [Hermit](https://themes.gohugo.io/hermit/) theme, and modified terminal shortcodes by [jiridj](https://github.com/jiridj/hugo-macos-terminal).
+This website is generated with [Hugo](https://gohugo.io/) using a modified version of the [Hermit](https://themes.gohugo.io/hermit/) theme, modified terminal shortcodes by [jiridj](https://github.com/jiridj/hugo-macos-terminal), and [BTCPayServer](https://btcpayserver.org/).
 
 ---
 
