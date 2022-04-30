@@ -18,6 +18,8 @@ tags:
 ![](/img/btc-header.jpg)
 
 **Note**: *Urbit's Bitcoin wallet was launched in May 2021. You can learn how to use it [here](https://subject.network/posts/btc-wallet-config/)*
+| **Late 2021 Note**: *Urbit's Bitcoin wallet was launched in May 2021. You can learn how to use it [here](https://subject.network/posts/btc-wallet-config/). You are also encouraged to use an [Umbrel](/posts/urbit-apps-umbrel/) with the Urbit Bitcoin Connector app for a significantly simpler setup.|
+| --- |
 
 ## Introduction
 

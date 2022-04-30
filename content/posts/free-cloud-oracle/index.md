@@ -238,7 +238,7 @@ Before copying your old pier, **make sure your urbit is not running on your comp
 Next, run this monster of a one-liner on your local computer, after editing in the path to your local pier and IP address of the server: 
 
 {{< terminal "terminal" "~" >}}
-$> rsync --progress -avz -e "ssh -i ~/.ssh/oracle.key" /path/to/local_pier/ ubuntu@server.ip.address.here:~/urbit/
+$> rsync --progress -avz -e "ssh -i ~/.ssh/oracle.key" /path/to/local_pier ubuntu@server.ip.address.here:~/urbit/
  
 
 {{< /terminal >}}
