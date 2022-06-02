@@ -92,7 +92,7 @@ First, let's copy our new SSH private key to the proper directory and change its
 {{< terminal "terminal" "~" >}}
 $> mkdir ~/.ssh
 $> mv ~/Downloads/ssh-key-2020-12-19.key ~/.ssh/oracle.key
-$> sudo chmod 600 ~/oracle.key
+$> sudo chmod 600 ~/.ssh/oracle.key
 $> ssh -i ~/.ssh/oracle.key ubuntu@your.ip.address.here
  
 

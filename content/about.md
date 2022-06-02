@@ -29,7 +29,7 @@ You can read more details [here](https://subject.network/posts/urbit-introductio
 
 ### *Where can I buy a planet?*
 
-Check out the [store](/buy) -- Bitcoin only. Planets are [layer 2](https://urbit.org/docs/azimuth/l2/layer2) and delivered by email after payment is confirmed on-chain. 
+Check out the [store](/buy) -- Bitcoin and **many other coins** accepted via the 'AltCoins' conversion menu option on checkout. Planets are [layer 2](https://urbit.org/docs/azimuth/l2/layer2) and delivered by email after payment is confirmed on-chain.
 
 Never share your planet code or master key! Do not run your ship in two places at the same time, or delete the data folder of a ship that has been booted. Contact  with questions, issues, to arrange batch orders or purchase specific planets.
 
