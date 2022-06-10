@@ -20,6 +20,7 @@ Be sure to check whether your sponsor is online before purchase, or you will hav
 | [~mocbel house](https://planets.mocbel.house/) | 40USD | NA | NA | L2, CC |
 | [nalrys.live](https://nalrys.live/) | 0.2ETH | NA | NA | ETH only headless sales |
 | [Networked subject](https://subject.network/) | [15USD](https://subject.network/buy) | NA | No | L2, BTC |
+| [~nem](https://jeremytunnell.com/2019/02/07/i-have-urbit-stars-for-sale/) | 20USD | NA | No | L2 |
 | [Nodestead](https://www.nodestead.dev/) | Unknown | Unknown | Unknown | Full hosting provider & planet sales |
 | [OpenSea](https://opensea.io/collection/urbit-id) | Var. | NA | No | Make sure the sponsor is online! ETH only |
 | [Planet.market](https://planet.market/) | ~20USD | NA | No | ETH only |
