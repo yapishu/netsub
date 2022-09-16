@@ -7,28 +7,31 @@ draft: false
 
 ```
 -----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA256
+Hash: SHA512
 
 Status: All good
-Period: January 1 to June 30, 2022
+Period: July 1 to December 31, 2022
 
 During this period, Networked Subject has received:
 
 Zero National Security Letters
 Zero Foreign Intelligence Surveillance Court orders
-Zero gag orders that prevent us from from stating that we 
-have received legal process seeking our customers' information
+Zero gag orders that prevent us from from stating that we have received legal process seeking our customers' information
 
 ~matwet
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAEBCAAGBQJh8atmAAoJEBwWyIYfo15HzEsH/jxsJLq89nqpLHfR5jB1fetP
-bfEQVd3eOwkO3U5iXSdsAAyHf+IC6dVDZ6aJYPGg+eVVs2HI3cK0Q7MdqCaKdFUG
-/d0FXLxTUK2XGvI3pWxb3Ylw4Heme0WOC7nX+x0NOtD2pqCrHf+RkSXcrAmFPbBo
-0gzlgknJq6qC5UDvKDmAsp4KOfXajiCo4u6rbuNzd6dJOX0Zso+RZBOwWwWmprI2
-Cvm3M1KP3YfyS8gIDX57nDMSCqIUuhyA+uQLwdWTtQOzgBYB4xv4RDFLFUQyxy03
-vwLn/7eh11JzYt0WFWR3jNfdUmw5Xz10oK7bVXInrcbMAw42MUu2QGsEBGF6bCQ=
-=A9Jm
+iQGzBAEBCgAdFiEEsCBYLGRJ5vcfJjejoOvqI8kfTVAFAmLmz5UACgkQoOvqI8kf
+TVCUhQwAnTUvGUK8j+JpPec/1Os7TqQmpD5kkaFswudIxoucEJxQQ3yEtuXvqihx
+hxVLUn6d0Hss69v0gXIPcudgDj/ybUK3u+EqChto9H4tuhbrdlpv95KYvOYXMPv7
+++MwpneaPC1zxSrGo9DXxUbEi9LFLHwcScA6VcV7yT290Qh38xTd3lk5r31B3oet
+VI4bt/DJxyvc/S48vU61Uw01yJf/FkhKt9q8kmlntjJV6kosKKKLzSO1XWuHEyCm
+LaWH5RLvI/NC/Kq4pe6LXcT52+ABP2sM5qrCehHOM6jl4ea+imn5IwiV0/Sn2RKV
+2oHgmjsuUHf5r93On8yfLqDZUAmXs7UlUkP7BB+yL1ujJyxODMaPlYfxPtswr5Qr
+7LvltrFiNVwnBwwmkzHQo9XgA9KK4OddgSk8M0xyvbfCRseD9m24m7+dVwRlKyZ7
+kZA8SbDyePVWeOyDUxzJipsTwVGAR5/gOK4lW551OQW87aVxKO+1ZAFCtexTkkik
+prMhHpW5
+=wJ5f
 -----END PGP SIGNATURE-----
 
 ```

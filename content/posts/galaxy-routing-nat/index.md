@@ -99,20 +99,6 @@ $> urbit -p 54321 sampel-palnet
 
 Keep in mind that if you are forwarding to a specific IP address, that device should have a static private IP -- i.e., if your home deskop runs your urbit and its IP address is 192.168.0.10, you will want to configure it so that it always claims that IP address rather than having a random one assigned via DHCP next time it reboots. Google 'static ip' + your operating system if you aren't sure how.
 
-A simpler fix is to instead boot your ship with `urbit-king`, (aka King Haskell) an alternative binary. `urbit-king` includes UPnP support, which will automatically configure port forwarding for compatible routers. 
-
-If you want to try it, you may want to take a look at the parameters, as they're slightly different from the `urbit` binary written in C. To boot your existing pier:
-
-{{< terminal "terminal" "~/urbit" >}}
-$> urbit-king run /path/to/sampel-palnet
- 
- 
-{{< /terminal >}}
-
-(Make sure you've shut down your ship before booting it!)
-
-`urbit-king` also has native support for disconnecting and reconnecting to your instance without having to use `tmux`. 
-
 
 ### VPS
 
