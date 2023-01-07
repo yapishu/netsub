@@ -7,31 +7,28 @@ draft: false
 
 ```
 -----BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
-
+Hash: SHA256
 Status: All good
-Period: July 1 to December 31, 2022
-
+Period: January 1 to June 30, 2023
 During this period, Networked Subject has received:
-
 Zero National Security Letters
 Zero Foreign Intelligence Surveillance Court orders
-Zero gag orders that prevent us from from stating that we have received legal process seeking our customers' information
-
+Zero gag orders that prevent us from from stating that we
+have received legal process seeking our customers' information
 ~matwet
+• 118th United States Congress convenes; House of Representatives adjourns without electing Speaker for first time in 100 years
+• France to be first nation to donate Western armored vehicles to Ukraine
+• Two helicopters collide in Gold Coast, Australia
+• Pope Benedict XVI dies at age 95
+• "National treasure": Former Brazilian footballer Pelé dies at age 82
 -----BEGIN PGP SIGNATURE-----
-
-iQGzBAEBCgAdFiEEsCBYLGRJ5vcfJjejoOvqI8kfTVAFAmLmz5UACgkQoOvqI8kf
-TVCUhQwAnTUvGUK8j+JpPec/1Os7TqQmpD5kkaFswudIxoucEJxQQ3yEtuXvqihx
-hxVLUn6d0Hss69v0gXIPcudgDj/ybUK3u+EqChto9H4tuhbrdlpv95KYvOYXMPv7
-++MwpneaPC1zxSrGo9DXxUbEi9LFLHwcScA6VcV7yT290Qh38xTd3lk5r31B3oet
-VI4bt/DJxyvc/S48vU61Uw01yJf/FkhKt9q8kmlntjJV6kosKKKLzSO1XWuHEyCm
-LaWH5RLvI/NC/Kq4pe6LXcT52+ABP2sM5qrCehHOM6jl4ea+imn5IwiV0/Sn2RKV
-2oHgmjsuUHf5r93On8yfLqDZUAmXs7UlUkP7BB+yL1ujJyxODMaPlYfxPtswr5Qr
-7LvltrFiNVwnBwwmkzHQo9XgA9KK4OddgSk8M0xyvbfCRseD9m24m7+dVwRlKyZ7
-kZA8SbDyePVWeOyDUxzJipsTwVGAR5/gOK4lW551OQW87aVxKO+1ZAFCtexTkkik
-prMhHpW5
-=wJ5f
+iQEcBAEBCAAGBQJjucURAAoJEBwWyIYfo15HosYIAKJ+7qQpeFcrsHx8Dt/Wi0Cg
+0grQ0kXHLtJg9X660GqJ90gYp5wf42uRiFKKFVDDGbl9PRHrxGjHRyO7rsYbJ9DH
++2NhyFRMz8iTSF1HMoYVUe1qEJ991byzJCGcg6pVGCXV0sPlyQkJbaopoKewWAs1
+7urAQVZuPf5gc5pGIq8NwgAp/WR9aC1aiN2i7XMfvd3CHEuvOYs7qDlHUs7xdq7N
+Fcjij8yiFhVUrghSC4r5xiYXFAaWQ/GpA4DydcwFfEVeUf/0u+lATCJ6aRRde8mo
+eulfKbg/pDzjA9JS4R8kkijhiyyLcC9qlgIdDfRUjNqCV/iyxSYjO5DkOeTVv5s=
+=AR2U
 -----END PGP SIGNATURE-----
 
 ```

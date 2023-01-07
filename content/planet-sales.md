@@ -16,7 +16,7 @@ Be sure to check whether your sponsor is online before purchase, or you will hav
 | ---    | ---         | ---          |       ---  |
 | [Escape Pod Store](https://www.escapepod.store/) | Unknown | Unknown  | Full hosting provider & planet sales; BTC/ETH/Ravencoin/fiat| 
 | [Get Urbit ID](https://www.geturbitid.com/) | Incl. w/ hosting | 20USD |  Full hosting provider; CC |
-| [~lanlyd](https://planets.lanlyd.net/) | 100USD | NA | L2, CC |
+| [~lanlyd](https://planets.lanlyd.net/) | 17USD | NA | L2, CC |
 | [~mocbel house](https://planets.mocbel.house/) | 40USD | NA | L2, CC |
 | [nalrys.live](https://nalrys.live/) | 0.2ETH | NA | NA | ETH only headless sales |
 | [Networked subject](https://subject.network/) | [10USD](https://subject.network/buy) | NA | L2, BTC |
@@ -24,6 +24,7 @@ Be sure to check whether your sponsor is online before purchase, or you will hav
 | [Nodestead](https://www.nodestead.dev/) | Unknown | Unknown | Full hosting provider & planet sales |
 | [OpenSea](https://opensea.io/collection/urbit-id) | Var. | NA | Make sure the sponsor is online! ETH only |
 | [Planet.market](https://planet.market/) | 25USD | NA | CC |
+| [Planet One](https://planet.one/) | Incl. w/ hosting | 15USD | Full hosting provider, CC |
 | [ThirdEarth](https://third.earth/) | Incl. w/ hosting | 12/8USD planets/comets | Full hosting provider, CC |
 | [Tlon](https://tlon.io/) | Forthcoming | Forthcoming | Full hosting provider ([Waitlist referral](https://link.tlon.io/w/e6b72706))|
 | [~tomdys](https://tomdys.gumroad.com/) | 20USD | NA | L2, CC |
