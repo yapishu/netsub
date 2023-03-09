@@ -1,5 +1,5 @@
 ---
-title: "$10 Urbit Planets"
+title: ""
 date: 2021-08-07T21:46:09-05:00
 draft: false
 images:
